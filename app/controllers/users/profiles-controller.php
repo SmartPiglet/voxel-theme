@@ -36,7 +36,7 @@ class Profiles_Controller extends \Voxel\Controllers\Base_Controller {
 			'exclude_from_search' => false,
 			'hierarchical'        => false,
 			'query_var'           => true,
-			'supports'            => [],
+			'supports'            => [ 'thumbnail' ],
 			'menu_position'       => 70,
 			'delete_with_user'    => true,
 			'_is_created_by_voxel' => false,

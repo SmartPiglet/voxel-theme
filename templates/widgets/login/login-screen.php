@@ -39,7 +39,10 @@ if ( ! defined('ABSPATH') ) {
 		<div class="ts-form-group ts-password-field">
 			<div class="ts-input-icon flexify">
 				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('auth_pass_ico') ) ?: \Voxel\svg( 'lock-alt.svg' ) ?>
-				<input class="ts-filter autofocus" type="password" v-model="login.password" ref="loginPassword" placeholder="<?= esc_attr( _x( 'Password', 'auth', 'voxel' ) ) ?>" name="login_password">
+				<input class="ts-filter autofocus" :type="login.showPassword ? 'text' : 'password'" v-model="login.password" ref="loginPassword" placeholder="<?= esc_attr( _x( 'Password', 'auth', 'voxel' ) ) ?>" name="login_password">
+				<div class="view-password" :class="{'active': login.showPassword}" @click.prevent="login.showPassword = !login.showPassword">
+					<?= \Voxel\get_icon_markup( $this->get_settings_for_display('eye_ico') ) ?: \Voxel\svg( 'eye.svg' ) ?>
+				</div>
 			</div>
 		</div>
 		<div class="ts-form-group">

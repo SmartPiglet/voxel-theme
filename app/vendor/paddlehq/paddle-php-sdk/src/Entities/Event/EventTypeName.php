@@ -10,15 +10,24 @@ use Voxel\Vendor\Paddle\SDK\PaddleEnum;
  * @method static EventTypeName AddressUpdated()
  * @method static EventTypeName AdjustmentCreated()
  * @method static EventTypeName AdjustmentUpdated()
+ * @method static EventTypeName ApiKeyCreated()
+ * @method static EventTypeName ApiKeyExpired()
+ * @method static EventTypeName ApiKeyExpiring()
+ * @method static EventTypeName ApiKeyRevoked()
+ * @method static EventTypeName ApiKeyUpdated()
  * @method static EventTypeName BusinessCreated()
  * @method static EventTypeName BusinessImported()
  * @method static EventTypeName BusinessUpdated()
+ * @method static EventTypeName ClientTokenCreated()
+ * @method static EventTypeName ClientTokenRevoked()
+ * @method static EventTypeName ClientTokenUpdated()
  * @method static EventTypeName CustomerCreated()
  * @method static EventTypeName CustomerImported()
  * @method static EventTypeName CustomerUpdated()
  * @method static EventTypeName DiscountCreated()
  * @method static EventTypeName DiscountImported()
  * @method static EventTypeName DiscountGroupCreated()
+ * @method static EventTypeName DiscountGroupUpdated()
  * @method static EventTypeName DiscountUpdated()
  * @method static EventTypeName InvoiceCanceled()
  * @method static EventTypeName InvoiceCreated()
@@ -71,6 +80,9 @@ final class EventTypeName extends PaddleEnum
     private const BusinessCreated = 'business.created';
     private const BusinessImported = 'business.imported';
     private const BusinessUpdated = 'business.updated';
+    private const ClientTokenCreated = 'client_token.created';
+    private const ClientTokenRevoked = 'client_token.revoked';
+    private const ClientTokenUpdated = 'client_token.updated';
     private const CustomerCreated = 'customer.created';
     private const CustomerImported = 'customer.imported';
     private const CustomerUpdated = 'customer.updated';
@@ -78,6 +90,7 @@ final class EventTypeName extends PaddleEnum
     private const DiscountImported = 'discount.imported';
     private const DiscountUpdated = 'discount.updated';
     private const DiscountGroupCreated = 'discount_group.created';
+    private const DiscountGroupUpdated = 'discount_group.updated';
     private const InvoiceCanceled = 'invoice.canceled';
     private const InvoiceCreated = 'invoice.created';
     private const InvoiceIssued = 'invoice.issued';

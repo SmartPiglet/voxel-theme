@@ -785,7 +785,7 @@ class Order {
 	}
 
 	public static function get_status_config(): array {
-		return [
+		return apply_filters( 'voxel/ecommerce/order_statuses', [
 			'completed' => [
 				'label' => _x( 'Approved', 'order status', 'voxel' ),
 				'long_label' => _x( 'Order is approved', 'order long status', 'voxel' ),
@@ -851,7 +851,7 @@ class Order {
 				'long_label' => _x( 'Subscription is paused', 'order long status', 'voxel' ),
 				'class' => 'vx-orange',
 			],
-		];
+		] );
 	}
 
 	public static function get_shipping_status_config(): array {

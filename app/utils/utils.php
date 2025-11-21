@@ -51,6 +51,8 @@ class_alias( '\Voxel\Utils\Form_Models\Text_Model', '\Voxel\Form_Models\Text_Mod
 class_alias( '\Voxel\Utils\Form_Models\Textarea_Model', '\Voxel\Form_Models\Textarea_Model' );
 
 require_once locate_template( 'app/vendor/autoload.php' );
+require_once locate_template( 'app/utils/vendor-compat.php' );
+
 require_once locate_template( 'app/utils/constants.php' );
 require_once locate_template( 'app/utils/app-utils.php' );
 require_once locate_template( 'app/utils/auth-utils.php' );
@@ -473,8 +475,8 @@ function interval_format( $interval, $interval_count ) {
 	}
 }
 
-function random_string( int $length ) {
-	$pool = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function random_string( int $length, ?string $pool = null ) {
+	$pool = ( $pool ?? '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ' );
 	$max = strlen( $pool ) - 1;
 
 	$token = '';
@@ -484,6 +486,10 @@ function random_string( int $length ) {
 	}
 
 	return $token;
+}
+
+function random_numeric_string( int $length ) {
+	return \Voxel\random_string( $length, '0123456789' );
 }
 
 function get_google_auth_link( $role = '', $plan = '' ) {
@@ -534,7 +540,42 @@ function get_logout_url() {
 }
 
 function get_main_admin(): ?\Voxel\User {
-	return \Voxel\User::get( \Voxel\get('settings.notifications.admin_user') );
+	static $admin_user;
+	if ( $admin_user !== null ) {
+		return $admin_user;
+	}
+
+	$user_id = absint( \Voxel\get( 'settings.notifications.admin_user' ) );
+
+	// Validate stored admin user and fall back to the first available administrator
+	if ( $user_id ) {
+		$user = \Voxel\User::get( $user_id );
+		if ( $user && $user->has_role( 'administrator' ) ) {
+			$admin_user = $user;
+			return $admin_user;
+		}
+
+		\Voxel\set( 'settings.notifications.admin_user', null );
+	}
+
+	$admin_users = get_users( [
+		'role' => 'administrator',
+		'number' => 1,
+		'orderby' => 'ID',
+		'order' => 'ASC',
+	] );
+
+	if ( ! empty( $admin_users ) ) {
+		// ensure we always cache a valid administrator
+		$admin_user = \Voxel\User::get( $admin_users[0] );
+		if ( $admin_user ) {
+			\Voxel\set( 'settings.notifications.admin_user', $admin_user->get_id() );
+		}
+	} else {
+		$admin_user = null;
+	}
+
+	return $admin_user;
 }
 
 /**
@@ -1388,6 +1429,14 @@ function evaluate_math_expression( string $expression ) {
 	static $executor;
 	if ( $executor === null ) {
 		$executor = new \Voxel\Vendor\NXP\MathExecutor;
+
+		$executor->addFunction( 'discount', function($old, $new) {
+			return (($old - $new) / $old) * 100;
+		} );
+
+		$executor->addFunction( 'random_int', function (int $min = 1, int $max = 10) {
+			return random_int($min, $max);
+		} );
 	}
 
 	return $executor->execute( $expression );

@@ -51,15 +51,28 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 						throw new \Exception( _x( 'This plan is not available.', 'pricing plans', 'voxel' ), 72 );
 					}
 
+
+					$redirect_url = $draft->get_edit_link();
+					if ( ! empty( $_REQUEST['submit_to'] ) && wp_validate_redirect( $_REQUEST['submit_to'] ) ) {
+						$redirect_url = add_query_arg( [
+							'post_id' => $draft->get_id(),
+						], wp_validate_redirect( $_REQUEST['submit_to'] ) );
+					}
+
 					return wp_send_json( [
 						'success' => true,
 						'type' => 'redirect',
-						'redirect_to' => $draft->get_edit_link(),
+						'redirect_to' => $redirect_url,
 					] );
 				} else {
 					$plan = Module\Listing_Plan::get( sanitize_text_field( $_REQUEST['plan'] ?? '' ) );
 					if ( $plan === null || ! $plan->supports_post_type( $post_type ) ) {
 						throw new \Exception( _x( 'This plan is not available.', 'pricing plans', 'voxel' ), 80 );
+					}
+
+					$submit_to = null;
+					if ( ! empty( $_REQUEST['submit_to'] ) && wp_validate_redirect( $_REQUEST['submit_to'] ) ) {
+						$submit_to = wp_validate_redirect( $_REQUEST['submit_to'] );
 					}
 
 					$cart_item = \Voxel\Cart_Item::create( [
@@ -71,6 +84,7 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 							'checkout_context' => [
 								'process' => 'new',
 								'post_type' => $post_type->get_key(),
+								'submit_to' => $submit_to,
 							],
 						],
 					] );
@@ -89,7 +103,12 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 				}
 			} elseif ( $process === 'relist' ) {
 				$post = \Voxel\Post::get( $_REQUEST['post_id'] ?? null );
-				if ( ! ( $post && $post->post_type && $post->is_editable_by_current_user() && $post->get_status() === 'expired' ) ) {
+				if ( ! (
+					$post
+					&& $post->post_type
+					&& $post->is_editable_by_current_user()
+					&& in_array( $post->get_status(), [ 'expired', 'rejected' ], true )
+				) ) {
 					throw new \Exception( _x( 'This item cannot be relisted.', 'pricing plans', 'voxel' ), 70 );
 				}
 
@@ -103,19 +122,15 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 						throw new \Exception( _x( 'This plan is not available.', 'pricing plans', 'voxel' ), 71 );
 					}
 
-					wp_update_post( [
-						'ID' => $post->get_id(),
-						'post_status' => 'publish',
-						'post_date' => current_time( 'mysql' ),
-						'post_date_gmt' => current_time( 'mysql', true ),
-					] );
-
-					$package->assign_to_post( $post );
+					$draft = Module\prepare_post_for_relisting( $package, $post );
+					if ( $draft === null ) {
+						throw new \Exception( _x( 'This plan is not available.', 'pricing plans', 'voxel' ), 72 );
+					}
 
 					return wp_send_json( [
 						'success' => true,
 						'type' => 'redirect',
-						'redirect_to' => $redirect_to ?? $post->get_link(),
+						'redirect_to' => $draft->get_edit_link(),
 					] );
 				} else {
 					$plan = Module\Listing_Plan::get( sanitize_text_field( $_REQUEST['plan'] ?? '' ) );

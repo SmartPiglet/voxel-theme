@@ -3,7 +3,7 @@
 		<label>
 			{{ field.label }}
 			<div class="vx-dialog" v-if="field.description">
-				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+				<icon-info/>
 				<div class="vx-dialog-content min-scroll">
 					<p>{{ field.description }}</p>
 				</div>

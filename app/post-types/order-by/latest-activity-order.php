@@ -57,10 +57,10 @@ class Latest_Activity_Order extends Base_Search_Order {
 			$reply_stats = $post->repository->get_wall_reply_stats();
 		}
 
-		$timestamp = strtotime( $stats['latest']['created_at'] ?? null );
+		$timestamp = strtotime( $stats['latest']['created_at'] ?? '' );
 
 		if ( $this->props['include_replies'] ) {
-			$reply_timestamp = strtotime( $reply_stats['latest']['created_at'] ?? null );
+			$reply_timestamp = strtotime( $reply_stats['latest']['created_at'] ?? '' );
 			if ( $reply_timestamp !== null && ( $timestamp === null || $reply_timestamp > $timestamp ) ) {
 				$timestamp = $reply_timestamp;
 			}

@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-18 02:40+0000\n"
+"POT-Creation-Date: 2025-11-01 23:38+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -95,7 +95,7 @@ msgctxt "unknown revision author"
 msgid "(unknown)"
 msgstr ""
 
-#: app/controllers/post-type-controller.php:474, app/controllers/post-type-controller.php:509, app/controllers/post-type-controller.php:542, app/controllers/post-type-controller.php:573, app/modules/elementor/controllers/elementor-controller.php:383
+#: app/controllers/post-type-controller.php:474, app/controllers/post-type-controller.php:509, app/controllers/post-type-controller.php:542, app/controllers/post-type-controller.php:573, app/modules/elementor/controllers/elementor-controller.php:384
 msgid "Permission denied."
 msgstr ""
 
@@ -276,11 +276,11 @@ msgstr ""
 msgid "Timeline styles"
 msgstr ""
 
-#: app/widgets/gallery.php:181, app/modules/elementor/controllers/elementor-controller.php:681
+#: app/widgets/gallery.php:181, app/modules/elementor/controllers/elementor-controller.php:682
 msgid "Aspect ratio"
 msgstr ""
 
-#: app/widgets/gallery.php:182, app/widgets/slider.php:188, app/modules/elementor/controllers/elementor-controller.php:682
+#: app/widgets/gallery.php:182, app/widgets/slider.php:188, app/modules/elementor/controllers/elementor-controller.php:683
 msgid "Set image aspect ratio e.g 16/9"
 msgstr ""
 
@@ -505,7 +505,7 @@ msgstr ""
 msgid "Voxel settings"
 msgstr ""
 
-#: app/controllers/settings/settings-controller.php:22, app/modules/elementor/controllers/elementor-controller.php:419
+#: app/controllers/settings/settings-controller.php:22, app/modules/elementor/controllers/elementor-controller.php:420
 msgid "Voxel"
 msgstr ""
 
@@ -984,6 +984,16 @@ msgctxt "visibility rules"
 msgid "Post ID"
 msgstr ""
 
+#: app/dynamic-data/visibility-rules/user-has-bought-product-type.php:16
+msgctxt "visibility rules"
+msgid "User has bought product type"
+msgstr ""
+
+#: app/dynamic-data/visibility-rules/user-has-bought-product-type.php:27
+msgctxt "visibility rules"
+msgid "Product type"
+msgstr ""
+
 #: app/dynamic-data/visibility-rules/user-has-bought-product.php:16
 msgctxt "visibility rules"
 msgid "User has bought product"
@@ -1034,12 +1044,12 @@ msgctxt "visibility rules"
 msgid "User role is"
 msgstr ""
 
-#: app/modules/paid-listings/listing-plan.php:95
+#: app/modules/paid-listings/listing-plan.php:99
 msgctxt "listing plans"
 msgid "Please provide a unique key."
 msgstr ""
 
-#: app/modules/paid-listings/listing-plan.php:99
+#: app/modules/paid-listings/listing-plan.php:103
 msgctxt "listing plans"
 msgid "Please provide a label."
 msgstr ""
@@ -1076,12 +1086,12 @@ msgstr ""
 
 #: app/modules/paid-memberships/customer-list-table.php:21
 msgctxt "members table"
-msgid "User"
+msgid "ID"
 msgstr ""
 
 #: app/modules/paid-memberships/customer-list-table.php:22
 msgctxt "members table"
-msgid "ID"
+msgid "User"
 msgstr ""
 
 #: app/modules/paid-memberships/customer-list-table.php:23
@@ -1091,25 +1101,25 @@ msgstr ""
 
 #: app/modules/paid-memberships/customer-list-table.php:24
 msgctxt "members table"
-msgid "Price"
+msgid "Status"
 msgstr ""
 
 #: app/modules/paid-memberships/customer-list-table.php:25
 msgctxt "members table"
-msgid "Status"
+msgid "Price"
 msgstr ""
 
-#: app/modules/paid-memberships/customer-list-table.php:147
+#: app/modules/paid-memberships/customer-list-table.php:152
 msgctxt "members table"
 msgid "All"
 msgstr ""
 
-#: app/modules/paid-memberships/customer-list-table.php:155
+#: app/modules/paid-memberships/customer-list-table.php:160
 msgctxt "members table"
 msgid "Subscribers"
 msgstr ""
 
-#: app/modules/paid-memberships/customer-list-table.php:163
+#: app/modules/paid-memberships/customer-list-table.php:168
 msgctxt "members table"
 msgid "Free"
 msgstr ""
@@ -1828,44 +1838,52 @@ msgstr ""
 msgid "Z-index"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:243
+#: app/modules/elementor/controllers/elementor-controller.php:244
 msgid "Line Awesome - Regular"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:256
+#: app/modules/elementor/controllers/elementor-controller.php:257
 msgid "Line Awesome - Solid"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:269
+#: app/modules/elementor/controllers/elementor-controller.php:270
 msgid "Line Awesome - Brands"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:388
+#: app/modules/elementor/controllers/elementor-controller.php:389
 msgid "Invalid request"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:693
+#: app/modules/elementor/controllers/elementor-controller.php:694
 msgid "Disable wrapping"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:694
+#: app/modules/elementor/controllers/elementor-controller.php:695
 msgid "Disable text wrap and enable ellipsis for overflowing text"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:718
+#: app/modules/elementor/controllers/elementor-controller.php:719
 msgid "Line clamp"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:719
+#: app/modules/elementor/controllers/elementor-controller.php:720
 msgid "Truncate text at a specific number of lines. Please set columns to default to use Line clamp"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:733
+#: app/modules/elementor/controllers/elementor-controller.php:734
 msgid "Retain internal colors"
 msgstr ""
 
-#: app/modules/elementor/controllers/elementor-controller.php:734
+#: app/modules/elementor/controllers/elementor-controller.php:735
 msgid "Retain the original colors of the SVG defined in the code"
+msgstr ""
+
+#: app/modules/elementor/controllers/elementor-controller.php:746
+msgid "Icon Color"
+msgstr ""
+
+#: app/modules/elementor/controllers/elementor-controller.php:754
+msgid "Icon Hover Color"
 msgstr ""
 
 #: app/modules/elementor/controllers/loop-controller.php:32
@@ -1952,7 +1970,7 @@ msgstr ""
 msgid "Edit rules"
 msgstr ""
 
-#: app/modules/paddle-payments/controllers/backend/paddle-settings-controller.php:64, app/modules/stripe-payments/controllers/backend/settings-controller.php:60, app/modules/stripe-payments/controllers/backend/settings-controller.php:194
+#: app/modules/paddle-payments/controllers/backend/paddle-settings-controller.php:66, app/modules/stripe-payments/controllers/backend/settings-controller.php:62, app/modules/stripe-payments/controllers/backend/settings-controller.php:196
 msgid "Endpoint created successfully."
 msgstr ""
 
@@ -2019,12 +2037,12 @@ msgctxt "pricing page title"
 msgid "%s pricing"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/backend/settings-controller.php:147
+#: app/modules/stripe-payments/controllers/backend/settings-controller.php:149
 msgctxt "stripe"
 msgid "Portal configuration updated."
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/backend/settings-controller.php:137
+#: app/modules/stripe-payments/controllers/backend/settings-controller.php:139
 msgctxt "stripe"
 msgid "Portal configuration saved."
 msgstr ""

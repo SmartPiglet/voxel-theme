@@ -232,11 +232,11 @@ final class PhpStanExtractor implements PropertyDescriptionExtractorInterface, P
         return $this->getDescriptionsFromDocNode($docNode)[1];
     }
     /**
-     * A docblock is splitted into a template marker, a short description, an optional long description and a tags section.
+     * A docblock is split into a template marker, a short description, an optional long description and a tags section.
      *
-     * - The template marker is either empty, or #@+ or #@-.
+     * - The template marker is either empty, #@+ or #@-.
      * - The short description is started from a non-tag character, and until one or multiple newlines.
-     * - The long description (optional), is started from a non-tag character, and until a new line is encountered followed by a tag.
+     * - The long description (optional) is started from a non-tag character, and until a new line is encountered followed by a tag.
      * - Tags, and the remaining characters
      *
      * This method returns the short and the long descriptions.
@@ -298,7 +298,7 @@ final class PhpStanExtractor implements PropertyDescriptionExtractorInterface, P
         $longDescription = trim($longDescription, "\n");
         return [$shortDescription ?: null, $longDescription ?: null];
     }
-    private function getDocBlockFromConstructor(string $class, string $property): ?ParamTagValueNode
+    private function getDocBlockFromConstructor(string &$class, string $property): ?ParamTagValueNode
     {
         try {
             $reflectionClass = new \ReflectionClass($class);
@@ -311,6 +311,7 @@ final class PhpStanExtractor implements PropertyDescriptionExtractorInterface, P
         if (!$rawDocNode = $reflectionConstructor->getDocComment()) {
             return null;
         }
+        $class = $reflectionConstructor->class;
         $phpDocNode = $this->getPhpDocNode($rawDocNode);
         return $this->filterDocBlockParams($phpDocNode, $property);
     }

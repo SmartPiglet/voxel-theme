@@ -14,7 +14,7 @@ if ( ! defined('ABSPATH') ) {
 				</div>
 				{{ addon.label }}
 				<div class="vx-dialog" v-if="addon.description">
-					<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+					<icon-info/>
 					<div class="vx-dialog-content min-scroll">
 						<p>{{ addon.description }}</p>
 					</div>
@@ -25,7 +25,7 @@ if ( ! defined('ABSPATH') ) {
 			<label>
 				{{ addon.label }}
 				<div class="vx-dialog" v-if="addon.description">
-					<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+					<icon-info/>
 					<div class="vx-dialog-content min-scroll">
 						<p>{{ addon.description }}</p>
 					</div>
@@ -101,7 +101,7 @@ if ( ! defined('ABSPATH') ) {
 										</div>
 										<?= _x( 'Sold in bulk', 'product field addons', 'voxel' ) ?>
 										<div class="vx-dialog">
-											<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+											<icon-info/>
 											<div class="vx-dialog-content min-scroll">
 												<p><?= _x( 'Multiple units of this item can be purchasd in the same order', 'product field addons', 'voxel' ) ?></p>
 											</div>

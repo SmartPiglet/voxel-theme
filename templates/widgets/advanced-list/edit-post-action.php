@@ -4,6 +4,10 @@ if ( ! ( $current_post && $current_post->is_editable_by_current_user() ) ) {
 	return;
 }
 
+if ( apply_filters( 'voxel/show_edit_action', true, $current_post ) === false ) {
+	return;
+}
+
 $edit_steps = array_filter( $current_post->get_fields(), function( $field ) {
 	return $field->get_type() === 'ui-step' && $field->passes_visibility_rules();
 } ); ?>

@@ -16,6 +16,7 @@ class Create_Post_Controller extends \Voxel\Controllers\Base_Controller {
 		$this->on( 'voxel/frontend/before_post_update', '@frontend_before_post_update' );
 		$this->on( 'voxel/frontend/post_updated', '@frontend_post_updated' );
 		$this->on( 'voxel/user/can_create_post', '@user_can_create_post', 100, 3 );
+		$this->filter( 'voxel/show_edit_action', '@should_show_edit_action', 100, 2 );
 	}
 
 	protected function no_permission_screen_content( $content, $post_type, $user ) {
@@ -65,9 +66,17 @@ class Create_Post_Controller extends \Voxel\Controllers\Base_Controller {
 					return;
 				}
 
+				$submit_to = null;
+
+				// preserve additional query parameters during plan selection
+				if ( ! empty( $_GET ) ) {
+					$submit_to = rawurlencode( \Voxel\get_current_url() );
+				}
+
 				$redirect_to = add_query_arg( [
 					'process' => 'new',
 					'item_type' => $post_type->get_key(),
+					'submit_to' => $submit_to,
 				], get_permalink( $pricing_page_id ) );
 
 				wp_safe_redirect( $redirect_to );
@@ -89,6 +98,12 @@ class Create_Post_Controller extends \Voxel\Controllers\Base_Controller {
 
 			if ( $use_slot_on_publish && $package && ! ( $package->can_create_post( $post->post_type ) ) ) {
 				throw new \Exception( _x( 'You do not have permission to create new posts.', 'create post', 'voxel' ), 190 );
+			}
+		}
+
+		if ( in_array( $previous_status, [ 'expired', 'rejected' ], true ) ) {
+			if ( Module\has_plans_for_post_type( $post->post_type ) ) {
+				throw new \Exception( _x( 'You must relist this item to edit details.', 'create post', 'voxel' ), 191 );
 			}
 		}
 	}
@@ -118,6 +133,16 @@ class Create_Post_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		return $can_create_post;
+	}
+
+	protected function should_show_edit_action( bool $should_show, \Voxel\Post $post ): bool {
+		if ( $post->post_type && in_array( $post->get_status(), [ 'expired', 'rejected' ], true ) ) {
+			if ( Module\has_plans_for_post_type( $post->post_type ) ) {
+				return false;
+			}
+		}
+
+		return $should_show;
 	}
 
 }

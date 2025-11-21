@@ -118,12 +118,24 @@ if ( ! defined('ABSPATH') ) {
 				<select v-model="config.maps.google_maps.autocomplete.feature_types">
 					<option :value="null">All feature types</option>
 					<option value="geocode">Geocoding results</option>
-					<option value="address">Addresses</option>
 					<option value="establishment">Establishments</option>
 					<option value="(regions)">Regions</option>
 					<option value="(cities)">Cities</option>
+					<option value="point_of_interest">Points of interest</option>
+					<option value="street_address">Street addresses</option>
+					<option value="postal_code">Postal codes</option>
+					<option value="custom">Custom</option>
 				</select>
 			</div>
+
+			<?php \Voxel\Utils\Form_Models\Text_Model::render( [
+				'v-if' => 'config.maps.google_maps.autocomplete.feature_types === \'custom\'',
+				'v-model' => 'config.maps.google_maps.autocomplete.feature_types_custom',
+				'label' => 'Enter up to 5 feature types (comma-separated)
+					<a href="https://developers.google.com/maps/documentation/places/web-service/place-types#table-a" target="_blank" style="float:right;">Supported values</a>',
+				'placeholder' => 'e.g. country, locality, sublocality, postal_code',
+				'classes' => 'x-col-12',
+			] ) ?>
 		</div>
 	</div>
 	<div class="ts-group">
@@ -136,20 +148,24 @@ if ( ! defined('ABSPATH') ) {
 				<select v-model="config.maps.google_maps.autocomplete.feature_types_in_submission">
 					<option :value="null">All feature types</option>
 					<option value="geocode">Geocoding results</option>
-					<option value="address">Addresses</option>
 					<option value="establishment">Establishments</option>
 					<option value="(regions)">Regions</option>
 					<option value="(cities)">Cities</option>
+					<option value="point_of_interest">Points of interest</option>
+					<option value="street_address">Street addresses</option>
+					<option value="postal_code">Postal codes</option>
+					<option value="custom">Custom</option>
 				</select>
+			</div>
 
-			</div>
-			<div class="ts-form-group x-col-12">
-				<p>
-					Determine what kind of features should be searched by autocomplete.
-					<a href="https://developers.google.com/maps/documentation/javascript/supported_types#table3" target="_blank">Read more</a> &middot;
-					<a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete" target="_blank">View demo</a>
-				</p>
-			</div>
+			<?php \Voxel\Utils\Form_Models\Text_Model::render( [
+				'v-if' => 'config.maps.google_maps.autocomplete.feature_types_in_submission === \'custom\'',
+				'v-model' => 'config.maps.google_maps.autocomplete.feature_types_in_submission_custom',
+				'label' => 'Enter up to 5 feature types (comma-separated)
+					<a href="https://developers.google.com/maps/documentation/places/web-service/place-types#table-a" target="_blank" style="float:right;">Supported values</a>',
+				'placeholder' => 'e.g. country, locality, sublocality, postal_code',
+				'classes' => 'x-col-12',
+			] ) ?>
 		</div>
 	</div>
 	<div class="ts-group">

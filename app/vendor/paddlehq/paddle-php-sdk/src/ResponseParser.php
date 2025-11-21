@@ -12,7 +12,7 @@ class ResponseParser
     /**
      * @throws ApiError When the API response contains errors
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(private readonly ResponseInterface $response)
     {
         try {
             $this->body = json_decode(json: (string) $response->getBody(), associative: \true, flags: \JSON_THROW_ON_ERROR | \JSON_PRESERVE_ZERO_FRACTION);
@@ -42,7 +42,9 @@ class ResponseParser
         }
         /** @var class-string<ApiError> $exceptionClass */
         $exceptionClass = $this->findExceptionClassFromCode($this->body['error']['code'] ?? 'shared_error');
-        throw $exceptionClass::fromErrorData($this->body['error']);
+        $retryAfterHeader = $this->response->getHeader('Retry-After')[0] ?? null;
+        $retryAfter = $retryAfterHeader ? intval($retryAfterHeader) : null;
+        throw $exceptionClass::fromErrorData($this->body['error'], $retryAfter);
     }
     /**
      * @return class-string<ApiError>

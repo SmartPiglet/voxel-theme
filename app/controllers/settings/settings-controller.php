@@ -23,6 +23,8 @@ class Settings_Controller extends \Voxel\Controllers\Base_Controller {
 			'manage_options',
 			'voxel-settings',
 			function() {
+				\Voxel\get_main_admin();
+
 				$schema = static::get_settings_schema();
 				$schema->set_value( \Voxel\get( 'settings', [] ) );
 				$config = $schema->export();

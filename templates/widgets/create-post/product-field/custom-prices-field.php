@@ -12,7 +12,15 @@ if ( ! defined('ABSPATH') ) {
 						<label class="onoffswitch-label" @click.prevent="value.enabled = ! value.enabled"></label>
 					</div>
 				</div>
-				<?= _x( 'Enable custom prices', 'product field custom prices', 'voxel' ) ?>
+				{{ field.label || <?= wp_json_encode( _x( 'Enable custom prices', 'product field custom prices', 'voxel' ) ) ?> }}
+				<template v-if="field.description">
+					<div class="vx-dialog">
+						<icon-info/>
+						<div class="vx-dialog-content min-scroll">
+							<p v-html="field.description"></p>
+						</div>
+					</div>
+				</template>
 			</label>
 
 			<template v-if="value.enabled">

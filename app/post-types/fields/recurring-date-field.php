@@ -296,6 +296,10 @@ class Recurring_Date_Field extends Base_Post_Field {
 				'month' => _x( 'Month(s)', 'recurring date field', 'voxel' ),
 				'year' => _x( 'Year(s)', 'recurring date field', 'voxel' ),
 			],
+			'l10n' => [
+				'from' => _x( 'From', 'recurring dates field', 'voxel' ),
+				'to' => _x( 'To', 'recurring dates field', 'voxel' ),
+			],
 		];
 	}
 

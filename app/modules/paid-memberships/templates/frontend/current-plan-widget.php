@@ -23,12 +23,17 @@ if ( ! defined('ABSPATH') ) {
 				</span>
 				<div class="ac-price-period">
 					/ <?= \Voxel\interval_format( $membership->get_interval(), $membership->get_frequency() ) ?>
-					
 				</div>
 			</div>
-			<p>	<?= \Voxel\replace_vars( _x( 'Your current plan is @plan_label', 'current plan', 'voxel' ), [
+
+			<?php if ( $message = $membership->get_status_message_for_customer() ): ?>
+				<p><?= esc_html( $message ) ?></p>
+			<?php endif ?>
+
+			<p><?= \Voxel\replace_vars( _x( 'Your current plan is @plan_label', 'current plan', 'voxel' ), [
 				'@plan_label' => $membership->get_active_plan()->get_label(),
 			] ) ?></p>
+
 			<div class="ac-bottom">
 				<ul class="simplify-ul current-plan-btn">
 					<li>

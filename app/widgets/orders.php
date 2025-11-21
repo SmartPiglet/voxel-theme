@@ -90,6 +90,16 @@ class Orders extends Base_Widget {
 			);
 
 			$this->add_control(
+				'ts_noresults_icon',
+				[
+					'label' => __( 'No results icon', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+					'skin' => 'inline',
+					'label_block' => false,
+				]
+			);
+
+			$this->add_control(
 				'ts_reset_search',
 				[
 					'label' => __( 'Reset icon', 'voxel-elementor' ),
@@ -2237,6 +2247,150 @@ class Orders extends Base_Widget {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'ts_no_posts',
+			[
+				'label' => __( 'No results', 'voxel-elementor' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+			$this->add_control(
+				'ts_hide_noresults',
+				[
+					'label' => __( 'Hide screen', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::SWITCHER,
+					'label_on' => __( 'Hide', 'voxel-elementor' ),
+					'label_off' => __( 'Show', 'voxel-elementor' ),
+					'return_value' => 'none',
+
+					'selectors' => [
+						'{{WRAPPER}} .ts-no-posts ' => 'display: {{VALUE}}',
+					],
+
+				]
+			);
+
+			$this->add_responsive_control(
+				'ts_nopost_content_Gap',
+				[
+					'label' => __( 'Content gap', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px'],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 100,
+							'step' => 1,
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .ts-no-posts' => 'grid-gap: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->add_responsive_control(
+				'ts_nopost_ico_size',
+				[
+					'label' => __( 'Icon size', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px'],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 100,
+							'step' => 1,
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .ts-no-posts' => '--ts-icon-size: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+
+			$this->add_responsive_control(
+				'ts_nopost_ico_col',
+				[
+					'label' => __( 'Icon color', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .ts-no-posts' => '--ts-icon-color: {{VALUE}}',
+					],
+
+				]
+			);
+
+			$this->add_group_control(
+				\Elementor\Group_Control_Typography::get_type(),
+				[
+					'name' => 'ts_nopost_typo',
+					'label' => __( 'Typography', 'voxel-elementor' ),
+					'selector' => '{{WRAPPER}} .ts-no-posts p',
+				]
+			);
+
+			$this->add_responsive_control(
+				'ts_nopost_typo_col',
+				[
+					'label' => __( 'Text color', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .ts-no-posts > p' => 'color: {{VALUE}}',
+					],
+
+				]
+			);
+
+			$this->add_responsive_control(
+				'ts_nopost_link_col',
+				[
+					'label' => __( 'Link color', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .ts-no-posts > p a' => 'color: {{VALUE}}',
+					],
+
+				]
+			);
+
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'ts_spinner',
+			[
+				'label' => __( 'Loading spinner', 'voxel-elementor' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+
+
+			$this->add_control(
+				'tm_color1',
+				[
+					'label' => __( 'Color 1', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .ts-loader' => 'border-color: {{VALUE}}',
+					],
+				]
+			);
+
+			$this->add_control(
+				'tm_color2',
+				[
+					'label' => __( 'Color 2', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .ts-loader' => 'border-bottom-color: {{VALUE}}',
+					],
+				]
+			);
+		$this->end_controls_section();
+
+
 
 	}
 
@@ -2301,7 +2455,7 @@ class Orders extends Base_Widget {
 			'statuses' => \Voxel\Order::get_status_config(),
 			'shipping_statuses' => \Voxel\Order::get_shipping_status_config(),
 			'product_types' => [],
-			'statuses_ui' => [
+			'statuses_ui' => apply_filters( 'voxel/widgets/orders/statuses_ui', [
 				'completed' => [
 					'class' => 'vx-green',
 					'icon' => \Voxel\get_icon_markup( $this->get_settings_for_display('ts_checkmark') ) ?: \Voxel\get_svg( 'checkmark-circle.svg' ),
@@ -2342,7 +2496,7 @@ class Orders extends Base_Widget {
 				'sub_paused' => [
 					'class' => 'vx-orange',
 				],
-			],
+			], $this ),
 			'available_statuses' => $available_statuses,
 			'available_shipping_statuses' => $available_shipping_statuses,
 			'messages' => [

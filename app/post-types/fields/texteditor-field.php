@@ -138,7 +138,7 @@ class Texteditor_Field extends Base_Post_Field {
 
 	protected function editing_value() {
 		if ( $this->is_new_post() ) {
-			return $this->render_default_value( $this->get_prop('default') );
+			return $this->get_default_value();
 		} else {
 			if ( $this->get_model_value('editor-type') === 'plain-text' ) {
 				return $this->get_value();
@@ -146,6 +146,10 @@ class Texteditor_Field extends Base_Post_Field {
 				return wpautop( (string) $this->get_value() );
 			}
 		}
+	}
+
+	protected function get_default_value() {
+		return $this->render_default_value( $this->get_prop('default') );
 	}
 
 	protected function _get_editor_id() {

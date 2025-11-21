@@ -267,7 +267,7 @@ class Stripe_Payment extends \Voxel\Product_Types\Payment_Methods\Base_Payment_M
 
 	public function payment_intent_updated(
 		\Voxel\Vendor\Stripe\PaymentIntent $payment_intent,
-		\Voxel\Vendor\Stripe\Checkout\Session $session = null
+		?\Voxel\Vendor\Stripe\Checkout\Session $session = null
 	) {
 		if ( $this->order->get_details( 'checkout.capture_method' ) === 'deferred' ) {
 			if ( $payment_intent->status === 'requires_capture' ) {

@@ -9,6 +9,7 @@ use Voxel\Vendor\Paddle\SDK\Entities\Shared\CurrencyCode;
 use Voxel\Vendor\Paddle\SDK\Entities\Transaction\TransactionItemPreviewWithNonCatalogPrice as EntityItemPreviewWithNonCatalogPrice;
 use Voxel\Vendor\Paddle\SDK\Entities\Transaction\TransactionItemPreviewWithPriceId as EntityItemPreviewWithPriceId;
 use Voxel\Vendor\Paddle\SDK\FiltersUndefined;
+use Voxel\Vendor\Paddle\SDK\Resources\Transactions\Operations\Discount\TransactionNonCatalogDiscount;
 use Voxel\Vendor\Paddle\SDK\Resources\Transactions\Operations\Preview\TransactionItemPreviewWithNonCatalogPrice;
 use Voxel\Vendor\Paddle\SDK\Resources\Transactions\Operations\Preview\TransactionItemPreviewWithPriceId;
 use Voxel\Vendor\Paddle\SDK\Undefined;
@@ -18,11 +19,11 @@ class PreviewTransaction implements \JsonSerializable
     /**
      * @param array<TransactionItemPreviewWithPriceId|TransactionItemPreviewWithNonCatalogPrice|EntityItemPreviewWithPriceId|EntityItemPreviewWithNonCatalogPrice> $items
      */
-    public function __construct(public readonly array $items, public readonly string|Undefined|null $customerId = new Undefined(), public readonly string|Undefined|null $addressId = new Undefined(), public readonly string|Undefined|null $businessId = new Undefined(), public readonly CurrencyCode|Undefined $currencyCode = new Undefined(), public readonly CollectionMode|Undefined $collectionMode = new Undefined(), public readonly string|Undefined|null $discountId = new Undefined(), public readonly string|Undefined|null $customerIpAddress = new Undefined(), public readonly AddressPreview|Undefined|null $address = new Undefined(), public readonly bool|Undefined $ignoreTrials = new Undefined())
+    public function __construct(public readonly array $items, public readonly string|Undefined|null $customerId = new Undefined(), public readonly string|Undefined|null $addressId = new Undefined(), public readonly string|Undefined|null $businessId = new Undefined(), public readonly CurrencyCode|Undefined $currencyCode = new Undefined(), public readonly CollectionMode|Undefined $collectionMode = new Undefined(), public readonly string|Undefined|null $discountId = new Undefined(), public readonly string|Undefined|null $customerIpAddress = new Undefined(), public readonly AddressPreview|Undefined|null $address = new Undefined(), public readonly bool|Undefined $ignoreTrials = new Undefined(), public readonly TransactionNonCatalogDiscount|Undefined|null $discount = new Undefined())
     {
     }
     public function jsonSerialize(): array
     {
-        return $this->filterUndefined(['items' => $this->items, 'customer_id' => $this->customerId, 'address_id' => $this->addressId, 'business_id' => $this->businessId, 'currency_code' => $this->currencyCode, 'collection_mode' => $this->collectionMode, 'discount_id' => $this->discountId, 'customer_ip_address' => $this->customerIpAddress, 'address' => $this->address, 'ignore_trials' => $this->ignoreTrials]);
+        return $this->filterUndefined(['items' => $this->items, 'customer_id' => $this->customerId, 'address_id' => $this->addressId, 'business_id' => $this->businessId, 'currency_code' => $this->currencyCode, 'collection_mode' => $this->collectionMode, 'discount_id' => $this->discountId, 'customer_ip_address' => $this->customerIpAddress, 'address' => $this->address, 'ignore_trials' => $this->ignoreTrials, 'discount' => $this->discount]);
     }
 }

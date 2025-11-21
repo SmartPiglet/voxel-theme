@@ -70,13 +70,7 @@ class Date_Field extends Base_Post_Field {
 
 	protected function editing_value() {
 		if ( $this->is_new_post() ) {
-			$default_value = $this->render_default_value( $this->get_prop('default') );
-			$timestamp = strtotime( $default_value ?? '' );
-
-			return [
-				'date' => $timestamp ? date( 'Y-m-d', $timestamp ) : null,
-				'time' => $timestamp ? date( 'H:i', $timestamp ) : null,
-			];
+			return $this->get_default_value();
 		} else {
 			$value = $this->get_value();
 			$timestamp = strtotime( $value ?? '' );
@@ -86,6 +80,16 @@ class Date_Field extends Base_Post_Field {
 				'time' => $timestamp ? date( 'H:i', $timestamp ) : null,
 			];
 		}
+	}
+
+	protected function get_default_value() {
+		$default_value = $this->render_default_value( $this->get_prop('default') );
+		$timestamp = strtotime( $default_value ?? '' );
+
+		return [
+			'date' => $timestamp ? date( 'Y-m-d', $timestamp ) : null,
+			'time' => $timestamp ? date( 'H:i', $timestamp ) : null,
+		];
 	}
 
 	public function get_required_scripts(): array {

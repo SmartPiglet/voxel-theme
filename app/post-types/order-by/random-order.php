@@ -25,6 +25,8 @@ class Random_Order extends Base_Search_Order {
 				'classes' => 'x-col-12',
 				'choices' => [
 					0 => 'Always',
+					60 => '1 minute',
+					300 => '5 minutes',
 					1800 => '30 minutes',
 					3600 => '1 hour',
 					7200 => '2 hours',

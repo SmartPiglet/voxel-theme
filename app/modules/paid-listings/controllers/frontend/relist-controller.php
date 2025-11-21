@@ -12,7 +12,7 @@ class Relist_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
 		$this->on( 'voxel_ajax_paid_listings.relist_post', '@relist_post' );
-		$this->on( 'voxel/product-types/orders/order:updated', '@order_updated', 150 );
+		$this->filter( 'voxel/order/success_redirect', '@checkout_success_redirect', 100, 2 );
 	}
 
 	protected function relist_post() {
@@ -25,9 +25,9 @@ class Relist_Controller extends \Voxel\Controllers\Base_Controller {
 				$post
 				&& $post->post_type
 				&& $post->is_editable_by_current_user()
-				&& $post->get_status() === 'expired'
+				&& in_array( $post->get_status(), [ 'expired', 'rejected' ], true )
 			) ) {
-				throw new \Exception( __( 'Only expired posts can be relisted using this action.', 'voxel' ) );
+				throw new \Exception( __( 'Only expired/rejected posts can be relisted using this action.', 'voxel' ) );
 			}
 
 			if ( ! Module\has_plans_for_post_type( $post->post_type ) ) {
@@ -67,55 +67,58 @@ class Relist_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 	}
 
-	protected function order_updated( $order ) {
+	protected function checkout_success_redirect( $redirect_to, \Voxel\Order $order ) {
 		if ( ! in_array( $order->get_status(), [ 'completed', 'sub_active', 'sub_trialing' ], true ) ) {
-			return;
+			return $redirect_to;
 		}
 
 		foreach ( $order->get_items() as $order_item ) {
-			if ( $package = Module\Listing_Package::get( $order_item ) ) {
-				if ( $order_item->get_details('voxel:checkout_context.handled') ) {
-					continue;
-				}
-
-				$customer = $order->get_customer();
-				if ( ! $customer ) {
-					continue;
-				}
-
-				$checkout_context = $order_item->get_details( 'voxel:checkout_context' );
-				if ( ( $checkout_context['process'] ?? null ) !== 'relist' ) {
-					continue;
-				}
-
-				$order_item->set_details( 'voxel:checkout_context.handled', true );
-				$order_item->save();
-
-				$post = \Voxel\Post::get( $checkout_context['post_id'] ?? null );
-
-				if ( ! (
-					$post
-					&& $post->post_type
-					&& $post->is_editable_by_user( $customer )
-					&& $post->get_status() === 'expired'
-				) ) {
-					continue;
-				}
-
-				if ( ! $package->can_create_post( $post->post_type ) ) {
-					continue;
-				}
-
-				wp_update_post( [
-					'ID' => $post->get_id(),
-					'post_status' => 'publish',
-					'post_date' => current_time( 'mysql' ),
-					'post_date_gmt' => current_time( 'mysql', true ),
-				] );
-
-				$package->assign_to_post( $post );
+			$package = Module\Listing_Package::get( $order_item );
+			if ( $package === null ) {
+				continue;
 			}
+
+			if ( $order_item->get_details('voxel:checkout_context.handled') ) {
+				continue;
+			}
+
+			$customer = $order->get_customer();
+			if ( ! $customer ) {
+				continue;
+			}
+
+			$checkout_context = $order_item->get_details( 'voxel:checkout_context' );
+			if ( ( $checkout_context['process'] ?? null ) !== 'relist' ) {
+				continue;
+			}
+
+			$order_item->set_details( 'voxel:checkout_context.handled', true );
+			$order_item->save();
+
+			$post = \Voxel\Post::get( $checkout_context['post_id'] ?? null );
+
+			if ( ! (
+				$post
+				&& $post->post_type
+				&& $post->is_editable_by_user( $customer )
+				&& in_array( $post->get_status(), [ 'expired', 'rejected' ], true )
+			) ) {
+				continue;
+			}
+
+			if ( ! $package->can_create_post( $post->post_type ) ) {
+				continue;
+			}
+
+			$draft = Module\prepare_post_for_relisting( $package, $post );
+			if ( $draft === null ) {
+				continue;
+			}
+
+			return $draft->get_edit_link();
 		}
+
+		return $redirect_to;
 	}
 
 }

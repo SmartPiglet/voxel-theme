@@ -52,6 +52,15 @@ function validate_username( $username ) {
 	if ( in_array( strtolower( $username ), array_map( 'strtolower', $illegal_user_logins ), true ) ) {
 		throw new \Exception( _x( 'This username is not allowed.', 'auth', 'voxel' ), 104 );
 	}
+
+	/**
+	 * Allow custom username validation rules to be added.
+	 *
+	 * @since 1.7.1
+	 * @param string $username The username being validated.
+	 * @throws \Exception If validation fails, throw an exception with an appropriate error message.
+	 */
+	do_action( 'voxel/validate_username', $username );
 }
 
 function validate_password( $password ) {
@@ -66,6 +75,15 @@ function validate_password( $password ) {
 	if ( ! preg_match( '/[A-Za-z]+/', $password ) ) {
 		throw new \Exception( _x( 'Password must contain at least one letter.', 'validate password', 'voxel' ) );
 	}
+
+	/**
+	 * Allow custom password validation rules to be added.
+	 *
+	 * @since 1.7.1
+	 * @param string $password The password being validated.
+	 * @throws \Exception If validation fails, throw an exception with an appropriate error message.
+	 */
+	do_action( 'voxel/validate_password', $password );
 }
 
 function validate_user_email( $email ) {
@@ -80,6 +98,15 @@ function validate_user_email( $email ) {
 	if ( email_exists( $email ) ) {
 		throw new \Exception( _x( 'This email is already registered.', 'auth', 'voxel' ), 107 );
 	}
+
+	/**
+	 * Allow custom email validation rules to be added.
+	 *
+	 * @since 1.7.1
+	 * @param string $email The email address being validated.
+	 * @throws \Exception If validation fails, throw an exception with an appropriate error message.
+	 */
+	do_action( 'voxel/validate_user_email', $email );
 }
 
 function generate_username_from_email( string $email ): ?string {

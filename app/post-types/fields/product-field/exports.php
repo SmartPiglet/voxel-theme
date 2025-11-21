@@ -110,6 +110,31 @@ trait Exports {
 			}
 		}
 
+		if ( $product_type->config( 'modules.base_price.enabled' ) ) {
+			$properties['base_price'] = Tag::Object('Base price')->properties( function() {
+				return [
+					'amount' => Tag::Number('Amount')->render( function() {
+						$product_type = $this->get_product_type();
+						if ( ! ( $product_type && $product_type->config( 'modules.base_price.enabled' ) ) ) {
+							return '';
+						}
+
+						$value = $this->get_value();
+						return $value['base_price']['amount'] ?? '';
+					} ),
+					'discount_amount' => Tag::Number('Discount amount')->render( function() {
+						$product_type = $this->get_product_type();
+						if ( ! ( $product_type && $product_type->config( 'modules.base_price.enabled' ) ) ) {
+							return '';
+						}
+
+						$value = $this->get_value();
+						return $value['base_price']['discount_amount'] ?? '';
+					} ),
+				];
+			} );
+		}
+
 		if ( $product_type->get_product_mode() === 'regular' && $product_type->config( 'modules.stock.enabled' ) ) {
 			$properties['stock'] = Tag::Object('Stock')->properties( function() {
 				return [

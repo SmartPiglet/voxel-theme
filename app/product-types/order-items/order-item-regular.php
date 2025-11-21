@@ -18,10 +18,6 @@ class Order_Item_Regular extends Order_Item {
 	public function get_product_description() {
 		$description = [];
 
-		if ( $this->get_product_field_key() === 'voxel:promotion' ) {
-			$description[] = _x( 'Promotion', 'promotion order description', 'voxel' );
-		}
-
 		if ( $this->has_summary_item( 'addons' ) ) {
 			$addon_summary = $this->get_addon_summary();
 			if ( ! empty( $addon_summary ) ) {

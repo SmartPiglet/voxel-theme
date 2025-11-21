@@ -8,7 +8,7 @@ if ( ! defined('ABSPATH') ) {
 <div class="ts-form ts-checkout ts-checkout-promotion" v-cloak>
 	<div class="cart-head">
 		<h1><?= \Voxel\replace_vars( _x( 'Promote @post_title', 'promote post', 'voxel' ), [
-			'@post_title' => esc_html( $post->get_title() )
+			'@post_title' => esc_html( $post->get_display_name() )
 		] ) ?></h1>
 	</div>
 	<div class="checkout-section form-field-grid">

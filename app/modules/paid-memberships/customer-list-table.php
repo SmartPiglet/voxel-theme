@@ -18,11 +18,11 @@ class Customer_List_Table extends \WP_List_Table {
 
 	public function get_columns() {
 		return [
-			'title' => _x( 'User', 'members table', 'voxel-backend' ),
 			'id' => _x( 'ID', 'members table', 'voxel-backend' ),
+			'title' => _x( 'User', 'members table', 'voxel-backend' ),
 			'plan' => _x( 'Plan', 'members table', 'voxel-backend' ),
-			'amount' => _x( 'Price', 'members table', 'voxel-backend' ),
 			'status' => _x( 'Status', 'members table', 'voxel-backend' ),
+			'amount' => _x( 'Price', 'members table', 'voxel-backend' ),
 		];
 	}
 
@@ -66,12 +66,17 @@ class Customer_List_Table extends \WP_List_Table {
 				&& ( $order = $membership->get_order() )
 				&& ( $payment_method = $membership->get_payment_method() )
 			) {
-				return sprintf(
+				ob_start();
+				echo sprintf(
 					'<a href="%s"><span class="price-amount">%s</span> %s</a>',
 					esc_url( $order->get_backend_link() ),
 					\Voxel\currency_format( $membership->get_amount(), $membership->get_currency(), false ),
 					\Voxel\interval_format( $membership->get_interval(), $membership->get_frequency() )
 				);
+
+				do_action( 'voxel/backend/paid_members_table/price/after', $order, $payment_method );
+
+				return ob_get_clean();
 			} else {
 				return '';
 			}

@@ -11,8 +11,32 @@ if ( ! defined('ABSPATH') ) {
 class Promotion_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
+		$this->on( 'after_setup_theme', '@register_product_type', -100 );
 		$this->on( 'voxel/product-types/orders/order:updated', '@order_updated' );
 		$this->on( 'voxel_ajax_products.single_order.promotions.cancel_promotion', '@cancel_promotion' );
+		$this->filter( 'voxel/order_item/product_description', '@set_product_description', 10, 2 );
+	}
+
+	protected function register_product_type() {
+		\Voxel\Product_Type::register_virtual( [
+			'settings' => [
+				'key' => 'voxel:promotion',
+				'label' => _x( 'Listing Promotion', 'paid listings', 'voxel' ),
+				'product_mode' => 'regular',
+				'payments' => [
+					'mode' => \Voxel\get( 'paid_listings.settings.promotions.payments.mode', 'payment' ) === 'offline' ? 'offline' : 'payment',
+				],
+				'supports_marketplace' => false,
+			],
+			'modules' => [
+				'base_price' => [
+					'enabled' => false,
+				],
+				'cart' => [
+					'enabled' => false,
+				],
+			],
+		] );
 	}
 
 	protected function order_updated( $order ) {
@@ -166,5 +190,30 @@ class Promotion_Controller extends \Voxel\Controllers\Base_Controller {
 				'code' => $e->getCode(),
 			] );
 		}
+	}
+
+	protected function set_product_description( $description, $order_item ) {
+		if ( $order_item->get_product_field_key() === 'voxel:promotion' ) {
+			$package_key = $order_item->get_details('promotion_package.key');
+			$package = \Voxel\Product_Types\Promotions\Promotion_Package::get( $package_key );
+			if ( $package ) {
+				return join( ', ', array_filter( [
+					$description,
+					\Voxel\replace_vars(
+						_x( 'Promotion: @package_label', 'promotion order description', 'voxel' ),
+						[
+							'@package_label' => $package->get_label(),
+						]
+					),
+				] ) );
+			} else {
+				return join( ', ', array_filter( [
+					$description,
+					_x( 'Promotion', 'promotion order description', 'voxel' ),
+				] ) );
+			}
+		}
+
+		return $description;
 	}
 }

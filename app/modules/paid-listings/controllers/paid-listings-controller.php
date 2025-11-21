@@ -35,8 +35,8 @@ class Paid_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function hooks() {
-		$this->register_payment_product_type();
-		$this->register_subscription_product_type();
+		$this->on( 'after_setup_theme', '@register_product_types', -100 );
+
 		$this->filter( 'voxel/post/get_field/voxel:listing_plan', '@register_product_field', 10, 3 );
 		$this->on( 'elementor/widgets/register', '@register_widgets', 1000 );
 
@@ -56,11 +56,11 @@ class Paid_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 		$this->on( 'transition_post_status', '@handle_post_rejection', 10, 3 );
 	}
 
-	protected function register_payment_product_type() {
-		return \Voxel\Product_Type::register_virtual( [
+	protected function register_product_types() {
+		\Voxel\Product_Type::register_virtual( [
 			'settings' => [
 				'key' => 'voxel:listing_plan_payment',
-				'label' => 'Listing plan',
+				'label' => _x( 'Listing plan', 'paid listings', 'voxel' ),
 				'product_mode' => 'regular',
 				'payments' => [
 					'mode' => 'payment',
@@ -82,13 +82,11 @@ class Paid_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 				],
 			],
 		] );
-	}
 
-	protected function register_subscription_product_type() {
-		return \Voxel\Product_Type::register_virtual( [
+		\Voxel\Product_Type::register_virtual( [
 			'settings' => [
 				'key' => 'voxel:listing_plan_subscription',
-				'label' => 'Listing plan (Subscription)',
+				'label' => _x( 'Listing plan (Subscription)', 'paid listings', 'voxel' ),
 				'product_mode' => 'regular',
 				'payments' => [
 					'mode' => 'subscription',
@@ -171,7 +169,7 @@ class Paid_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function checkout_success_redirect( $redirect_to, \Voxel\Order $order ) {
-		if ( ! in_array( $order->get_status(), [ 'completed', 'sub_active', 'sub_trialing' ] ) ) {
+		if ( ! in_array( $order->get_status(), [ 'completed', 'sub_active', 'sub_trialing' ], true ) ) {
 			return $redirect_to;
 		}
 
@@ -199,7 +197,14 @@ class Paid_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 					);
 
 					if ( $draft !== null ) {
-						return $draft->get_edit_link();
+						$redirect_url = $draft->get_edit_link();
+						if ( ! empty( $checkout_context['submit_to'] ) && wp_validate_redirect( $checkout_context['submit_to'] ) ) {
+							$redirect_url = add_query_arg( [
+								'post_id' => $draft->get_id(),
+							], wp_validate_redirect( $checkout_context['submit_to'] ) );
+						}
+
+						return $redirect_url;
 					}
 				}
 			}
@@ -240,7 +245,7 @@ class Paid_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function register_relist_action( $actions ) {
-		$actions['relist_post'] = __( 'Relist expired listing', 'voxel-elementor' );
+		$actions['relist_post'] = __( 'Relist post', 'voxel-elementor' );
 		return $actions;
 	}
 

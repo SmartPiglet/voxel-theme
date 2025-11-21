@@ -20,6 +20,7 @@ use Voxel\Vendor\Paddle\SDK\Logger\Formatter;
 use Voxel\Vendor\Paddle\SDK\Resources\Addresses\AddressesClient;
 use Voxel\Vendor\Paddle\SDK\Resources\Adjustments\AdjustmentsClient;
 use Voxel\Vendor\Paddle\SDK\Resources\Businesses\BusinessesClient;
+use Voxel\Vendor\Paddle\SDK\Resources\ClientTokens\ClientTokensClient;
 use Voxel\Vendor\Paddle\SDK\Resources\CustomerPortalSessions\CustomerPortalSessionsClient;
 use Voxel\Vendor\Paddle\SDK\Resources\Customers\CustomersClient;
 use Voxel\Vendor\Paddle\SDK\Resources\DiscountGroups\DiscountGroupsClient;
@@ -50,13 +51,14 @@ use Voxel\Vendor\Psr\Log\NullLogger;
 use Voxel\Vendor\Symfony\Component\Uid\Ulid;
 class Client
 {
-    private const SDK_VERSION = '1.10.0';
+    private const SDK_VERSION = '1.12.0';
     public readonly LoggerInterface $logger;
     public readonly Options $options;
     public readonly ProductsClient $products;
     public readonly PricesClient $prices;
     public readonly TransactionsClient $transactions;
     public readonly AdjustmentsClient $adjustments;
+    public readonly ClientTokensClient $clientTokens;
     public readonly CustomersClient $customers;
     public readonly CustomerPortalSessionsClient $customerPortalSessions;
     public readonly AddressesClient $addresses;
@@ -102,6 +104,7 @@ class Client
         $this->prices = new PricesClient($this);
         $this->transactions = new TransactionsClient($this);
         $this->adjustments = new AdjustmentsClient($this);
+        $this->clientTokens = new ClientTokensClient($this);
         $this->customers = new CustomersClient($this);
         $this->addresses = new AddressesClient($this);
         $this->customerPortalSessions = new CustomerPortalSessionsClient($this);

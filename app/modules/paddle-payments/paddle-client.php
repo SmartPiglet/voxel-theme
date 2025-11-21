@@ -103,8 +103,7 @@ class Paddle_Client {
 			)
 		);
 
-		$address = $addresses->current();
-		return $address instanceof Address ? $address : null;
+		return $addresses->valid() ? $addresses->current() : null;
 	}
 
 	public static function get_latest_active_business( string $customer_id ): ?Business {
@@ -120,7 +119,6 @@ class Paddle_Client {
 			)
 		);
 
-		$business = $businesses->current();
-		return $business instanceof Business ? $business : null;
+		return $businesses->valid() ? $businesses->current() : null;
 	}
 }

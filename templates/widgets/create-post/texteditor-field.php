@@ -10,7 +10,7 @@
 				<span v-if="field.props.maxlength && content_length > 0" class="is-required ts-char-counter">{{ content_length }}/{{ field.props.maxlength }}</span>
 			</template>
 			<div class="vx-dialog" v-if="field.description">
-				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+				<icon-info/>
 				<div class="vx-dialog-content min-scroll">
 					<p>{{ field.description }}</p>
 				</div>
@@ -36,7 +36,7 @@
 				<span v-if="field.props.maxlength && content_length > 0" class="is-required ts-char-counter">{{ content_length }}/{{ field.props.maxlength }}</span>
 			</template>
 			<div class="vx-dialog" v-if="field.description">
-				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+				<icon-info/>
 				<div class="vx-dialog-content min-scroll">
 					<p>{{ field.description }}</p>
 				</div>

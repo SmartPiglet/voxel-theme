@@ -640,7 +640,7 @@ class Quick_Search extends Base_Widget {
 			]
 		);
 
-			$this->add_control(
+			$this->add_responsive_control(
 				'ts_repeater_hide_filter',
 				[
 					'label' => __( 'Hide suffix', 'voxel-elementor' ),

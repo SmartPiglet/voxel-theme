@@ -126,6 +126,9 @@ class Post_Data_Group extends \Voxel\Dynamic_Data\Data_Groups\Base_Data_Group {
 			'timeline' => $this->get_timeline_data(),
 			'wall' => $this->get_wall_data(),
 			'followers' => $this->get_followers_data(),
+			'is_verified' => Tag::Bool('Is verified?')->render( function() {
+				return $this->post->is_verified() ? '1' : '';
+			} ),
 			':logo' => Tag::Number('Logo ID')->render( function() {
 				return $this->post->get_logo_id();
 			} )->hidden(),

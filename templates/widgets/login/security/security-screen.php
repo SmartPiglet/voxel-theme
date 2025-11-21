@@ -20,8 +20,14 @@ if ( ! defined('ABSPATH') ) {
 		</a>
 	</div>
 	<div class="ts-form-group">
+		<a href="<?= esc_url( home_url('/') ) ?>" @click.prevent="screen = config.twofa.enabled ? 'security_2fa_manage' : 'security_2fa_setup'" class="ts-btn ts-btn-1 ts-btn-large">
+			<?= \Voxel\get_icon_markup( $this->get_settings_for_display('shield_ico') ) ?: \Voxel\svg( 'shield.svg' ) ?>
+			<?= _x( 'Authenticator', 'auth', 'voxel' ) ?>
+		</a>
+	</div>
+	<div class="ts-form-group">
 		<a href="<?= esc_url( home_url('/') ) ?>" @click.prevent="screen = 'security_privacy'" class="ts-btn ts-btn-1 ts-btn-large">
-			<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_privacy') ) ?: \Voxel\svg( 'shield.svg' ) ?>
+			<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_privacy') ) ?: \Voxel\svg( 'database-2.svg' ) ?>
 			<?= _x( 'Privacy', 'auth', 'voxel' ) ?>
 		</a>
 	</div>

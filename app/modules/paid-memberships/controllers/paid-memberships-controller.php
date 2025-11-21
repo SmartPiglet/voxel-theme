@@ -29,7 +29,7 @@ class Paid_Memberships_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function hooks() {
-		$this->register_product_type();
+		$this->on( 'after_setup_theme', '@register_product_type', -100 );
 		$this->filter( 'voxel/post/get_field/voxel:membership_plan', '@register_product_field', 10, 3 );
 		$this->filter( 'voxel/app-events/categories', '@register_app_event_categories' );
 		$this->filter( 'voxel/app-events/register', '@register_app_events' );
@@ -41,7 +41,7 @@ class Paid_Memberships_Controller extends \Voxel\Controllers\Base_Controller {
 		return \Voxel\Product_Type::register_virtual( [
 			'settings' => [
 				'key' => 'voxel:membership_plan',
-				'label' => 'Membership plan',
+				'label' => _x( 'Membership plan', 'paid members', 'voxel' ),
 				'product_mode' => 'regular',
 				'payments' => [
 					'mode' => 'subscription',

@@ -7,11 +7,12 @@ if ( ! defined('ABSPATH') ) {
 
 	<div v-if="variationList.length" class="ts-form-group" ref="variationContainer">
 		<label>
-			<?= _x( 'Variations', 'product field variations', 'voxel' ) ?> ({{ variationList.length }})
+			{{ field.label || <?= wp_json_encode( _x( 'Variations', 'product field variations', 'voxel' ) ) ?> }} ({{ variationList.length }})
 			<div class="vx-dialog">
-				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+				<icon-info/>
 				<div class="vx-dialog-content min-scroll">
-					<p><?= _x( 'Product variations are automatically generated based on your attributes.<br><br>An individual variation requires a price to be available for purchase.<br><br>Variations without a price, are automatically disabled upon saving changes', 'product field variations', 'voxel' ) ?></p>
+					<p v-if="field.description" v-html="field.description"></p>
+					<p v-else><?= _x( 'Product variations are automatically generated based on your attributes.<br><br>An individual variation requires a price to be available for purchase.<br><br>Variations without a price, are automatically disabled upon saving changes', 'product field variations', 'voxel' ) ?></p>
 				</div>
 			</div>
 		</label>

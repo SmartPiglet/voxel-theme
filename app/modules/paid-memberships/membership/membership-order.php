@@ -107,4 +107,8 @@ class Membership_Order extends Base_Membership {
 		return $payment_method;
 	}
 
+	public function get_status_message_for_customer(): string {
+		return apply_filters( 'voxel/paid_members/subscriptions/status_message', '', $this );
+	}
+
 }

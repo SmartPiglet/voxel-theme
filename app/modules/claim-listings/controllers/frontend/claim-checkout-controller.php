@@ -150,7 +150,7 @@ class Claim_Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 		) {
 			$post = \Voxel\Post::get( $value['custom_data']['checkout_context']['post_id'] );
 			$meta['cart_label'] = sprintf(
-				_x( 'Claim listing', 'cart summary', 'voxel' ),
+				_x( 'Claim %s', 'cart summary', 'voxel' ),
 				$post->get_display_name()
 			);
 		}

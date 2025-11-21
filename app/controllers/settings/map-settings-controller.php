@@ -33,20 +33,28 @@ class Map_Settings_Controller extends \Voxel\Controllers\Base_Controller {
 				'autocomplete' => Schema::Object( [
 					'feature_types' => Schema::Enum( [
 						'geocode',
-						'address',
-						'establishment',
 						'(regions)',
 						'(cities)',
+						'establishment',
+						'point_of_interest',
+						'street_address',
+						'postal_code',
+						'custom',
 						null,
 					] ),
+					'feature_types_custom' => Schema::String()->default(''),
 					'feature_types_in_submission' => Schema::Enum( [
 						'geocode',
-						'address',
-						'establishment',
 						'(regions)',
 						'(cities)',
+						'establishment',
+						'point_of_interest',
+						'street_address',
+						'postal_code',
+						'custom',
 						null,
 					] ),
+					'feature_types_in_submission_custom' => Schema::String()->default(''),
 					'countries' => Schema::List()
 						->validator('is_string')
 						->default([]),

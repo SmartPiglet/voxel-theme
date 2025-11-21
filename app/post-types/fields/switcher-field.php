@@ -51,18 +51,22 @@ class Switcher_Field extends Base_Post_Field {
 
 	protected function editing_value() {
 		if ( $this->is_new_post() ) {
-			$default_value = $this->render_default_value( $this->get_prop('default') );
-			if ( ! is_string( $default_value ) ) {
-				return null;
-			}
-
-			if ( empty( $default_value ) || $default_value === '0' ) {
-				return false;
-			} else {
-				return true;
-			}
+			return $this->get_default_value();
 		} else {
 			return $this->get_value();
+		}
+	}
+
+	protected function get_default_value() {
+		$default_value = $this->render_default_value( $this->get_prop('default') );
+		if ( ! is_string( $default_value ) ) {
+			return null;
+		}
+
+		if ( empty( $default_value ) || $default_value === '0' ) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 

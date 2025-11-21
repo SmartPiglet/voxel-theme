@@ -76,7 +76,8 @@ function send_confirmation_code( $email, $code = null ) {
 	global $wpdb;
 
 	if ( $code === null ) {
-		$code = \Voxel\random_string(5);
+		$pool = '0123456789ABCDEFGHJKLMNPQRSTVXYZ'; // remove similar-looking characters
+		$code = \Voxel\random_string(5, $pool);
 	}
 
 	$subject = _x( 'Account confirmation', 'auth', 'voxel' );

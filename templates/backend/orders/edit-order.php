@@ -136,6 +136,15 @@ if ( ! defined('ABSPATH') ) {
 								</tr>
 							<?php endif ?>
 
+							<?php if ( is_numeric( $order->get_discount_amount() ) ): ?>
+								<tr>
+									<th>Discount</th>
+									<th style="text-align: right;">
+										<?= \Voxel\currency_format( $order->get_discount_amount(), $order->get_currency(), false ) ?>
+									</th>
+								</tr>
+							<?php endif ?>
+
 							<?php if ( is_numeric( $order->get_tax_amount() ) ): ?>
 								<tr>
 									<th>Tax</th>

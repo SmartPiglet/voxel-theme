@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-18 02:40+0000\n"
+"POT-Creation-Date: 2025-11-01 23:38+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -129,72 +129,72 @@ msgctxt "months"
 msgid "December"
 msgstr ""
 
-#: app/controllers/assets-controller.php:263, app/utils/utils.php:300
+#: app/controllers/assets-controller.php:263, app/utils/utils.php:302
 msgctxt "weekdays"
 msgid "Sunday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:264, app/utils/utils.php:294
+#: app/controllers/assets-controller.php:264, app/utils/utils.php:296
 msgctxt "weekdays"
 msgid "Monday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:265, app/utils/utils.php:295
+#: app/controllers/assets-controller.php:265, app/utils/utils.php:297
 msgctxt "weekdays"
 msgid "Tuesday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:266, app/utils/utils.php:296
+#: app/controllers/assets-controller.php:266, app/utils/utils.php:298
 msgctxt "weekdays"
 msgid "Wednesday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:267, app/utils/utils.php:297
+#: app/controllers/assets-controller.php:267, app/utils/utils.php:299
 msgctxt "weekdays"
 msgid "Thursday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:268, app/utils/utils.php:298
+#: app/controllers/assets-controller.php:268, app/utils/utils.php:300
 msgctxt "weekdays"
 msgid "Friday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:269, app/utils/utils.php:299
+#: app/controllers/assets-controller.php:269, app/utils/utils.php:301
 msgctxt "weekdays"
 msgid "Saturday"
 msgstr ""
 
-#: app/controllers/assets-controller.php:272, app/utils/utils.php:312
+#: app/controllers/assets-controller.php:272, app/utils/utils.php:314
 msgctxt "weekdays short"
 msgid "Sun"
 msgstr ""
 
-#: app/controllers/assets-controller.php:273, app/utils/utils.php:306
+#: app/controllers/assets-controller.php:273, app/utils/utils.php:308
 msgctxt "weekdays short"
 msgid "Mon"
 msgstr ""
 
-#: app/controllers/assets-controller.php:274, app/utils/utils.php:307
+#: app/controllers/assets-controller.php:274, app/utils/utils.php:309
 msgctxt "weekdays short"
 msgid "Tue"
 msgstr ""
 
-#: app/controllers/assets-controller.php:275, app/utils/utils.php:308
+#: app/controllers/assets-controller.php:275, app/utils/utils.php:310
 msgctxt "weekdays short"
 msgid "Wed"
 msgstr ""
 
-#: app/controllers/assets-controller.php:276, app/utils/utils.php:309
+#: app/controllers/assets-controller.php:276, app/utils/utils.php:311
 msgctxt "weekdays short"
 msgid "Thu"
 msgstr ""
 
-#: app/controllers/assets-controller.php:277, app/utils/utils.php:310
+#: app/controllers/assets-controller.php:277, app/utils/utils.php:312
 msgctxt "weekdays short"
 msgid "Fri"
 msgstr ""
 
-#: app/controllers/assets-controller.php:278, app/utils/utils.php:311
+#: app/controllers/assets-controller.php:278, app/utils/utils.php:313
 msgctxt "weekdays short"
 msgid "Sat"
 msgstr ""
@@ -304,7 +304,7 @@ msgctxt "orders"
 msgid "Stripe customer account not set up for this user."
 msgstr ""
 
-#: app/users/customer-trait.php:160
+#: app/users/customer-trait.php:185
 msgctxt "orders"
 msgid "Paddle customer account not set up for this user."
 msgstr ""
@@ -319,7 +319,7 @@ msgctxt "auth"
 msgid "Your recovery code is %s"
 msgstr ""
 
-#: app/users/security-trait.php:30, app/users/security-trait.php:62, app/controllers/async/purge-stats-cache-action.php:22, app/controllers/frontend/tabs-controller.php:26, app/controllers/frontend/tabs-controller.php:32, app/controllers/frontend/tabs-controller.php:40, app/controllers/frontend/tabs-controller.php:107, app/controllers/frontend/tabs-controller.php:121, app/controllers/onboarding/onboarding-controller.php:134, app/controllers/timeline/timeline-controller.php:266, app/controllers/timeline/timeline-controller.php:270, app/controllers/frontend/statistics/visits-chart-controller.php:64, app/controllers/frontend/statistics/visits-chart-controller.php:25, app/controllers/frontend/statistics/visits-chart-controller.php:30, app/controllers/frontend/statistics/visits-chart-controller.php:128, app/controllers/frontend/statistics/visits-chart-controller.php:148, app/controllers/frontend/statistics/visits-chart-controller.php:174, app/controllers/frontend/timeline/comment-controller.php:26, app/controllers/frontend/timeline/comment-controller.php:184, app/controllers/frontend/timeline/comment-controller.php:253, app/controllers/frontend/timeline/comment-controller.php:287, app/controllers/frontend/timeline/comment-controller.php:344, app/controllers/frontend/timeline/comment-controller.php:372, app/controllers/frontend/timeline/comment-feed-controller.php:21, app/controllers/frontend/timeline/status-controller.php:29, app/controllers/frontend/timeline/status-controller.php:312, app/controllers/frontend/timeline/status-controller.php:426, app/controllers/frontend/timeline/status-controller.php:453, app/controllers/frontend/timeline/status-controller.php:482, app/controllers/frontend/timeline/status-controller.php:543, app/controllers/frontend/timeline/status-controller.php:609, app/controllers/frontend/timeline/status-controller.php:702, app/controllers/frontend/timeline/status-controller.php:730, app/controllers/frontend/timeline/status-feed-controller.php:21, app/controllers/frontend/timeline/suggestions-controller.php:21, app/controllers/frontend/products/orders/orders-controller.php:134, app/modules/collections/controllers/frontend/frontend-controller.php:24, app/modules/collections/controllers/frontend/frontend-controller.php:197, app/modules/direct-messages/controllers/frontend/inbox-controller.php:289, app/modules/direct-messages/controllers/frontend/inbox-controller.php:567, app/modules/direct-messages/controllers/frontend/inbox-controller.php:626, app/modules/direct-messages/controllers/frontend/inbox-controller.php:675, app/modules/direct-messages/controllers/frontend/inbox-controller.php:679, app/modules/paddle-payments/controllers/backend/paddle-settings-controller.php:31, app/modules/paid-memberships/controllers/frontend/cart-controller.php:62, app/modules/paid-memberships/controllers/frontend/cart-controller.php:66, app/modules/paid-memberships/controllers/frontend/cart-controller.php:71, app/modules/paid-memberships/controllers/frontend/cart-controller.php:75, app/modules/stripe-connect/controllers/frontend/frontend-controller.php:52, app/modules/stripe-payments/controllers/backend/settings-controller.php:30, app/modules/stripe-payments/controllers/backend/settings-controller.php:75, app/modules/stripe-payments/controllers/backend/settings-controller.php:163
+#: app/users/security-trait.php:30, app/users/security-trait.php:62, app/controllers/async/purge-stats-cache-action.php:22, app/controllers/frontend/tabs-controller.php:26, app/controllers/frontend/tabs-controller.php:32, app/controllers/frontend/tabs-controller.php:40, app/controllers/frontend/tabs-controller.php:107, app/controllers/frontend/tabs-controller.php:121, app/controllers/onboarding/onboarding-controller.php:134, app/controllers/timeline/timeline-controller.php:266, app/controllers/timeline/timeline-controller.php:270, app/controllers/frontend/statistics/visits-chart-controller.php:64, app/controllers/frontend/statistics/visits-chart-controller.php:25, app/controllers/frontend/statistics/visits-chart-controller.php:30, app/controllers/frontend/statistics/visits-chart-controller.php:128, app/controllers/frontend/statistics/visits-chart-controller.php:148, app/controllers/frontend/statistics/visits-chart-controller.php:174, app/controllers/frontend/timeline/comment-controller.php:26, app/controllers/frontend/timeline/comment-controller.php:184, app/controllers/frontend/timeline/comment-controller.php:253, app/controllers/frontend/timeline/comment-controller.php:287, app/controllers/frontend/timeline/comment-controller.php:344, app/controllers/frontend/timeline/comment-controller.php:372, app/controllers/frontend/timeline/comment-feed-controller.php:21, app/controllers/frontend/timeline/status-controller.php:29, app/controllers/frontend/timeline/status-controller.php:312, app/controllers/frontend/timeline/status-controller.php:426, app/controllers/frontend/timeline/status-controller.php:453, app/controllers/frontend/timeline/status-controller.php:482, app/controllers/frontend/timeline/status-controller.php:543, app/controllers/frontend/timeline/status-controller.php:609, app/controllers/frontend/timeline/status-controller.php:702, app/controllers/frontend/timeline/status-controller.php:730, app/controllers/frontend/timeline/status-feed-controller.php:21, app/controllers/frontend/timeline/suggestions-controller.php:21, app/controllers/frontend/products/orders/orders-controller.php:134, app/modules/collections/controllers/frontend/frontend-controller.php:24, app/modules/collections/controllers/frontend/frontend-controller.php:197, app/modules/direct-messages/controllers/frontend/inbox-controller.php:289, app/modules/direct-messages/controllers/frontend/inbox-controller.php:567, app/modules/direct-messages/controllers/frontend/inbox-controller.php:626, app/modules/direct-messages/controllers/frontend/inbox-controller.php:675, app/modules/direct-messages/controllers/frontend/inbox-controller.php:679, app/modules/paddle-payments/controllers/backend/paddle-settings-controller.php:33, app/modules/paid-memberships/controllers/frontend/cart-controller.php:62, app/modules/paid-memberships/controllers/frontend/cart-controller.php:66, app/modules/paid-memberships/controllers/frontend/cart-controller.php:71, app/modules/paid-memberships/controllers/frontend/cart-controller.php:75, app/modules/stripe-connect/controllers/frontend/frontend-controller.php:52, app/modules/stripe-payments/controllers/backend/settings-controller.php:32, app/modules/stripe-payments/controllers/backend/settings-controller.php:77, app/modules/stripe-payments/controllers/backend/settings-controller.php:165
 msgid "Invalid request."
 msgstr ""
 
@@ -338,7 +338,7 @@ msgctxt "auth"
 msgid "Update email address"
 msgstr ""
 
-#: app/users/security-trait.php:45, app/utils/auth-utils.php:83
+#: app/users/security-trait.php:45, app/utils/auth-utils.php:84
 msgctxt "auth"
 msgid "Your confirmation code is %s"
 msgstr ""
@@ -348,25 +348,115 @@ msgctxt "auth"
 msgid "Code has expired."
 msgstr ""
 
+#: app/users/security-trait.php:101
+msgctxt "auth"
+msgid "No 2FA secret found."
+msgstr ""
+
+#: app/users/security-trait.php:118, app/controllers/frontend/auth/auth-controller.php:578, app/controllers/frontend/auth/auth-controller.php:609, app/controllers/frontend/auth/auth-controller.php:733
+msgctxt "auth"
+msgid "Two-factor authentication is not enabled."
+msgstr ""
+
+#: app/users/security-trait.php:130
+msgctxt "auth"
+msgid "Too many failed attempts. Please try again in 5 minutes."
+msgstr ""
+
+#: app/users/security-trait.php:148
+msgctxt "auth"
+msgid "Invalid authentication code. Please try again."
+msgstr ""
+
+#: app/users/security-trait.php:161
+msgctxt "auth"
+msgid "No 2FA setup in progress."
+msgstr ""
+
+#: app/users/security-trait.php:176
+msgctxt "auth"
+msgid "%s - Two-Factor Authentication Enabled"
+msgstr ""
+
+#: app/users/security-trait.php:178
+msgctxt "auth"
+msgid "Two-factor authentication has been successfully enabled on your account.<br><br>From now on, you will need to enter a code from your authenticator app when logging in.<br><br>If you did not enable this, please contact support immediately."
+msgstr ""
+
+#: app/users/security-trait.php:195
+msgctxt "auth"
+msgid "Invalid password."
+msgstr ""
+
+#: app/users/security-trait.php:201
+msgctxt "auth"
+msgid "%s - Two-Factor Authentication Disabled"
+msgstr ""
+
+#: app/users/security-trait.php:203
+msgctxt "auth"
+msgid "Two-factor authentication has been disabled on your account.<br><br>You will now only need your password to log in.<br><br>If you did not disable this, please secure your account immediately and contact support."
+msgstr ""
+
+#: app/users/security-trait.php:215, app/controllers/users/single-user-controller.php:52
+msgctxt "auth"
+msgid "Insufficient permissions."
+msgstr ""
+
+#: app/users/security-trait.php:219
+msgctxt "auth"
+msgid "Two-factor authentication is not enabled for this user."
+msgstr ""
+
+#: app/users/security-trait.php:225
+msgctxt "auth"
+msgid "%s - Two-Factor Authentication Disabled by Administrator"
+msgstr ""
+
+#: app/users/security-trait.php:227
+msgctxt "auth"
+msgid "Two-factor authentication has been disabled on your account by an administrator.<br><br>You will now only need your password to log in.<br><br>If you did not request this change, please contact support immediately."
+msgstr ""
+
+#: app/users/security-trait.php:269
+msgctxt "auth"
+msgid "No backup codes available."
+msgstr ""
+
+#: app/users/security-trait.php:286
+msgctxt "auth"
+msgid "Invalid backup code."
+msgstr ""
+
+#: app/users/security-trait.php:315, app/users/security-trait.php:324
+msgctxt "auth"
+msgid "Invalid session."
+msgstr ""
+
+#: app/users/security-trait.php:320
+msgctxt "auth"
+msgid "Session has expired. Please log in again."
+msgstr ""
+
 #: app/users/vendor-trait.php:33
 msgctxt "orders"
 msgid "Stripe account not set up for this user."
 msgstr ""
 
-#: app/utils/auth-utils.php:82
+#: app/utils/auth-utils.php:83
 msgctxt "auth"
 msgid "Account confirmation"
 msgstr ""
 
-#: app/utils/auth-utils.php:104
+#: app/utils/auth-utils.php:105
 msgid "Code verification failed."
 msgstr ""
 
-#: app/utils/auth-utils.php:109, app/utils/auth-utils.php:113
+#: app/utils/auth-utils.php:110, app/utils/auth-utils.php:114
 msgid "Please try again."
 msgstr ""
 
-#: app/utils/nav-menu-walker.php:56, app/utils/popup-menu-walker.php:48, templates/widgets/create-post/taxonomy-field.php:139, templates/widgets/search-form/terms-filter.php:124, templates/widgets/login/recover/recover-screen.php:31, templates/widgets/login/register/taxonomy-field.php:77, templates/widgets/login/security/delete-account-screen.php:29, templates/widgets/login/security/privacy-screen.php:53, templates/widgets/login/security/update-email-screen.php:63, templates/widgets/login/security/update-password-screen.php:61
+#: app/utils/nav-menu-walker.php:56, app/utils/popup-menu-walker.php:48, templates/widgets/create-post/taxonomy-field.php:139, templates/widgets/search-form/terms-filter.php:124, templates/widgets/login/recover/recover-screen.php:31, templates/widgets/login/register/taxonomy-field.php:77, templates/widgets/login/security/2fa-backup-codes-screen.php:32, templates/widgets/login/security/2fa-disable-screen.php:29, templates/widgets/login/security/2fa-manage-screen.php:46, templates/widgets/login/security/2fa-setup-screen.php:47, templates/widgets/login/security/delete-account-screen.php:29, templates/widgets/login/security/privacy-screen.php:53, templates/widgets/login/security/update-email-screen.php:63, templates/widgets/login/security/update-password-screen.php:61
 msgid "Go back"
 msgstr ""
 
@@ -409,32 +499,32 @@ msgctxt "auth"
 msgid "This username is not allowed."
 msgstr ""
 
-#: app/utils/security-utils.php:59
+#: app/utils/security-utils.php:68
 msgctxt "validate password"
 msgid "Password must contain at least 8 characters."
 msgstr ""
 
-#: app/utils/security-utils.php:63
+#: app/utils/security-utils.php:72
 msgctxt "validate password"
 msgid "Password must contain at least one number."
 msgstr ""
 
-#: app/utils/security-utils.php:67
+#: app/utils/security-utils.php:76
 msgctxt "validate password"
 msgid "Password must contain at least one letter."
 msgstr ""
 
-#: app/utils/security-utils.php:73
+#: app/utils/security-utils.php:91
 msgctxt "auth"
 msgid "Please enter your email address."
 msgstr ""
 
-#: app/utils/security-utils.php:77, app/controllers/frontend/auth/registration-controller.php:38, app/controllers/frontend/products/cart-controller.php:367
+#: app/utils/security-utils.php:95, app/controllers/frontend/auth/registration-controller.php:38, app/controllers/frontend/products/cart-controller.php:367
 msgctxt "auth"
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: app/utils/security-utils.php:81, app/controllers/frontend/products/cart-controller.php:373
+#: app/utils/security-utils.php:99, app/controllers/frontend/products/cart-controller.php:373
 msgctxt "auth"
 msgid "This email is already registered."
 msgstr ""
@@ -514,167 +604,167 @@ msgctxt "platform type"
 msgid "webOS"
 msgstr ""
 
-#: app/utils/utils.php:471
+#: app/utils/utils.php:473
 msgctxt "price interval"
 msgid "yearly"
 msgstr ""
 
-#: app/utils/utils.php:472
+#: app/utils/utils.php:474
 msgctxt "price interval"
 msgid "every %s years"
 msgstr ""
 
-#: app/utils/utils.php:467
+#: app/utils/utils.php:469
 msgctxt "price interval"
 msgid "monthly"
 msgstr ""
 
-#: app/utils/utils.php:468
+#: app/utils/utils.php:470
 msgctxt "price interval"
 msgid "every %s months"
 msgstr ""
 
-#: app/utils/utils.php:463
+#: app/utils/utils.php:465
 msgctxt "price interval"
 msgid "weekly"
 msgstr ""
 
-#: app/utils/utils.php:464
+#: app/utils/utils.php:466
 msgctxt "price interval"
 msgid "every %s weeks"
 msgstr ""
 
-#: app/utils/utils.php:459
+#: app/utils/utils.php:461
 msgctxt "price interval"
 msgid "daily"
 msgstr ""
 
-#: app/utils/utils.php:460
+#: app/utils/utils.php:462
 msgctxt "price interval"
 msgid "every %s days"
 msgstr ""
 
-#: app/utils/utils.php:939
+#: app/utils/utils.php:980
 msgctxt "range presets"
 msgid "All"
 msgstr ""
 
-#: app/utils/utils.php:949
+#: app/utils/utils.php:990
 msgctxt "range presets"
 msgid "Upcoming"
 msgstr ""
 
-#: app/utils/utils.php:959
+#: app/utils/utils.php:1000
 msgctxt "range presets"
 msgid "Today"
 msgstr ""
 
-#: app/utils/utils.php:969
+#: app/utils/utils.php:1010
 msgctxt "range presets"
 msgid "Tomorrow"
 msgstr ""
 
-#: app/utils/utils.php:979
+#: app/utils/utils.php:1020
 msgctxt "range presets"
 msgid "This weekend"
 msgstr ""
 
-#: app/utils/utils.php:990
+#: app/utils/utils.php:1031
 msgctxt "range presets"
 msgid "This week"
 msgstr ""
 
-#: app/utils/utils.php:1003
+#: app/utils/utils.php:1044
 msgctxt "range presets"
 msgid "Next week"
 msgstr ""
 
-#: app/utils/utils.php:1015
+#: app/utils/utils.php:1056
 msgctxt "range presets"
 msgid "Next 7 days"
 msgstr ""
 
-#: app/utils/utils.php:1025
+#: app/utils/utils.php:1066
 msgctxt "range presets"
 msgid "This month"
 msgstr ""
 
-#: app/utils/utils.php:1035
+#: app/utils/utils.php:1076
 msgctxt "range presets"
 msgid "Next month"
 msgstr ""
 
-#: app/utils/utils.php:1045
+#: app/utils/utils.php:1086
 msgctxt "range presets"
 msgid "Next 30 days"
 msgstr ""
 
-#: app/utils/utils.php:1055
+#: app/utils/utils.php:1096
 msgctxt "range presets"
 msgid "This year"
 msgstr ""
 
-#: app/utils/utils.php:1065
+#: app/utils/utils.php:1106
 msgctxt "range presets"
 msgid "Next year"
 msgstr ""
 
-#: app/utils/utils.php:1075
+#: app/utils/utils.php:1116
 msgctxt "range presets"
 msgid "Next 365 days"
 msgstr ""
 
-#: app/utils/utils.php:1293
+#: app/utils/utils.php:1334
 msgctxt "post feed"
 msgid "@count out of @total results"
 msgstr ""
 
-#: app/utils/utils.php:1289
+#: app/utils/utils.php:1330
 msgctxt "post feed"
 msgid "@count results"
 msgstr ""
 
-#: app/utils/utils.php:1287
+#: app/utils/utils.php:1328
 msgctxt "post feed"
 msgid "One result"
 msgstr ""
 
-#: app/utils/utils.php:1285
+#: app/utils/utils.php:1326
 msgctxt "post feed"
 msgid "No results"
 msgstr ""
 
-#: app/utils/utils.php:1464
+#: app/utils/utils.php:1513
 msgctxt "time diff"
 msgid "%dy"
 msgstr ""
 
-#: app/utils/utils.php:1461
+#: app/utils/utils.php:1510
 msgctxt "time diff"
 msgid "%dw"
 msgstr ""
 
-#: app/utils/utils.php:1458
+#: app/utils/utils.php:1507
 msgctxt "time diff"
 msgid "%dd"
 msgstr ""
 
-#: app/utils/utils.php:1455
+#: app/utils/utils.php:1504
 msgctxt "time diff"
 msgid "%dh"
 msgstr ""
 
-#: app/utils/utils.php:1452
+#: app/utils/utils.php:1501
 msgctxt "time diff"
 msgid "%dm"
 msgstr ""
 
-#: app/utils/utils.php:1449
+#: app/utils/utils.php:1498
 msgctxt "time diff"
 msgid "%ds"
 msgstr ""
 
-#: app/utils/utils.php:1446
+#: app/utils/utils.php:1495
 msgctxt "time diff"
 msgid "now"
 msgstr ""
@@ -709,132 +799,167 @@ msgctxt "cart summary"
 msgid "Free"
 msgstr ""
 
-#: app/widgets/create-post.php:5089
+#: app/widgets/create-post.php:5100
 msgctxt "field validation"
 msgid "Required"
 msgstr ""
 
-#: app/widgets/create-post.php:5090
+#: app/widgets/create-post.php:5101
 msgctxt "field validation"
 msgid "Value cannot be shorter than @minlength characters"
 msgstr ""
 
-#: app/widgets/create-post.php:5091
+#: app/widgets/create-post.php:5102
 msgctxt "field validation"
 msgid "Value cannot be longer than @maxlength characters"
 msgstr ""
 
-#: app/widgets/create-post.php:5092
+#: app/widgets/create-post.php:5103
 msgctxt "field validation"
 msgid "Please match the requested format"
 msgstr ""
 
-#: app/widgets/create-post.php:5093
+#: app/widgets/create-post.php:5104
 msgctxt "field validation"
 msgid "You must provide a valid email address"
 msgstr ""
 
-#: app/widgets/create-post.php:5094
+#: app/widgets/create-post.php:5105
 msgctxt "field validation"
 msgid "Value cannot be less than @min"
 msgstr ""
 
-#: app/widgets/create-post.php:5095
+#: app/widgets/create-post.php:5106
 msgctxt "field validation"
 msgid "Value cannot be more than @max"
 msgstr ""
 
-#: app/widgets/create-post.php:5096
+#: app/widgets/create-post.php:5107
 msgctxt "field validation"
 msgid "You must provide a valid URL"
 msgstr ""
 
-#: app/widgets/create-post.php:5097
+#: app/widgets/create-post.php:5108
 msgctxt "field validation"
 msgid "You cannot pick more than @max items"
 msgstr ""
 
-#: app/widgets/create-post.php:5098
+#: app/widgets/create-post.php:5109
 msgctxt "field validation"
 msgid "You cannot pick more than @max files"
 msgstr ""
 
-#: app/widgets/create-post.php:5099
+#: app/widgets/create-post.php:5110
 msgctxt "field validation"
 msgid "@filename is over the @limit_mb MB limit"
 msgstr ""
 
-#: app/widgets/create-post.php:5100
+#: app/widgets/create-post.php:5111
 msgctxt "field validation"
 msgid "Unsupported file type: @filename"
 msgstr ""
 
-#: app/widgets/create-post.php:5101
+#: app/widgets/create-post.php:5112
 msgctxt "field validation"
 msgid "You cannot add more than @max dates"
 msgstr ""
 
-#: app/widgets/create-post.php:5102
+#: app/widgets/create-post.php:5113
 msgctxt "field validation"
 msgid "Date cannot be empty"
 msgstr ""
 
-#: app/widgets/create-post.php:5103
+#: app/widgets/create-post.php:5114
 msgctxt "field validation"
 msgid "Recurring dates must have a final date set"
 msgstr ""
 
-#: app/widgets/create-post.php:5104
+#: app/widgets/create-post.php:5115
 msgctxt "field validation"
 msgid "You must provide a valid color"
 msgstr ""
 
-#: app/widgets/create-post.php:5105
+#: app/widgets/create-post.php:5116
 msgctxt "field validation"
 msgid "The provided coordinates are not valid"
 msgstr ""
 
-#: app/widgets/create-post.php:5106
+#: app/widgets/create-post.php:5117
 msgctxt "field validation"
 msgid "You must add at least @min entries"
 msgstr ""
 
-#: app/widgets/create-post.php:5107
+#: app/widgets/create-post.php:5118
 msgctxt "field validation"
 msgid "You cannot add more than @max entries"
 msgstr ""
 
-#: app/widgets/create-post.php:5108
+#: app/widgets/create-post.php:5119
 msgctxt "field validation"
 msgid "Label and price are required"
 msgstr ""
 
-#: app/widgets/create-post.php:5109
+#: app/widgets/create-post.php:5120
 msgctxt "field validation"
 msgid "Quantity is required"
 msgstr ""
 
-#: app/widgets/create-post.php:5110
+#: app/widgets/create-post.php:5121
 msgctxt "repeater row validation"
 msgid "Missing data"
 msgstr ""
 
-#: app/widgets/create-post.php:5111
+#: app/widgets/create-post.php:5122
 msgctxt "repeater row validation"
 msgid "Please fill in all required fields"
 msgstr ""
 
-#: app/widgets/login.php:2731
+#: app/widgets/login.php:2801
 msgctxt "auth"
 msgid "You must register first in order to use Google Sign-In"
 msgstr ""
 
-#: app/widgets/orders.php:2351
+#: app/widgets/login.php:2805
+msgctxt "auth"
+msgid "2FA has been enabled successfully!"
+msgstr ""
+
+#: app/widgets/login.php:2806
+msgctxt "auth"
+msgid "2FA has been disabled."
+msgstr ""
+
+#: app/widgets/login.php:2807
+msgctxt "auth"
+msgid "Are you sure you want to disable two-factor authentication?"
+msgstr ""
+
+#: app/widgets/login.php:2808
+msgctxt "auth"
+msgid "This will invalidate your existing backup codes. Continue?"
+msgstr ""
+
+#: app/widgets/login.php:2809
+msgctxt "auth"
+msgid "New backup codes generated!"
+msgstr ""
+
+#: app/widgets/login.php:2810
+msgctxt "auth"
+msgid "This will log you out on all trusted devices. You will need to enter your 2FA code next time you log in. Continue?"
+msgstr ""
+
+#: app/widgets/login.php:2811
+msgctxt "auth"
+msgid "All trusted devices have been removed!"
+msgstr ""
+
+#: app/widgets/orders.php:2505
 msgctxt "vendor enquiry text"
 msgid "Hello, we're enquiring about your order #@order_id"
 msgstr ""
 
-#: app/widgets/orders.php:2352
+#: app/widgets/orders.php:2506
 msgctxt "customer enquiry text"
 msgid "Hello, I'm enquiring about my order #@order_id"
 msgstr ""
@@ -1019,6 +1144,16 @@ msgstr ""
 msgid "Onboarding"
 msgstr ""
 
+#: app/controllers/users/single-user-controller.php:57
+msgctxt "auth"
+msgid "Invalid user ID."
+msgstr ""
+
+#: app/controllers/users/single-user-controller.php:62
+msgctxt "auth"
+msgid "User not found."
+msgstr ""
+
 #: app/events/post-relations/relation-requested-event.php:127
 msgctxt "relation request"
 msgid "Declined"
@@ -1119,12 +1254,12 @@ msgctxt "pricing plans"
 msgid "Price does not exist."
 msgstr ""
 
-#: app/post-types/fields/base-post-field.php:538, app/utils/object-fields/base-validation-helpers.php:29
+#: app/post-types/fields/base-post-field.php:564, app/utils/object-fields/base-validation-helpers.php:29
 msgctxt "field validation"
 msgid "@field_name can't be shorter than @length characters"
 msgstr ""
 
-#: app/post-types/fields/base-post-field.php:553, app/utils/object-fields/base-validation-helpers.php:44
+#: app/post-types/fields/base-post-field.php:579, app/utils/object-fields/base-validation-helpers.php:44
 msgctxt "field validation"
 msgid "@field_name can't be longer than @length characters"
 msgstr ""
@@ -1202,6 +1337,16 @@ msgstr ""
 #: app/post-types/fields/recurring-date-field.php:297
 msgctxt "recurring date field"
 msgid "Year(s)"
+msgstr ""
+
+#: app/post-types/fields/recurring-date-field.php:300
+msgctxt "recurring dates field"
+msgid "From"
+msgstr ""
+
+#: app/post-types/fields/recurring-date-field.php:301
+msgctxt "recurring dates field"
+msgid "To"
 msgstr ""
 
 #: app/post-types/fields/repeater-field.php:105
@@ -1403,11 +1548,6 @@ msgctxt "booking summary"
 msgid "@booking_length from @start_date to @end_date"
 msgstr ""
 
-#: app/product-types/order-items/order-item-regular.php:22
-msgctxt "promotion order description"
-msgid "Promotion"
-msgstr ""
-
 #: app/product-types/order-items/order-item.php:328
 msgctxt "switcher data input"
 msgid "Yes"
@@ -1473,7 +1613,7 @@ msgctxt "order long status"
 msgid "Order is pending approval"
 msgstr ""
 
-#: app/product-types/orders/order.php:805, app/product-types/orders/order.php:840, app/modules/paddle-payments/payment-methods/paddle-subscription.php:724, app/modules/stripe-payments/payment-methods/stripe-subscription.php:619
+#: app/product-types/orders/order.php:805, app/product-types/orders/order.php:840, app/modules/paddle-payments/payment-methods/paddle-subscription.php:801, app/modules/stripe-payments/payment-methods/stripe-subscription.php:704
 msgctxt "order status"
 msgid "Canceled"
 msgstr ""
@@ -1493,7 +1633,7 @@ msgctxt "order long status"
 msgid "Order has been refunded"
 msgstr ""
 
-#: app/product-types/orders/order.php:815, app/modules/paddle-payments/payment-methods/paddle-subscription.php:680, app/modules/paddle-payments/payment-methods/paddle-subscription.php:666, app/modules/paddle-payments/payment-methods/paddle-subscription.php:652, app/modules/stripe-payments/payment-methods/stripe-subscription.php:577, app/modules/stripe-payments/payment-methods/stripe-subscription.php:563, app/modules/stripe-payments/payment-methods/stripe-subscription.php:534
+#: app/product-types/orders/order.php:815, app/modules/paddle-payments/payment-methods/paddle-subscription.php:759, app/modules/paddle-payments/payment-methods/paddle-subscription.php:715, app/modules/paddle-payments/payment-methods/paddle-subscription.php:701, app/modules/stripe-payments/payment-methods/stripe-subscription.php:664, app/modules/stripe-payments/payment-methods/stripe-subscription.php:617, app/modules/stripe-payments/payment-methods/stripe-subscription.php:588
 msgctxt "order status"
 msgid "Active"
 msgstr ""
@@ -1508,7 +1648,7 @@ msgctxt "order status"
 msgid "Trialing"
 msgstr ""
 
-#: app/product-types/orders/order.php:825, app/modules/stripe-payments/payment-methods/stripe-subscription.php:521
+#: app/product-types/orders/order.php:825, app/modules/stripe-payments/payment-methods/stripe-subscription.php:575
 msgctxt "order status"
 msgid "Incomplete"
 msgstr ""
@@ -1518,7 +1658,7 @@ msgctxt "order long status"
 msgid "Subscription incomplete"
 msgstr ""
 
-#: app/product-types/orders/order.php:830, app/modules/stripe-payments/payment-methods/stripe-subscription.php:512
+#: app/product-types/orders/order.php:830, app/modules/stripe-payments/payment-methods/stripe-subscription.php:566
 msgctxt "order status"
 msgid "Expired"
 msgstr ""
@@ -1528,7 +1668,7 @@ msgctxt "order long status"
 msgid "Subscription expired"
 msgstr ""
 
-#: app/product-types/orders/order.php:835, app/modules/paddle-payments/payment-methods/paddle-subscription.php:713, app/modules/stripe-payments/payment-methods/stripe-subscription.php:593
+#: app/product-types/orders/order.php:835, app/modules/paddle-payments/payment-methods/paddle-subscription.php:789, app/modules/stripe-payments/payment-methods/stripe-subscription.php:677
 msgctxt "order status"
 msgid "Past due"
 msgstr ""
@@ -1543,7 +1683,7 @@ msgctxt "order long status"
 msgid "Subscription is canceled"
 msgstr ""
 
-#: app/product-types/orders/order.php:845, app/modules/stripe-payments/payment-methods/stripe-subscription.php:606
+#: app/product-types/orders/order.php:845, app/modules/stripe-payments/payment-methods/stripe-subscription.php:691
 msgctxt "order status"
 msgid "Unpaid"
 msgstr ""
@@ -1553,7 +1693,7 @@ msgctxt "order long status"
 msgid "Subscription is unpaid"
 msgstr ""
 
-#: app/product-types/orders/order.php:850, app/modules/paddle-payments/payment-methods/paddle-subscription.php:697, app/modules/stripe-payments/payment-methods/stripe-subscription.php:550
+#: app/product-types/orders/order.php:850, app/modules/paddle-payments/payment-methods/paddle-subscription.php:773, app/modules/stripe-payments/payment-methods/stripe-subscription.php:604
 msgctxt "order status"
 msgid "Paused"
 msgstr ""
@@ -1643,7 +1783,7 @@ msgctxt "payment methods"
 msgid "Stripe vendor transfer"
 msgstr ""
 
-#: app/product-types/payment-methods/stripe-transfer.php:75, app/product-types/payment-methods/stripe-transfer.php:66, app/modules/stripe-payments/payment-methods/stripe-payment.php:607, app/modules/stripe-payments/payment-methods/stripe-payment.php:598, app/modules/stripe-payments/payment-methods/stripe-subscription.php:444, app/modules/stripe-payments/payment-methods/stripe-subscription.php:434
+#: app/product-types/payment-methods/stripe-transfer.php:75, app/product-types/payment-methods/stripe-transfer.php:66, app/modules/stripe-payments/payment-methods/stripe-payment.php:607, app/modules/stripe-payments/payment-methods/stripe-payment.php:598, app/modules/stripe-payments/payment-methods/stripe-subscription.php:498, app/modules/stripe-payments/payment-methods/stripe-subscription.php:488
 msgctxt "vendor fees"
 msgid "Platform fee"
 msgstr ""
@@ -1653,32 +1793,32 @@ msgctxt "vendor fees"
 msgid "Shipping fee"
 msgstr ""
 
-#: app/product-types/product-addons/custom-multiselect-addon.php:87, app/product-types/product-addons/custom-select-addon.php:233, app/product-types/product-addons/multiselect-addon.php:187, app/product-types/product-addons/select-addon.php:189
+#: app/product-types/product-addons/custom-multiselect-addon.php:87, app/product-types/product-addons/custom-select-addon.php:237, app/product-types/product-addons/multiselect-addon.php:187, app/product-types/product-addons/select-addon.php:189
 msgctxt "select addon"
 msgid "@addon_name is required"
 msgstr ""
 
-#: app/product-types/product-addons/custom-multiselect-addon.php:96, app/product-types/product-addons/custom-select-addon.php:240, app/product-types/product-addons/multiselect-addon.php:195, app/product-types/product-addons/select-addon.php:195
+#: app/product-types/product-addons/custom-multiselect-addon.php:96, app/product-types/product-addons/custom-select-addon.php:244, app/product-types/product-addons/multiselect-addon.php:195, app/product-types/product-addons/select-addon.php:195
 msgctxt "select addon"
 msgid "@addon_name: @choice is not available"
 msgstr ""
 
-#: app/product-types/product-addons/custom-multiselect-addon.php:115, app/product-types/product-addons/custom-select-addon.php:259
+#: app/product-types/product-addons/custom-multiselect-addon.php:115, app/product-types/product-addons/custom-select-addon.php:263
 msgctxt "select addon"
 msgid "@addon_name: @choice quantity cannot be more than 1"
 msgstr ""
 
-#: app/product-types/product-addons/custom-multiselect-addon.php:105, app/product-types/product-addons/custom-select-addon.php:249
+#: app/product-types/product-addons/custom-multiselect-addon.php:105, app/product-types/product-addons/custom-select-addon.php:253
 msgctxt "select addon"
 msgid "@addon_name: @choice quantity must be between @min_quantity and @max_quantity"
 msgstr ""
 
-#: app/product-types/product-addons/custom-select-addon.php:185
+#: app/product-types/product-addons/custom-select-addon.php:189
 msgctxt "select addon"
 msgid "@addon_name: Minimum and maximum values are required"
 msgstr ""
 
-#: app/product-types/product-addons/custom-select-addon.php:193
+#: app/product-types/product-addons/custom-select-addon.php:197
 msgctxt "select addon"
 msgid "@addon_name: Minimum value cannot be larger than maximum"
 msgstr ""
@@ -1883,72 +2023,136 @@ msgctxt "field validation"
 msgid "@field_name: Attachment not allowed"
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:80, app/controllers/frontend/auth/auth-controller.php:108, app/controllers/frontend/auth/auth-controller.php:143
+#: app/controllers/frontend/auth/auth-controller.php:155, app/controllers/frontend/auth/auth-controller.php:183, app/controllers/frontend/auth/auth-controller.php:218
 msgctxt "auth"
 msgid "Account not found."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:150, app/controllers/frontend/auth/auth-controller.php:202
+#: app/controllers/frontend/auth/auth-controller.php:225, app/controllers/frontend/auth/auth-controller.php:295
 msgctxt "auth"
 msgid "Passwords do not match."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:187, app/controllers/frontend/auth/auth-controller.php:232, app/controllers/frontend/auth/auth-controller.php:288, app/controllers/frontend/auth/auth-controller.php:319
+#: app/controllers/frontend/auth/auth-controller.php:280, app/controllers/frontend/auth/auth-controller.php:325, app/controllers/frontend/auth/auth-controller.php:381, app/controllers/frontend/auth/auth-controller.php:412, app/controllers/frontend/auth/auth-controller.php:518, app/controllers/frontend/auth/auth-controller.php:546, app/controllers/frontend/auth/auth-controller.php:574, app/controllers/frontend/auth/auth-controller.php:605, app/controllers/frontend/auth/auth-controller.php:729
 msgctxt "auth"
 msgid "Something went wrong."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:194
+#: app/controllers/frontend/auth/auth-controller.php:287
 msgctxt "auth"
 msgid "Your current password is not correct."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:255, app/controllers/frontend/auth/auth-controller.php:240
+#: app/controllers/frontend/auth/auth-controller.php:348, app/controllers/frontend/auth/auth-controller.php:333
 msgctxt "auth"
 msgid "Provided email address is not valid."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:297
+#: app/controllers/frontend/auth/auth-controller.php:390
 msgid "You will receive a link to download your personal data via email once the request is fulfilled."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:325
+#: app/controllers/frontend/auth/auth-controller.php:418
 msgctxt "auth"
 msgid "Your password is not correct."
 msgstr ""
 
-#: app/controllers/frontend/auth/auth-controller.php:329
+#: app/controllers/frontend/auth/auth-controller.php:422
 msgctxt "auth"
 msgid "You cannot delete your account as an administrator."
 msgstr ""
 
-#: app/controllers/frontend/auth/google-controller.php:20
+#: app/controllers/frontend/auth/auth-controller.php:504
+msgid "<strong>Two-Factor Authentication Required</strong><br>Please use the front-end login form to authenticate with your 2FA code."
+msgstr ""
+
+#: app/controllers/frontend/auth/auth-controller.php:522
+msgctxt "auth"
+msgid "Two-factor authentication is already enabled."
+msgstr ""
+
+#: app/controllers/frontend/auth/auth-controller.php:551
+msgctxt "auth"
+msgid "Please enter the authentication code."
+msgstr ""
+
+#: app/controllers/frontend/auth/auth-controller.php:583
+msgctxt "auth"
+msgid "Please enter your password."
+msgstr ""
+
+#: app/controllers/frontend/auth/auth-controller.php:638, app/controllers/frontend/auth/registration-controller.php:27, app/controllers/frontend/auth/role-switch-controller.php:23, app/controllers/frontend/auth/role-switch-controller.php:27
+msgctxt "auth"
+msgid "Invalid request."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:26
 msgctxt "login with google"
 msgid "Invalid request."
 msgstr ""
 
-#: app/controllers/frontend/auth/google-controller.php:45
+#: app/controllers/frontend/auth/google-controller.php:50
 msgctxt "login with google"
 msgid "Could not retrieve data."
 msgstr ""
 
-#: app/controllers/frontend/auth/google-controller.php:51
+#: app/controllers/frontend/auth/google-controller.php:55
 msgctxt "login with google"
 msgid "Could not retrieve details."
 msgstr ""
 
-#: app/controllers/frontend/auth/google-controller.php:58
+#: app/controllers/frontend/auth/google-controller.php:104
+msgid "Something went wrong."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:179
+msgctxt "login with google"
+msgid "Token is no longer valid."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:181
 msgctxt "login with google"
 msgid "Could not validate request."
 msgstr ""
 
-#: app/controllers/frontend/auth/google-controller.php:105
-msgid "Something went wrong."
+#: app/controllers/frontend/auth/google-controller.php:187
+msgctxt "login with google"
+msgid "Token issuer mismatch."
 msgstr ""
 
-#: app/controllers/frontend/auth/registration-controller.php:27, app/controllers/frontend/auth/role-switch-controller.php:23, app/controllers/frontend/auth/role-switch-controller.php:27
-msgctxt "auth"
-msgid "Invalid request."
+#: app/controllers/frontend/auth/google-controller.php:200
+msgctxt "login with google"
+msgid "Token audience mismatch."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:204
+msgctxt "login with google"
+msgid "Token authorized party mismatch."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:208
+msgctxt "login with google"
+msgid "Token subject missing."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:212
+msgctxt "login with google"
+msgid "Email address missing from token."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:217
+msgctxt "login with google"
+msgid "Email address must be verified."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:238
+msgctxt "login with google"
+msgid "Could not retrieve token signing keys."
+msgstr ""
+
+#: app/controllers/frontend/auth/google-controller.php:245
+msgctxt "login with google"
+msgid "Invalid signing keys response."
 msgstr ""
 
 #: app/controllers/frontend/auth/registration-controller.php:61
@@ -1971,7 +2175,7 @@ msgctxt "roles"
 msgid "You cannot switch to this role."
 msgstr ""
 
-#: app/controllers/frontend/create-post/post-relations-controller.php:19, app/controllers/frontend/create-post/post-relations-controller.php:42, app/controllers/frontend/create-post/post-relations-controller.php:54, app/controllers/frontend/create-post/submission-controller.php:21, app/controllers/frontend/create-post/submission-controller.php:25, app/controllers/frontend/create-post/submission-controller.php:40, app/controllers/frontend/create-post/submission-controller.php:56, app/controllers/frontend/create-post/submission-controller.php:61, app/controllers/frontend/create-post/submission-controller.php:320, app/controllers/frontend/create-post/submission-controller.php:326, app/controllers/frontend/create-post/submission-controller.php:330, app/controllers/frontend/create-post/submission-controller.php:339, app/controllers/frontend/products/cart-controller.php:352, app/controllers/frontend/products/cart-controller.php:356, app/controllers/frontend/products/cart-controller.php:397
+#: app/controllers/frontend/create-post/post-relations-controller.php:19, app/controllers/frontend/create-post/post-relations-controller.php:42, app/controllers/frontend/create-post/post-relations-controller.php:54, app/controllers/frontend/create-post/submission-controller.php:21, app/controllers/frontend/create-post/submission-controller.php:25, app/controllers/frontend/create-post/submission-controller.php:40, app/controllers/frontend/create-post/submission-controller.php:56, app/controllers/frontend/create-post/submission-controller.php:61, app/controllers/frontend/create-post/submission-controller.php:330, app/controllers/frontend/create-post/submission-controller.php:336, app/controllers/frontend/create-post/submission-controller.php:340, app/controllers/frontend/create-post/submission-controller.php:349, app/controllers/frontend/products/cart-controller.php:352, app/controllers/frontend/products/cart-controller.php:356, app/controllers/frontend/products/cart-controller.php:397
 msgid "Invalid request"
 msgstr ""
 
@@ -1985,11 +2189,11 @@ msgctxt "create post"
 msgid "Edits not allowed."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:52, app/controllers/frontend/create-post/submission-controller.php:335
+#: app/controllers/frontend/create-post/submission-controller.php:52, app/controllers/frontend/create-post/submission-controller.php:345
 msgid "Permission check failed."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:69, app/modules/paid-listings/controllers/frontend/create-post-controller.php:91
+#: app/controllers/frontend/create-post/submission-controller.php:69, app/modules/paid-listings/controllers/frontend/create-post-controller.php:100
 msgctxt "create post"
 msgid "You do not have permission to create new posts."
 msgstr ""
@@ -1999,42 +2203,42 @@ msgctxt "create post"
 msgid "Submissions not allowed."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:239
+#: app/controllers/frontend/create-post/submission-controller.php:249
 msgctxt "create post"
 msgid "Could not save post."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:276, app/controllers/frontend/create-post/submission-controller.php:264
+#: app/controllers/frontend/create-post/submission-controller.php:286, app/controllers/frontend/create-post/submission-controller.php:274
 msgctxt "create post"
 msgid "Your post has been published."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:274, app/controllers/frontend/create-post/submission-controller.php:262
+#: app/controllers/frontend/create-post/submission-controller.php:284, app/controllers/frontend/create-post/submission-controller.php:272
 msgctxt "create post"
 msgid "Your post has been submitted for review."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:272
+#: app/controllers/frontend/create-post/submission-controller.php:282
 msgctxt "create post"
 msgid "Your post has been saved as draft."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:267
+#: app/controllers/frontend/create-post/submission-controller.php:277
 msgctxt "create post"
 msgid "Your changes have been applied."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:258
+#: app/controllers/frontend/create-post/submission-controller.php:268
 msgctxt "create post"
 msgid "Your changes have been submitted and will be applied once approved."
 msgstr ""
 
-#: app/controllers/frontend/create-post/submission-controller.php:256
+#: app/controllers/frontend/create-post/submission-controller.php:266
 msgctxt "create post"
 msgid "Your changes have been submitted for review."
 msgstr ""
 
-#: app/controllers/frontend/products/cart-controller.php:32, app/controllers/frontend/products/cart-controller.php:39, app/controllers/frontend/products/cart-controller.php:88, app/controllers/frontend/products/cart-controller.php:116, app/controllers/frontend/products/cart-controller.php:144, app/controllers/frontend/products/cart-controller.php:191, app/controllers/frontend/products/cart-controller.php:196, app/controllers/frontend/products/cart-controller.php:223, app/controllers/frontend/products/cart-controller.php:282, app/controllers/frontend/products/cart-controller.php:287, app/controllers/frontend/products/cart-controller.php:292, app/controllers/frontend/products/cart-controller.php:297, app/controllers/frontend/products/checkout-controller.php:19, app/controllers/frontend/products/checkout-controller.php:197, app/controllers/frontend/products/checkout-controller.php:229, app/controllers/frontend/products/checkout-controller.php:235, app/controllers/frontend/products/checkout-controller.php:243, app/controllers/frontend/products/checkout-controller.php:248, app/controllers/frontend/search/search-controller.php:162, app/controllers/frontend/products/orders/single-order-controller.php:259, app/controllers/frontend/products/orders/modules/booking-controller.php:21, app/controllers/frontend/products/orders/modules/booking-controller.php:108, app/controllers/frontend/products/orders/modules/deliverables-controller.php:21, app/controllers/frontend/products/orders/modules/deliverables-controller.php:188, app/controllers/frontend/products/orders/modules/promotion-controller.php:108, app/controllers/frontend/products/orders/modules/shipping-controller.php:29, app/controllers/frontend/products/orders/modules/shipping-controller.php:69, app/controllers/frontend/products/orders/modules/shipping-controller.php:109
+#: app/controllers/frontend/products/cart-controller.php:32, app/controllers/frontend/products/cart-controller.php:39, app/controllers/frontend/products/cart-controller.php:88, app/controllers/frontend/products/cart-controller.php:116, app/controllers/frontend/products/cart-controller.php:144, app/controllers/frontend/products/cart-controller.php:191, app/controllers/frontend/products/cart-controller.php:196, app/controllers/frontend/products/cart-controller.php:223, app/controllers/frontend/products/cart-controller.php:282, app/controllers/frontend/products/cart-controller.php:287, app/controllers/frontend/products/cart-controller.php:292, app/controllers/frontend/products/cart-controller.php:297, app/controllers/frontend/products/checkout-controller.php:19, app/controllers/frontend/products/checkout-controller.php:197, app/controllers/frontend/products/checkout-controller.php:229, app/controllers/frontend/products/checkout-controller.php:235, app/controllers/frontend/products/checkout-controller.php:243, app/controllers/frontend/products/checkout-controller.php:248, app/controllers/frontend/search/search-controller.php:162, app/controllers/frontend/products/orders/single-order-controller.php:259, app/controllers/frontend/products/orders/modules/booking-controller.php:21, app/controllers/frontend/products/orders/modules/booking-controller.php:108, app/controllers/frontend/products/orders/modules/deliverables-controller.php:21, app/controllers/frontend/products/orders/modules/deliverables-controller.php:188, app/controllers/frontend/products/orders/modules/promotion-controller.php:132, app/controllers/frontend/products/orders/modules/shipping-controller.php:29, app/controllers/frontend/products/orders/modules/shipping-controller.php:69, app/controllers/frontend/products/orders/modules/shipping-controller.php:109
 msgid "Could not process request"
 msgstr ""
 
@@ -2057,7 +2261,7 @@ msgctxt "fast checkout registration email"
 msgid "Your account has been created successfully.<br>Email: @email<br>Username: @username<br>Password: @password<br><a href=\"@login_url\">Login</a>"
 msgstr ""
 
-#: app/controllers/frontend/products/checkout-controller.php:190, app/controllers/frontend/products/checkout-controller.php:105, app/controllers/frontend/products/checkout-controller.php:269, app/modules/paid-listings/controllers/frontend/auth-controller.php:99, app/modules/paid-listings/controllers/frontend/auth-controller.php:107, app/modules/paid-listings/controllers/frontend/auth-controller.php:78, app/modules/paid-listings/controllers/frontend/auth-controller.php:76, app/modules/paid-listings/controllers/frontend/auth-controller.php:66, app/modules/paid-listings/controllers/frontend/auth-controller.php:74, app/modules/paid-listings/controllers/frontend/checkout-controller.php:317, app/modules/paid-listings/controllers/frontend/checkout-controller.php:205, app/modules/paid-listings/controllers/frontend/checkout-controller.php:146, app/modules/paid-listings/controllers/frontend/checkout-controller.php:85, app/modules/paid-memberships/controllers/frontend/auth-controller.php:59, app/modules/paid-memberships/controllers/frontend/checkout-controller.php:343
+#: app/controllers/frontend/products/checkout-controller.php:190, app/controllers/frontend/products/checkout-controller.php:105, app/controllers/frontend/products/checkout-controller.php:269, app/modules/paid-listings/controllers/frontend/auth-controller.php:129, app/modules/paid-listings/controllers/frontend/auth-controller.php:137, app/modules/paid-listings/controllers/frontend/auth-controller.php:77, app/modules/paid-listings/controllers/frontend/auth-controller.php:67, app/modules/paid-listings/controllers/frontend/auth-controller.php:75, app/modules/paid-listings/controllers/frontend/auth-controller.php:297, app/modules/paid-listings/controllers/frontend/auth-controller.php:305, app/modules/paid-listings/controllers/frontend/auth-controller.php:216, app/modules/paid-listings/controllers/frontend/auth-controller.php:206, app/modules/paid-listings/controllers/frontend/auth-controller.php:214, app/modules/paid-listings/controllers/frontend/checkout-controller.php:332, app/modules/paid-listings/controllers/frontend/checkout-controller.php:220, app/modules/paid-listings/controllers/frontend/checkout-controller.php:161, app/modules/paid-listings/controllers/frontend/checkout-controller.php:99, app/modules/paid-memberships/controllers/frontend/auth-controller.php:74, app/modules/paid-memberships/controllers/frontend/auth-controller.php:82, app/modules/paid-memberships/controllers/frontend/auth-controller.php:167, app/modules/paid-memberships/controllers/frontend/auth-controller.php:175, app/modules/paid-memberships/controllers/frontend/checkout-controller.php:343
 msgid "Could not process payment"
 msgstr ""
 
@@ -2276,194 +2480,224 @@ msgctxt "timeline"
 msgid "Could not retrieve reviews for post."
 msgstr ""
 
+#: app/modules/claim-listings/controllers/claim-listings-controller.php:48
+msgctxt "claim listings"
+msgid "Claim Request"
+msgstr ""
+
 #: app/modules/paddle-payments/payment-methods/paddle-payment.php:29
 msgctxt "payment methods"
 msgid "Paddle payment"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:96, app/modules/paddle-payments/payment-methods/paddle-subscription.php:130, app/modules/stripe-payments/payment-methods/stripe-payment.php:192, app/modules/stripe-payments/payment-methods/stripe-subscription.php:212, app/controllers/frontend/products/orders/single-order-controller.php:240, app/controllers/frontend/products/orders/single-order-controller.php:300
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:96, app/modules/paddle-payments/payment-methods/paddle-subscription.php:140, app/modules/stripe-payments/payment-methods/stripe-payment.php:192, app/modules/stripe-payments/payment-methods/stripe-subscription.php:212, app/controllers/frontend/products/orders/single-order-controller.php:240, app/controllers/frontend/products/orders/single-order-controller.php:300
 msgctxt "checkout"
 msgid "Something went wrong"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:229, app/modules/paddle-payments/payment-methods/paddle-subscription.php:312, app/modules/stripe-payments/controllers/frontend/order-controller.php:30
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:229, app/modules/paddle-payments/payment-methods/paddle-subscription.php:361, app/modules/stripe-payments/controllers/frontend/order-controller.php:31
 msgctxt "order customer details"
 msgid "Customer name"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:236, app/modules/paddle-payments/payment-methods/paddle-subscription.php:319, app/modules/stripe-payments/controllers/frontend/order-controller.php:37
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:236, app/modules/paddle-payments/payment-methods/paddle-subscription.php:368, app/modules/stripe-payments/controllers/frontend/order-controller.php:38
 msgctxt "order customer details"
 msgid "Email"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:248, app/modules/paddle-payments/payment-methods/paddle-subscription.php:331, app/modules/stripe-payments/controllers/frontend/order-controller.php:47
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:248, app/modules/paddle-payments/payment-methods/paddle-subscription.php:380, app/modules/stripe-payments/controllers/frontend/order-controller.php:48
 msgctxt "order customer details"
 msgid "Country"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:255, app/modules/paddle-payments/payment-methods/paddle-subscription.php:338, app/modules/stripe-payments/controllers/frontend/order-controller.php:54
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:255, app/modules/paddle-payments/payment-methods/paddle-subscription.php:387, app/modules/stripe-payments/controllers/frontend/order-controller.php:55
 msgctxt "order customer details"
 msgid "Address line 1"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:262, app/modules/paddle-payments/payment-methods/paddle-subscription.php:345, app/modules/stripe-payments/controllers/frontend/order-controller.php:61
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:262, app/modules/paddle-payments/payment-methods/paddle-subscription.php:394, app/modules/stripe-payments/controllers/frontend/order-controller.php:62
 msgctxt "order customer details"
 msgid "Address line 2"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:269, app/modules/paddle-payments/payment-methods/paddle-subscription.php:352, app/modules/stripe-payments/controllers/frontend/order-controller.php:68
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:269, app/modules/paddle-payments/payment-methods/paddle-subscription.php:401, app/modules/stripe-payments/controllers/frontend/order-controller.php:69
 msgctxt "order customer details"
 msgid "City"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:276, app/modules/paddle-payments/payment-methods/paddle-subscription.php:359, app/modules/stripe-payments/controllers/frontend/order-controller.php:75
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:276, app/modules/paddle-payments/payment-methods/paddle-subscription.php:408, app/modules/stripe-payments/controllers/frontend/order-controller.php:76
 msgctxt "order customer details"
 msgid "Postal code"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:283, app/modules/paddle-payments/payment-methods/paddle-subscription.php:366, app/modules/stripe-payments/controllers/frontend/order-controller.php:82
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:283, app/modules/paddle-payments/payment-methods/paddle-subscription.php:415, app/modules/stripe-payments/controllers/frontend/order-controller.php:83
 msgctxt "order customer details"
 msgid "State"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:292, app/modules/paddle-payments/payment-methods/paddle-subscription.php:375
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:292, app/modules/paddle-payments/payment-methods/paddle-subscription.php:424
 msgctxt "order customer details"
 msgid "Business name"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:299, app/modules/paddle-payments/payment-methods/paddle-subscription.php:382
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:299, app/modules/paddle-payments/payment-methods/paddle-subscription.php:431
 msgctxt "order customer details"
 msgid "Company number"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:306, app/modules/paddle-payments/payment-methods/paddle-subscription.php:389
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:306, app/modules/paddle-payments/payment-methods/paddle-subscription.php:438
 msgctxt "order customer details"
 msgid "VAT number"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-payment.php:319, app/modules/paddle-payments/payment-methods/paddle-subscription.php:609, app/modules/stripe-payments/payment-methods/stripe-payment.php:1060, app/modules/stripe-payments/payment-methods/stripe-subscription.php:842
+#: app/modules/paddle-payments/payment-methods/paddle-payment.php:319, app/modules/paddle-payments/payment-methods/paddle-subscription.php:658, app/modules/stripe-payments/payment-methods/stripe-payment.php:1060, app/modules/stripe-payments/payment-methods/stripe-subscription.php:928
 msgctxt "order customer actions"
 msgid "Customer portal"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:51
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:56
 msgctxt "payment methods"
 msgid "Paddle subscription"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:542, app/modules/paddle-payments/payment-methods/paddle-subscription.php:463, app/modules/paddle-payments/payment-methods/paddle-subscription.php:447, app/modules/stripe-payments/payment-methods/stripe-subscription.php:785, app/modules/stripe-payments/payment-methods/stripe-subscription.php:747
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:591, app/modules/paddle-payments/payment-methods/paddle-subscription.php:512, app/modules/paddle-payments/payment-methods/paddle-subscription.php:496, app/modules/stripe-payments/payment-methods/stripe-subscription.php:871, app/modules/stripe-payments/payment-methods/stripe-subscription.php:833
 msgctxt "order customer actions"
 msgid "Resume subscription"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:543, app/modules/stripe-payments/payment-methods/stripe-subscription.php:748
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:592, app/modules/stripe-payments/payment-methods/stripe-subscription.php:834
 msgctxt "order customer actions"
 msgid "Your subscription will resume immediately, and your payment method will be charged right away. Do you want to proceed?"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:564, app/modules/paddle-payments/payment-methods/paddle-subscription.php:521, app/modules/paddle-payments/payment-methods/paddle-subscription.php:426, app/modules/stripe-payments/payment-methods/stripe-subscription.php:822, app/modules/stripe-payments/payment-methods/stripe-subscription.php:766, app/modules/stripe-payments/payment-methods/stripe-subscription.php:728, app/modules/stripe-payments/payment-methods/stripe-subscription.php:688
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:613, app/modules/paddle-payments/payment-methods/paddle-subscription.php:570, app/modules/paddle-payments/payment-methods/paddle-subscription.php:475, app/modules/stripe-payments/payment-methods/stripe-subscription.php:908, app/modules/stripe-payments/payment-methods/stripe-subscription.php:852, app/modules/stripe-payments/payment-methods/stripe-subscription.php:814, app/modules/stripe-payments/payment-methods/stripe-subscription.php:774
 msgctxt "order customer actions"
 msgid "Cancel subscription"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:565, app/modules/paddle-payments/payment-methods/paddle-subscription.php:522, app/modules/paddle-payments/payment-methods/paddle-subscription.php:427, app/modules/stripe-payments/payment-methods/stripe-subscription.php:823, app/modules/stripe-payments/payment-methods/stripe-subscription.php:767, app/modules/stripe-payments/payment-methods/stripe-subscription.php:729, app/modules/stripe-payments/payment-methods/stripe-subscription.php:689
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:614, app/modules/paddle-payments/payment-methods/paddle-subscription.php:571, app/modules/paddle-payments/payment-methods/paddle-subscription.php:476, app/modules/stripe-payments/payment-methods/stripe-subscription.php:909, app/modules/stripe-payments/payment-methods/stripe-subscription.php:853, app/modules/stripe-payments/payment-methods/stripe-subscription.php:815, app/modules/stripe-payments/payment-methods/stripe-subscription.php:775
 msgctxt "order customer actions"
 msgid "Your subscription will be canceled immediately. Do you want to proceed?"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:479
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:528
 msgctxt "order customer actions"
 msgid "Pause subscription"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:480
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:529
 msgctxt "order customer actions"
 msgid "Your subscription will be paused at the end of the current billing period. Do you want to proceed?"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:500, app/modules/stripe-payments/payment-methods/stripe-subscription.php:801
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:549, app/modules/stripe-payments/payment-methods/stripe-subscription.php:887
 msgctxt "order customer actions"
 msgid "Cancel renewal"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:501, app/modules/stripe-payments/payment-methods/stripe-subscription.php:802
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:550, app/modules/stripe-payments/payment-methods/stripe-subscription.php:888
 msgctxt "order customer actions"
 msgid "Your subscription will be canceled at the end of the current billing period. Do you want to proceed?"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:407, app/modules/stripe-payments/payment-methods/stripe-subscription.php:707
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:456, app/modules/stripe-payments/payment-methods/stripe-subscription.php:793
 msgctxt "order customer actions"
 msgid "Activate now"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:408, app/modules/stripe-payments/payment-methods/stripe-subscription.php:708, app/modules/stripe-payments/payment-methods/stripe-subscription.php:655
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:457, app/modules/stripe-payments/payment-methods/stripe-subscription.php:794, app/modules/stripe-payments/payment-methods/stripe-subscription.php:741
 msgctxt "order customer actions"
 msgid "Your subscription will be activated immediately, and your payment method will be charged right away. Do you want to proceed?"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:594
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:643
 msgctxt "order customer actions"
 msgid "Update payment method"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:725
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:802
 msgctxt "order status"
 msgid "Subscription is canceled"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:727
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:804
 msgctxt "subscriptions"
 msgid "Canceled on %s"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:714, app/modules/stripe-payments/payment-methods/stripe-subscription.php:594
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:790, app/modules/stripe-payments/payment-methods/stripe-subscription.php:678
 msgctxt "order status"
 msgid "Subscription is past due"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:716, app/modules/stripe-payments/payment-methods/stripe-subscription.php:596
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:792, app/modules/stripe-payments/payment-methods/stripe-subscription.php:680
 msgctxt "subscriptions"
 msgid "Payment failed — update your card"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:698, app/modules/stripe-payments/payment-methods/stripe-subscription.php:551
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:793, app/modules/stripe-payments/payment-methods/stripe-subscription.php:681
+msgctxt "subscriptions"
+msgid "Payment failed"
+msgstr ""
+
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:774, app/modules/stripe-payments/payment-methods/stripe-subscription.php:605
 msgctxt "order status"
 msgid "Subscription is paused"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:701
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:777
 msgctxt "subscriptions"
 msgid "Paused on %s"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:681, app/modules/paddle-payments/payment-methods/paddle-subscription.php:667, app/modules/paddle-payments/payment-methods/paddle-subscription.php:653, app/modules/paddle-payments/payment-methods/paddle-subscription.php:636, app/modules/stripe-payments/payment-methods/stripe-subscription.php:578, app/modules/stripe-payments/payment-methods/stripe-subscription.php:564, app/modules/stripe-payments/payment-methods/stripe-subscription.php:535
-msgctxt "order status"
-msgid "Subscription is active"
-msgstr ""
-
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:684, app/modules/stripe-payments/payment-methods/stripe-subscription.php:581
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:728, app/modules/stripe-payments/payment-methods/stripe-subscription.php:630
 msgctxt "subscriptions"
 msgid "Next renewal on %s"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:670
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:745, app/modules/stripe-payments/payment-methods/stripe-subscription.php:650
+msgctxt "subscriptions"
+msgid "Next renewal on @date at @updated_amount"
+msgstr ""
+
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:760, app/modules/paddle-payments/payment-methods/paddle-subscription.php:716, app/modules/paddle-payments/payment-methods/paddle-subscription.php:702, app/modules/paddle-payments/payment-methods/paddle-subscription.php:685, app/modules/stripe-payments/payment-methods/stripe-subscription.php:665, app/modules/stripe-payments/payment-methods/stripe-subscription.php:618, app/modules/stripe-payments/payment-methods/stripe-subscription.php:589
+msgctxt "order status"
+msgid "Subscription is active"
+msgstr ""
+
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:719
 msgctxt "subscriptions"
 msgid "Pauses on %s"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:656, app/modules/stripe-payments/payment-methods/stripe-subscription.php:566
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:705, app/modules/stripe-payments/payment-methods/stripe-subscription.php:620
 msgctxt "subscriptions"
 msgid "Cancels on %s"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:635
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:684
 msgctxt "order status"
 msgid "Trial"
 msgstr ""
 
-#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:639, app/modules/stripe-payments/payment-methods/stripe-subscription.php:537
+#: app/modules/paddle-payments/payment-methods/paddle-subscription.php:688, app/modules/stripe-payments/payment-methods/stripe-subscription.php:591
 msgctxt "subscriptions"
 msgid "Trial ends on %s"
+msgstr ""
+
+#: app/modules/paid-listings/controllers/paid-listings-controller.php:63
+msgctxt "paid listings"
+msgid "Listing plan"
+msgstr ""
+
+#: app/modules/paid-listings/controllers/paid-listings-controller.php:89
+msgctxt "paid listings"
+msgid "Listing plan (Subscription)"
+msgstr ""
+
+#: app/modules/paid-memberships/controllers/paid-memberships-controller.php:44
+msgctxt "paid members"
+msgid "Membership plan"
 msgstr ""
 
 #: app/modules/stripe-connect/widgets/stripe-account-widget.php:2899
@@ -2496,42 +2730,42 @@ msgctxt "payment methods"
 msgid "Stripe subscription"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:620
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:705, app/modules/stripe-payments/payment-methods/stripe-subscription.php:707
 msgctxt "order status"
 msgid "Subscription canceled"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:607
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:692
 msgctxt "order status"
 msgid "Subscription unpaid"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:609
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:694
 msgctxt "subscriptions"
 msgid "Subscription has been deactivated due to failed renewal attempts."
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:522
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:576
 msgctxt "order status"
 msgid "Subscription incomplete"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:523
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:577
 msgctxt "subscriptions"
 msgid "First payment required to activate"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:513
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:567
 msgctxt "order status"
 msgid "Subscription expired"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:514
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:568
 msgctxt "subscriptions"
 msgid "Subscription expired after failed payment"
 msgstr ""
 
-#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:654
+#: app/modules/stripe-payments/payment-methods/stripe-subscription.php:740
 msgctxt "order customer actions"
 msgid "Pay now"
 msgstr ""
@@ -2738,7 +2972,7 @@ msgctxt "deleted user account"
 msgid "(deleted account)"
 msgstr ""
 
-#: app/controllers/frontend/products/orders/single-order-controller.php:20, app/controllers/frontend/products/orders/single-order-controller.php:266, app/controllers/frontend/products/orders/modules/booking-controller.php:29, app/controllers/frontend/products/orders/modules/booking-controller.php:116, app/controllers/frontend/products/orders/modules/deliverables-controller.php:29, app/controllers/frontend/products/orders/modules/deliverables-controller.php:101, app/controllers/frontend/products/orders/modules/deliverables-controller.php:197, app/controllers/frontend/products/orders/modules/promotion-controller.php:115, app/controllers/frontend/products/orders/modules/shipping-controller.php:36, app/controllers/frontend/products/orders/modules/shipping-controller.php:76, app/controllers/frontend/products/orders/modules/shipping-controller.php:116
+#: app/controllers/frontend/products/orders/single-order-controller.php:20, app/controllers/frontend/products/orders/single-order-controller.php:266, app/controllers/frontend/products/orders/modules/booking-controller.php:29, app/controllers/frontend/products/orders/modules/booking-controller.php:116, app/controllers/frontend/products/orders/modules/deliverables-controller.php:29, app/controllers/frontend/products/orders/modules/deliverables-controller.php:101, app/controllers/frontend/products/orders/modules/deliverables-controller.php:197, app/controllers/frontend/products/orders/modules/promotion-controller.php:139, app/controllers/frontend/products/orders/modules/shipping-controller.php:36, app/controllers/frontend/products/orders/modules/shipping-controller.php:76, app/controllers/frontend/products/orders/modules/shipping-controller.php:116
 msgctxt "orders"
 msgid "Missing order id."
 msgstr ""
@@ -2767,12 +3001,12 @@ msgctxt "deleted item"
 msgid "(deleted)"
 msgstr ""
 
-#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:29, app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:54, app/modules/paid-listings/controllers/frontend/checkout-controller.php:213
+#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:29, app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:54, app/modules/paid-listings/controllers/frontend/auth-controller.php:81, app/modules/paid-listings/controllers/frontend/auth-controller.php:220, app/modules/paid-listings/controllers/frontend/checkout-controller.php:228
 msgctxt "pricing plans"
 msgid "This item cannot be claimed."
 msgstr ""
 
-#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:36, app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:40, app/modules/paid-listings/controllers/frontend/auth-controller.php:82, app/modules/paid-listings/controllers/frontend/auth-controller.php:38, app/modules/paid-listings/controllers/frontend/auth-controller.php:43, app/modules/paid-listings/controllers/frontend/checkout-controller.php:296, app/modules/paid-listings/controllers/frontend/checkout-controller.php:259, app/modules/paid-listings/controllers/frontend/checkout-controller.php:219, app/modules/paid-listings/controllers/frontend/checkout-controller.php:223, app/modules/paid-listings/controllers/frontend/checkout-controller.php:159, app/modules/paid-listings/controllers/frontend/checkout-controller.php:182, app/modules/paid-listings/controllers/frontend/checkout-controller.php:165, app/modules/paid-listings/controllers/frontend/checkout-controller.php:169, app/modules/paid-listings/controllers/frontend/checkout-controller.php:123, app/modules/paid-listings/controllers/frontend/checkout-controller.php:99, app/modules/paid-listings/controllers/frontend/checkout-controller.php:103, app/modules/paid-listings/controllers/frontend/checkout-controller.php:36, app/modules/paid-listings/controllers/frontend/checkout-controller.php:62, app/modules/paid-listings/controllers/frontend/checkout-controller.php:42, app/modules/paid-listings/controllers/frontend/checkout-controller.php:46, app/modules/paid-listings/controllers/frontend/checkout-controller.php:51, app/modules/paid-memberships/controllers/frontend/cart-controller.php:33
+#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:36, app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:40, app/modules/paid-listings/controllers/frontend/auth-controller.php:112, app/modules/paid-listings/controllers/frontend/auth-controller.php:86, app/modules/paid-listings/controllers/frontend/auth-controller.php:39, app/modules/paid-listings/controllers/frontend/auth-controller.php:44, app/modules/paid-listings/controllers/frontend/auth-controller.php:280, app/modules/paid-listings/controllers/frontend/auth-controller.php:225, app/modules/paid-listings/controllers/frontend/auth-controller.php:166, app/modules/paid-listings/controllers/frontend/auth-controller.php:171, app/modules/paid-listings/controllers/frontend/checkout-controller.php:311, app/modules/paid-listings/controllers/frontend/checkout-controller.php:274, app/modules/paid-listings/controllers/frontend/checkout-controller.php:234, app/modules/paid-listings/controllers/frontend/checkout-controller.php:238, app/modules/paid-listings/controllers/frontend/checkout-controller.php:174, app/modules/paid-listings/controllers/frontend/checkout-controller.php:197, app/modules/paid-listings/controllers/frontend/checkout-controller.php:180, app/modules/paid-listings/controllers/frontend/checkout-controller.php:184, app/modules/paid-listings/controllers/frontend/checkout-controller.php:138, app/modules/paid-listings/controllers/frontend/checkout-controller.php:118, app/modules/paid-listings/controllers/frontend/checkout-controller.php:122, app/modules/paid-listings/controllers/frontend/checkout-controller.php:127, app/modules/paid-listings/controllers/frontend/checkout-controller.php:36, app/modules/paid-listings/controllers/frontend/checkout-controller.php:70, app/modules/paid-listings/controllers/frontend/checkout-controller.php:42, app/modules/paid-listings/controllers/frontend/checkout-controller.php:46, app/modules/paid-listings/controllers/frontend/checkout-controller.php:51, app/modules/paid-memberships/controllers/frontend/cart-controller.php:33
 msgctxt "pricing plans"
 msgid "This plan is not available."
 msgstr ""
@@ -2797,7 +3031,12 @@ msgctxt "claim request"
 msgid "Proof of ownership is required"
 msgstr ""
 
-#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:153, app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:144
+#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:153
+msgctxt "cart summary"
+msgid "Claim %s"
+msgstr ""
+
+#: app/modules/claim-listings/controllers/frontend/claim-checkout-controller.php:144
 msgctxt "cart summary"
 msgid "Claim listing"
 msgstr ""
@@ -3123,19 +3362,24 @@ msgctxt "listing plans"
 msgid "This plan can only be purchased once."
 msgstr ""
 
-#: app/modules/paid-listings/controllers/frontend/checkout-controller.php:93
+#: app/modules/paid-listings/controllers/frontend/checkout-controller.php:112
 msgctxt "pricing plans"
 msgid "This item cannot be relisted."
 msgstr ""
 
-#: app/modules/paid-listings/controllers/frontend/create-post-controller.php:26
+#: app/modules/paid-listings/controllers/frontend/create-post-controller.php:27
 msgctxt "paid listings"
 msgid "You need a plan to proceed"
 msgstr ""
 
-#: app/modules/paid-listings/controllers/frontend/create-post-controller.php:29
+#: app/modules/paid-listings/controllers/frontend/create-post-controller.php:30
 msgctxt "paid listings"
 msgid "View plans"
+msgstr ""
+
+#: app/modules/paid-listings/controllers/frontend/create-post-controller.php:106
+msgctxt "create post"
+msgid "You must relist this item to edit details."
 msgstr ""
 
 #: app/modules/paid-listings/controllers/frontend/order-controller.php:186
@@ -3178,7 +3422,7 @@ msgctxt "listing plan details"
 msgid "%d/%d used"
 msgstr ""
 
-#: app/modules/paid-listings/controllers/frontend/order-controller.php:265, app/modules/paid-listings/controllers/frontend/order-controller.php:272, app/controllers/frontend/products/orders/modules/booking-controller.php:35, app/controllers/frontend/products/orders/modules/booking-controller.php:39, app/controllers/frontend/products/orders/modules/booking-controller.php:44, app/controllers/frontend/products/orders/modules/booking-controller.php:49, app/controllers/frontend/products/orders/modules/booking-controller.php:61, app/controllers/frontend/products/orders/modules/booking-controller.php:65, app/controllers/frontend/products/orders/modules/booking-controller.php:71, app/controllers/frontend/products/orders/modules/booking-controller.php:76, app/controllers/frontend/products/orders/modules/booking-controller.php:122, app/controllers/frontend/products/orders/modules/booking-controller.php:126, app/controllers/frontend/products/orders/modules/booking-controller.php:131, app/controllers/frontend/products/orders/modules/booking-controller.php:136, app/controllers/frontend/products/orders/modules/booking-controller.php:148, app/controllers/frontend/products/orders/modules/booking-controller.php:152, app/controllers/frontend/products/orders/modules/booking-controller.php:158, app/controllers/frontend/products/orders/modules/booking-controller.php:164, app/controllers/frontend/products/orders/modules/deliverables-controller.php:35, app/controllers/frontend/products/orders/modules/deliverables-controller.php:40, app/controllers/frontend/products/orders/modules/deliverables-controller.php:107, app/controllers/frontend/products/orders/modules/deliverables-controller.php:111, app/controllers/frontend/products/orders/modules/deliverables-controller.php:116, app/controllers/frontend/products/orders/modules/deliverables-controller.php:122, app/controllers/frontend/products/orders/modules/deliverables-controller.php:145, app/controllers/frontend/products/orders/modules/deliverables-controller.php:203, app/controllers/frontend/products/orders/modules/deliverables-controller.php:208, app/controllers/frontend/products/orders/modules/promotion-controller.php:125, app/controllers/frontend/products/orders/modules/shipping-controller.php:42, app/controllers/frontend/products/orders/modules/shipping-controller.php:46, app/controllers/frontend/products/orders/modules/shipping-controller.php:82, app/controllers/frontend/products/orders/modules/shipping-controller.php:122, app/controllers/frontend/products/orders/modules/shipping-controller.php:126
+#: app/modules/paid-listings/controllers/frontend/order-controller.php:265, app/modules/paid-listings/controllers/frontend/order-controller.php:272, app/controllers/frontend/products/orders/modules/booking-controller.php:35, app/controllers/frontend/products/orders/modules/booking-controller.php:39, app/controllers/frontend/products/orders/modules/booking-controller.php:44, app/controllers/frontend/products/orders/modules/booking-controller.php:49, app/controllers/frontend/products/orders/modules/booking-controller.php:61, app/controllers/frontend/products/orders/modules/booking-controller.php:65, app/controllers/frontend/products/orders/modules/booking-controller.php:71, app/controllers/frontend/products/orders/modules/booking-controller.php:76, app/controllers/frontend/products/orders/modules/booking-controller.php:122, app/controllers/frontend/products/orders/modules/booking-controller.php:126, app/controllers/frontend/products/orders/modules/booking-controller.php:131, app/controllers/frontend/products/orders/modules/booking-controller.php:136, app/controllers/frontend/products/orders/modules/booking-controller.php:148, app/controllers/frontend/products/orders/modules/booking-controller.php:152, app/controllers/frontend/products/orders/modules/booking-controller.php:158, app/controllers/frontend/products/orders/modules/booking-controller.php:164, app/controllers/frontend/products/orders/modules/deliverables-controller.php:35, app/controllers/frontend/products/orders/modules/deliverables-controller.php:40, app/controllers/frontend/products/orders/modules/deliverables-controller.php:107, app/controllers/frontend/products/orders/modules/deliverables-controller.php:111, app/controllers/frontend/products/orders/modules/deliverables-controller.php:116, app/controllers/frontend/products/orders/modules/deliverables-controller.php:122, app/controllers/frontend/products/orders/modules/deliverables-controller.php:145, app/controllers/frontend/products/orders/modules/deliverables-controller.php:203, app/controllers/frontend/products/orders/modules/deliverables-controller.php:208, app/controllers/frontend/products/orders/modules/promotion-controller.php:149, app/controllers/frontend/products/orders/modules/shipping-controller.php:42, app/controllers/frontend/products/orders/modules/shipping-controller.php:46, app/controllers/frontend/products/orders/modules/shipping-controller.php:82, app/controllers/frontend/products/orders/modules/shipping-controller.php:122, app/controllers/frontend/products/orders/modules/shipping-controller.php:126
 msgctxt "orders"
 msgid "Permission check failed."
 msgstr ""
@@ -3189,7 +3433,7 @@ msgid "Could not retrieve posts."
 msgstr ""
 
 #: app/modules/paid-listings/controllers/frontend/relist-controller.php:30
-msgid "Only expired posts can be relisted using this action."
+msgid "Only expired/rejected posts can be relisted using this action."
 msgstr ""
 
 #: app/modules/paid-listings/controllers/frontend/relist-controller.php:47
@@ -3230,7 +3474,7 @@ msgctxt "listing plans"
 msgid "Current plan"
 msgstr ""
 
-#: app/modules/paid-memberships/controllers/frontend/auth-controller.php:29, app/modules/paid-memberships/controllers/frontend/cart-controller.php:37, app/modules/paid-memberships/controllers/frontend/checkout-controller.php:31, app/modules/paid-memberships/controllers/frontend/checkout-controller.php:384
+#: app/modules/paid-memberships/controllers/frontend/auth-controller.php:44, app/modules/paid-memberships/controllers/frontend/auth-controller.php:132, app/modules/paid-memberships/controllers/frontend/cart-controller.php:37, app/modules/paid-memberships/controllers/frontend/checkout-controller.php:31, app/modules/paid-memberships/controllers/frontend/checkout-controller.php:384
 msgctxt "pricing plans"
 msgid "This plan is no longer available."
 msgstr ""
@@ -3314,37 +3558,37 @@ msgctxt "current plan"
 msgid "Current plan"
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:53, app/modules/paid-memberships/templates/frontend/current-plan-widget.php:29
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:58, app/modules/paid-memberships/templates/frontend/current-plan-widget.php:33
 msgctxt "current plan"
 msgid "Your current plan is @plan_label"
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:62, app/modules/paid-memberships/templates/frontend/current-plan-widget.php:44
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:67, app/modules/paid-memberships/templates/frontend/current-plan-widget.php:49
 msgctxt "current plan"
 msgid "Switch plan"
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:37
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:42
 msgctxt "current plan"
 msgid "Manage subscription"
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:81
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:86
 msgctxt "current role"
 msgid "You do not have a role assigned currently."
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:90
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:95
 msgctxt "current role"
 msgid "Your current role is @role_label"
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:106
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:111
 msgctxt "current role"
 msgid "Switch to @role_label"
 msgstr ""
 
-#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:86
+#: app/modules/paid-memberships/templates/frontend/current-plan-widget.php:91
 msgctxt "current role"
 msgid "Role switching is disabled for admin accounts."
 msgstr ""
@@ -3619,42 +3863,42 @@ msgctxt "stripe vendor shipping"
 msgid "Add shipping zone"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:89
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:90
 msgctxt "order customer details"
 msgid "Phone number"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:111
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:112
 msgctxt "order shipping details"
 msgid "Recipient name"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:121
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:122
 msgctxt "order shipping details"
 msgid "Country"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:128
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:129
 msgctxt "order shipping details"
 msgid "Address line 1"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:135
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:136
 msgctxt "order shipping details"
 msgid "Address line 2"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:142
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:143
 msgctxt "order shipping details"
 msgid "City"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:149
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:150
 msgctxt "order shipping details"
 msgid "Postal code"
 msgstr ""
 
-#: app/modules/stripe-payments/controllers/frontend/order-controller.php:156
+#: app/modules/stripe-payments/controllers/frontend/order-controller.php:157
 msgctxt "order shipping details"
 msgid "State"
 msgstr ""
@@ -3749,8 +3993,23 @@ msgctxt "order downloads"
 msgid "Share files with customer"
 msgstr ""
 
-#: app/controllers/frontend/products/orders/modules/promotion-controller.php:161
+#: app/controllers/frontend/products/orders/modules/promotion-controller.php:24
+msgctxt "paid listings"
+msgid "Listing Promotion"
+msgstr ""
+
+#: app/controllers/frontend/products/orders/modules/promotion-controller.php:185
 msgid "Something went wrong"
+msgstr ""
+
+#: app/controllers/frontend/products/orders/modules/promotion-controller.php:212
+msgctxt "promotion order description"
+msgid "Promotion"
+msgstr ""
+
+#: app/controllers/frontend/products/orders/modules/promotion-controller.php:203
+msgctxt "promotion order description"
+msgid "Promotion: @package_label"
 msgstr ""
 
 #: app/controllers/frontend/products/orders/modules/shipping-controller.php:175, templates/widgets/orders/shipping-details.php:15
@@ -4017,52 +4276,52 @@ msgctxt "countdown widget"
 msgid "Seconds"
 msgstr ""
 
-#: templates/widgets/create-post.php:34
+#: templates/widgets/create-post.php:35
 msgctxt "create post"
 msgid "View your profile"
 msgstr ""
 
-#: templates/widgets/create-post.php:37
+#: templates/widgets/create-post.php:38
 msgctxt "create post"
 msgid "View"
 msgstr ""
 
-#: templates/widgets/create-post.php:46
+#: templates/widgets/create-post.php:47
 msgctxt "create post"
 msgid "Back to editing"
 msgstr ""
 
-#: templates/widgets/create-post.php:64
+#: templates/widgets/create-post.php:65
 msgctxt "create post"
 msgid "Save as draft"
 msgstr ""
 
-#: templates/widgets/create-post.php:69, templates/widgets/create-post.php:156
+#: templates/widgets/create-post.php:70, templates/widgets/create-post.php:157
 msgctxt "create post"
 msgid "Previous step"
 msgstr ""
 
-#: templates/widgets/create-post.php:72, templates/widgets/create-post.php:161
+#: templates/widgets/create-post.php:73, templates/widgets/create-post.php:162
 msgctxt "create post"
 msgid "Next step"
 msgstr ""
 
-#: templates/widgets/create-post.php:135, templates/widgets/create-post/repeater-field.php:48, templates/widgets/create-post/texteditor-field.php:9, templates/widgets/create-post/texteditor-field.php:35
+#: templates/widgets/create-post.php:136, templates/widgets/create-post/repeater-field.php:48, templates/widgets/create-post/texteditor-field.php:9, templates/widgets/create-post/texteditor-field.php:35
 msgctxt "create post"
 msgid "Optional"
 msgstr ""
 
-#: templates/widgets/create-post.php:178, templates/widgets/create-post.php:193
+#: templates/widgets/create-post.php:179, templates/widgets/create-post.php:194
 msgctxt "create post"
 msgid "Please wait..."
 msgstr ""
 
-#: templates/widgets/create-post.php:183
+#: templates/widgets/create-post.php:184
 msgctxt "create post"
 msgid "Publish"
 msgstr ""
 
-#: templates/widgets/create-post.php:198
+#: templates/widgets/create-post.php:199
 msgctxt "create post"
 msgid "Save changes"
 msgstr ""
@@ -4258,7 +4517,7 @@ msgctxt "delete post action"
 msgid "Are you sure?"
 msgstr ""
 
-#: templates/widgets/advanced-list/edit-post-action.php:22
+#: templates/widgets/advanced-list/edit-post-action.php:26
 msgctxt "edit post action"
 msgid "Edit"
 msgstr ""
@@ -4518,7 +4777,7 @@ msgctxt "auth"
 msgid "Enter code"
 msgstr ""
 
-#: templates/widgets/login/confirm-registration-screen.php:31, templates/widgets/login/recover/confirm-screen.php:29
+#: templates/widgets/login/confirm-registration-screen.php:31
 msgctxt "auth"
 msgid "Submit"
 msgstr ""
@@ -4531,6 +4790,56 @@ msgstr ""
 #: templates/widgets/login/confirm-registration-screen.php:43
 msgctxt "auth"
 msgid "Resend email"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:8
+msgctxt "auth"
+msgid "Two-Factor Authentication"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:12
+msgctxt "auth"
+msgid "Enter the verification code from your authenticator app."
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:16
+msgctxt "auth"
+msgid "Backup Code"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:16
+msgctxt "auth"
+msgid "Verification Code"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:23
+msgctxt "auth"
+msgid "Enter backup code"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:23, templates/widgets/login/security/2fa-setup-screen.php:31
+msgctxt "auth"
+msgid "Enter 6-digit code"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:42
+msgctxt "auth"
+msgid "Trust this device for 30 days"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:49
+msgctxt "auth"
+msgid "Verify"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:56
+msgctxt "auth"
+msgid "Use authenticator code"
+msgstr ""
+
+#: templates/widgets/login/login-2fa-verify-screen.php:56
+msgctxt "auth"
+msgid "Use backup code instead"
 msgstr ""
 
 #: templates/widgets/login/login-screen.php:15, templates/widgets/login/register-screen.php:28
@@ -4558,27 +4867,27 @@ msgctxt "auth"
 msgid "Password"
 msgstr ""
 
-#: templates/widgets/login/login-screen.php:48
+#: templates/widgets/login/login-screen.php:51
 msgctxt "auth"
 msgid "Log in"
 msgstr ""
 
-#: templates/widgets/login/login-screen.php:53
+#: templates/widgets/login/login-screen.php:56
 msgctxt "auth"
 msgid "Forgot password?"
 msgstr ""
 
-#: templates/widgets/login/login-screen.php:54
+#: templates/widgets/login/login-screen.php:57
 msgctxt "auth"
 msgid "Recover account"
 msgstr ""
 
-#: templates/widgets/login/login-screen.php:61
+#: templates/widgets/login/login-screen.php:64
 msgctxt "auth"
 msgid "Don't have an account?"
 msgstr ""
 
-#: templates/widgets/login/login-screen.php:66, templates/widgets/login/register-screen.php:267
+#: templates/widgets/login/login-screen.php:69, templates/widgets/login/register-screen.php:270
 msgctxt "auth"
 msgid "Sign up"
 msgstr ""
@@ -4598,22 +4907,22 @@ msgctxt "auth"
 msgid "Or enter your details"
 msgstr ""
 
-#: templates/widgets/login/register-screen.php:110, templates/widgets/login/register-screen.php:125, templates/widgets/login/register-screen.php:140, templates/widgets/login/register-screen.php:161, templates/widgets/login/register-screen.php:176, templates/widgets/login/register-screen.php:194, templates/widgets/login/register-screen.php:213, templates/widgets/login/register/date-field.php:10, templates/widgets/login/register/file-field.php:10, templates/widgets/login/register/multiselect-field.php:10, templates/widgets/login/register/select-field.php:10, templates/widgets/login/register/taxonomy-field.php:10
+#: templates/widgets/login/register-screen.php:113, templates/widgets/login/register-screen.php:128, templates/widgets/login/register-screen.php:143, templates/widgets/login/register-screen.php:164, templates/widgets/login/register-screen.php:179, templates/widgets/login/register-screen.php:197, templates/widgets/login/register-screen.php:216, templates/widgets/login/register/date-field.php:10, templates/widgets/login/register/file-field.php:10, templates/widgets/login/register/multiselect-field.php:10, templates/widgets/login/register/select-field.php:9, templates/widgets/login/register/taxonomy-field.php:10
 msgctxt "auth"
 msgid "Optional"
 msgstr ""
 
-#: templates/widgets/login/register-screen.php:256
+#: templates/widgets/login/register-screen.php:259
 msgctxt "auth"
 msgid "I agree to the <a:terms>Terms and Conditions</a> and <a:privacy>Privacy Policy</a>"
 msgstr ""
 
-#: templates/widgets/login/register-screen.php:274
+#: templates/widgets/login/register-screen.php:277
 msgctxt "auth"
 msgid "Have an account already?"
 msgstr ""
 
-#: templates/widgets/login/register-screen.php:275
+#: templates/widgets/login/register-screen.php:278
 msgctxt "auth"
 msgid "Log in instead"
 msgstr ""
@@ -4911,17 +5220,17 @@ msgctxt "notifications"
 msgid "No notifications received"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/base-price-field.php:7, templates/widgets/create-post/product-field/addons/custom-select.php:75, templates/widgets/create-post/product-field/addons/numeric.php:39, templates/widgets/create-post/product-field/addons/select.php:60
+#: templates/widgets/create-post/product-field/base-price-field.php:8, templates/widgets/create-post/product-field/addons/custom-select.php:75, templates/widgets/create-post/product-field/addons/numeric.php:39, templates/widgets/create-post/product-field/addons/select.php:60
 msgctxt "product field"
 msgid "Price"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/base-price-field.php:11, templates/widgets/create-post/product-field/base-price-field.php:22, templates/widgets/create-post/product-field/addons/custom-select.php:77, templates/widgets/create-post/product-field/addons/numeric.php:45, templates/widgets/create-post/product-field/addons/select.php:62, templates/widgets/create-post/product-field/addons/switcher.php:30, templates/widgets/create-post/product-field/variations/variation-base-price.php:11, templates/widgets/create-post/product-field/variations/variation-base-price.php:22
+#: templates/widgets/create-post/product-field/base-price-field.php:21, templates/widgets/create-post/product-field/base-price-field.php:32, templates/widgets/create-post/product-field/addons/custom-select.php:77, templates/widgets/create-post/product-field/addons/numeric.php:45, templates/widgets/create-post/product-field/addons/select.php:62, templates/widgets/create-post/product-field/addons/switcher.php:30, templates/widgets/create-post/product-field/variations/variation-base-price.php:11, templates/widgets/create-post/product-field/variations/variation-base-price.php:22
 msgctxt "product field"
 msgid "Add price"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/base-price-field.php:18
+#: templates/widgets/create-post/product-field/base-price-field.php:28
 msgctxt "product field"
 msgid "Discount price"
 msgstr ""
@@ -4931,17 +5240,17 @@ msgctxt "product field custom prices"
 msgid "Enable custom prices"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/custom-prices-field.php:33
+#: templates/widgets/create-post/product-field/custom-prices-field.php:41
 msgctxt "product field custom prices"
 msgid "(untitled)"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/custom-prices-field.php:59
+#: templates/widgets/create-post/product-field/custom-prices-field.php:67
 msgctxt "product field custom prices"
 msgid "Create custom pricing"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/deliverables-field.php:10
+#: templates/widgets/create-post/product-field/deliverables-field.php:11
 msgctxt "product field downloads"
 msgid "Upload files"
 msgstr ""
@@ -4951,17 +5260,17 @@ msgctxt "product field shipping"
 msgid "Enable shipping"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/shipping-field.php:19
+#: templates/widgets/create-post/product-field/shipping-field.php:27
 msgctxt "product field shipping"
 msgid "Shipping class"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/shipping-field.php:24
+#: templates/widgets/create-post/product-field/shipping-field.php:32
 msgctxt "product field shipping"
 msgid "Default"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/shipping-field.php:27
+#: templates/widgets/create-post/product-field/shipping-field.php:35
 msgctxt "product field shipping"
 msgid "None"
 msgstr ""
@@ -4971,52 +5280,52 @@ msgctxt "product field stock"
 msgid "Manage stock"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/stock-field.php:19
+#: templates/widgets/create-post/product-field/stock-field.php:27
 msgctxt "product field stock"
 msgid "Stock"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/stock-field.php:20
+#: templates/widgets/create-post/product-field/stock-field.php:28
 msgctxt "product field stock"
 msgid "Set quantity"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/stock-field.php:23
+#: templates/widgets/create-post/product-field/stock-field.php:31
 msgctxt "product field stock"
 msgid "SKU"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/stock-field.php:24
+#: templates/widgets/create-post/product-field/stock-field.php:32
 msgctxt "product field stock"
 msgid "Stock-keeping unit"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/stock-field.php:34
+#: templates/widgets/create-post/product-field/stock-field.php:42
 msgctxt "product field stock"
 msgid "Limit purchases to 1 item per order"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/subscription-interval-field.php:7
+#: templates/widgets/create-post/product-field/subscription-interval-field.php:8
 msgctxt "product field subscriptions"
 msgid "Subscription interval"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/subscription-interval-field.php:15
+#: templates/widgets/create-post/product-field/subscription-interval-field.php:25
 msgctxt "product field subscriptions"
 msgid "Day(s)"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/subscription-interval-field.php:16
+#: templates/widgets/create-post/product-field/subscription-interval-field.php:26
 msgctxt "product field subscriptions"
 msgid "Week(s)"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/subscription-interval-field.php:17
+#: templates/widgets/create-post/product-field/subscription-interval-field.php:27
 msgctxt "product field subscriptions"
 msgid "Month(s)"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/subscription-interval-field.php:18
+#: templates/widgets/create-post/product-field/subscription-interval-field.php:28
 msgctxt "product field subscriptions"
 msgid "Year(s)"
 msgstr ""
@@ -5026,22 +5335,22 @@ msgctxt "product field variations"
 msgid "Variations"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/variations-field.php:14
+#: templates/widgets/create-post/product-field/variations-field.php:15
 msgctxt "product field variations"
 msgid "Product variations are automatically generated based on your attributes.<br><br>An individual variation requires a price to be available for purchase.<br><br>Variations without a price, are automatically disabled upon saving changes"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/variations-field.php:33
+#: templates/widgets/create-post/product-field/variations-field.php:34
 msgctxt "product field variations"
 msgid "Out of stock"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/variations-field.php:47
+#: templates/widgets/create-post/product-field/variations-field.php:48
 msgctxt "product field variations"
 msgid "No price added"
 msgstr ""
 
-#: templates/widgets/create-post/product-field/variations-field.php:72, templates/widgets/create-post/product-field/variations/variation-bulk-settings.php:18
+#: templates/widgets/create-post/product-field/variations-field.php:73, templates/widgets/create-post/product-field/variations/variation-bulk-settings.php:18
 msgctxt "product field variations"
 msgid "Image"
 msgstr ""
@@ -5054,6 +5363,11 @@ msgstr ""
 #: templates/widgets/login/recover/confirm-screen.php:17
 msgctxt "auth"
 msgid "Please type the recovery code which was sent to your email"
+msgstr ""
+
+#: templates/widgets/login/recover/confirm-screen.php:29
+msgctxt "auth"
+msgid "Confirm"
 msgstr ""
 
 #: templates/widgets/login/recover/confirm-screen.php:35
@@ -5106,6 +5420,101 @@ msgctxt "auth"
 msgid "Save changes"
 msgstr ""
 
+#: templates/widgets/login/security/2fa-backup-codes-screen.php:8
+msgctxt "auth"
+msgid "Backup Recovery Codes"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-backup-codes-screen.php:12
+msgctxt "auth"
+msgid "Save these backup codes in a safe place! Each code can only be used once. If you lose access to your authenticator app, you can use these codes to log in."
+msgstr ""
+
+#: templates/widgets/login/security/2fa-backup-codes-screen.php:26
+msgctxt "auth"
+msgid "Copy codes"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-disable-screen.php:8
+msgctxt "auth"
+msgid "Disable Two-Factor Authentication"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-disable-screen.php:13
+msgctxt "auth"
+msgid "Confirm your password"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-disable-screen.php:16, templates/widgets/login/security/delete-account-screen.php:14
+msgctxt "auth"
+msgid "Enter your password"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-disable-screen.php:23, templates/widgets/login/security/2fa-manage-screen.php:39
+msgctxt "auth"
+msgid "Disable 2FA"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-manage-screen.php:8
+msgctxt "auth"
+msgid "Authenticator is enabled!"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-manage-screen.php:12
+msgctxt "auth"
+msgid "Two factor authentication is enabled when logging in to your account."
+msgstr ""
+
+#: templates/widgets/login/security/2fa-manage-screen.php:18
+msgctxt "auth"
+msgid "Trusted devices:"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-manage-screen.php:19
+msgctxt "auth"
+msgid "Backup codes remaining:"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-manage-screen.php:25
+msgctxt "auth"
+msgid "Generate new backup codes"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-manage-screen.php:32
+msgctxt "auth"
+msgid "Remove all trusted devices"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-setup-screen.php:8
+msgctxt "auth"
+msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-setup-screen.php:12
+msgctxt "auth"
+msgid "1. Scan the QR code below with your preferred authenticator app to set up two-factor authentication."
+msgstr ""
+
+#: templates/widgets/login/security/2fa-setup-screen.php:16
+msgctxt "auth"
+msgid "QR Code"
+msgstr ""
+
+#: templates/widgets/login/security/2fa-setup-screen.php:20
+msgctxt "auth"
+msgid "Or manually add this code in your authenticator app."
+msgstr ""
+
+#: templates/widgets/login/security/2fa-setup-screen.php:28
+msgctxt "auth"
+msgid "2. Enter the 6-digit code from your authenticator app to verify the setup."
+msgstr ""
+
+#: templates/widgets/login/security/2fa-setup-screen.php:38
+msgctxt "auth"
+msgid "Enable 2FA"
+msgstr ""
+
 #: templates/widgets/login/security/delete-account-confirm-screen.php:8
 msgctxt "auth"
 msgid "This will irreversibly delete your account and all associated data. Are you sure you want to proceed?"
@@ -5126,17 +5535,12 @@ msgctxt "auth"
 msgid "Delete account & data"
 msgstr ""
 
-#: templates/widgets/login/security/delete-account-screen.php:14
-msgctxt "auth"
-msgid "Enter your password"
-msgstr ""
-
 #: templates/widgets/login/security/delete-account-screen.php:23, templates/widgets/login/security/privacy-screen.php:43
 msgctxt "auth"
 msgid "Delete my account"
 msgstr ""
 
-#: templates/widgets/login/security/privacy-screen.php:9, templates/widgets/login/security/security-screen.php:25
+#: templates/widgets/login/security/privacy-screen.php:9, templates/widgets/login/security/security-screen.php:31
 msgctxt "auth"
 msgid "Privacy"
 msgstr ""
@@ -5171,7 +5575,12 @@ msgctxt "auth"
 msgid "Update password"
 msgstr ""
 
-#: templates/widgets/login/security/security-screen.php:31
+#: templates/widgets/login/security/security-screen.php:25
+msgctxt "auth"
+msgid "Authenticator"
+msgstr ""
+
+#: templates/widgets/login/security/security-screen.php:37
 msgctxt "auth"
 msgid "Log out"
 msgstr ""

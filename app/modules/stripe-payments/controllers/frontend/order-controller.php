@@ -11,6 +11,7 @@ class Order_Controller extends \Voxel\Controllers\Base_Controller {
 	protected function hooks() {
 		$this->filter( 'voxel/order/customer_details', '@add_customer_details', 10, 2 );
 		$this->filter( 'voxel/order/shipping_details', '@add_shipping_details', 10, 2 );
+		$this->filter( 'voxel/paid_members/subscriptions/status_message', '@set_customer_status_message', 10, 2 );
 	}
 
 	protected function add_customer_details( $details, $order ) {
@@ -159,6 +160,20 @@ class Order_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		return $details;
+	}
+
+	protected function set_customer_status_message( $message, $membership ) {
+		$payment_method = $membership->get_payment_method();
+		if ( ! ( $payment_method && $payment_method->get_type() === 'stripe_subscription' ) ) {
+			return $message;
+		}
+
+		$state = $payment_method->get_state();
+		if ( empty( $state['message'] ) ) {
+			return $message;
+		}
+
+		return $state['message'];
 	}
 
 }

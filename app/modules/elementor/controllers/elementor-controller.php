@@ -62,10 +62,11 @@ class Elementor_Controller extends \Voxel\Controllers\Base_Controller {
 
 
 
-		$this->on( 'elementor/element/image/section_style_image/before_section_end', '@custom_image_controls' );
-		$this->on( 'elementor/element/heading/section_title/before_section_end', '@custom_heading_controls' );
-		$this->on( 'elementor/element/text-editor/section_editor/before_section_end', '@custom_text_editor_controls' );
-		$this->on( 'elementor/element/icon/section_style_icon/before_section_end', '@custom_icon_controls' );
+	$this->on( 'elementor/element/image/section_style_image/before_section_end', '@custom_image_controls' );
+	$this->on( 'elementor/element/heading/section_title/before_section_end', '@custom_heading_controls' );
+	$this->on( 'elementor/element/text-editor/section_editor/before_section_end', '@custom_text_editor_controls' );
+	$this->on( 'elementor/element/icon/section_style_icon/before_section_end', '@custom_icon_controls' );
+	$this->on( 'elementor/element/button/section_style/before_section_end', '@custom_button_icon_controls' );
 
 		$this->on( 'elementor/theme/register_locations', '@register_locations' );
 
@@ -736,6 +737,24 @@ class Elementor_Controller extends \Voxel\Controllers\Base_Controller {
 			'return_value' => 'revert-layer',
 			'selectors' => [
 				'{{WRAPPER}} path' => 'fill: {{VALUE}};',
+			],
+		] );
+	}
+
+	protected function custom_button_icon_controls( $widget ) {
+		$widget->add_control( 'vx_button_icon_color', [
+			'label' => __( 'Icon Color', 'voxel-backend' ),
+			'type' => \Elementor\Controls_Manager::COLOR,
+			'selectors' => [
+				'{{WRAPPER}} svg' => 'fill: {{VALUE}};',
+			],
+		] );
+
+		$widget->add_control( 'vx_button_icon_hover_color', [
+			'label' => __( 'Icon Hover Color', 'voxel-backend' ),
+			'type' => \Elementor\Controls_Manager::COLOR,
+			'selectors' => [
+				'{{WRAPPER}} .elementor-button:hover svg' => 'fill: {{VALUE}};',
 			],
 		] );
 	}

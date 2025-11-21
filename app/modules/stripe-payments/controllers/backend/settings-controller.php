@@ -22,6 +22,8 @@ class Settings_Controller extends \Voxel\Controllers\Base_Controller {
 		$this->on( 'voxel/backend/view_order/details/after', '@order_details' );
 		$this->on( 'voxel/backend/view_order/customer_details/after', '@order_customer_details', 10, 2 );
 		$this->on( 'voxel/backend/view_order/vendor_details/after', '@order_vendor_details', 10, 2 );
+
+		$this->on( 'voxel/backend/paid_members_table/price/after', '@paid_members_table_price_after', 10, 2 );
 	}
 
 	protected function setup_webhook() {
@@ -251,6 +253,20 @@ class Settings_Controller extends \Voxel\Controllers\Base_Controller {
 					</td>
 				</tr>
 			<?php endif ?>
+
+			<?php if ( $state = $payment_method->get_state() ): ?>
+				<?php if ( ! empty( $state['admin_message'] ) ): ?>
+					<tr>
+						<th></th>
+						<td><?= esc_html( $state['admin_message'] ) ?></td>
+					</tr>
+				<?php elseif ( ! empty( $state['message'] ) ): ?>
+					<tr>
+						<th></th>
+						<td><?= esc_html( $state['message'] ) ?></td>
+					</tr>
+				<?php endif ?>
+			<?php endif ?>
 		<?php elseif ( $payment_method->get_type() === 'stripe_transfer' ): ?>
 			<?php if ( $transaction_id = $order->get_transaction_id() ): ?>
 				<tr>
@@ -316,5 +332,18 @@ class Settings_Controller extends \Voxel\Controllers\Base_Controller {
 				</tr>
 			<?php endif ?>
 		<?php endif;
+	}
+
+	protected function paid_members_table_price_after( \Voxel\Order $order, $payment_method ) {
+		if ( $payment_method->get_type() !== 'stripe_subscription' ) {
+			return;
+		}
+
+		$state = $payment_method->get_state();
+		if ( ! empty( $state['admin_message'] ) ) {
+			echo '<br>' . esc_html( $state['admin_message'] );
+		} elseif ( ! empty( $state['message'] ) ) {
+			echo '<br>' . esc_html( $state['message'] );
+		}
 	}
 }

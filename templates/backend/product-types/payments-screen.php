@@ -48,28 +48,26 @@ if ( ! defined('ABSPATH') ) {
 
 						<template v-for="provider in props.providers">
 							<div class="vx-panel" :class="['provider-' + provider.key, {active: config.provider === provider.key}]" style="height: 100px;">
-
-									<template v-if="provider.key === 'stripe'">
-										<div class="panel-image stripe-panel">
-											<?php \Voxel\svg( 'stripe-logo.svg' ) ?>
-										</div>
-									</template>
-									<template v-else-if="provider.key === 'paddle'">
-
-										<div class="panel-image paddle-panel">
-										<?php \Voxel\svg( 'paddle.svg' ) ?>
-										</div>
-									</template>
-
+								<template v-if="provider.key === 'stripe'">
+									<div class="panel-image stripe-panel">
+										<?php \Voxel\svg( 'stripe-logo.svg' ) ?>
+									</div>
+								</template>
+								<template v-else-if="provider.key === 'paddle'">
+									<div class="panel-image paddle-panel">
+									<?php \Voxel\svg( 'paddle.svg' ) ?>
+									</div>
+								</template>
+								<template v-else>
+									<?php do_action('voxel/backend/product-types/payments-screen/provider-logo') ?>
+								</template>
 
 								<div class="panel-info" style="width: 100%;">
 									<h3>{{ provider.label }}</h3>
 									<ul>
 										<li>{{ provider.description }}</li>
 									</ul>
-
 								</div>
-
 
 								<div class="ts-form-group x-col-12 switch-slider" style="width: auto; display: flex; align-items: center; gap: 15px;">
 

@@ -13,10 +13,12 @@ use Voxel\Vendor\Paddle\SDK\Client;
 use Voxel\Vendor\Paddle\SDK\Entities\Collections\DiscountGroupCollection;
 use Voxel\Vendor\Paddle\SDK\Entities\Collections\Paginator;
 use Voxel\Vendor\Paddle\SDK\Entities\DiscountGroup;
+use Voxel\Vendor\Paddle\SDK\Entities\DiscountGroup\DiscountGroupStatus;
 use Voxel\Vendor\Paddle\SDK\Exceptions\ApiError;
 use Voxel\Vendor\Paddle\SDK\Exceptions\SdkExceptions\MalformedResponse;
 use Voxel\Vendor\Paddle\SDK\Resources\DiscountGroups\Operations\CreateDiscountGroup;
 use Voxel\Vendor\Paddle\SDK\Resources\DiscountGroups\Operations\ListDiscountGroups;
+use Voxel\Vendor\Paddle\SDK\Resources\DiscountGroups\Operations\UpdateDiscountGroup;
 use Voxel\Vendor\Paddle\SDK\ResponseParser;
 class DiscountGroupsClient
 {
@@ -36,9 +38,35 @@ class DiscountGroupsClient
      * @throws ApiError          On a generic API error
      * @throws MalformedResponse If the API response was not parsable
      */
+    public function get(string $id): DiscountGroup
+    {
+        $parser = new ResponseParser($this->client->getRaw("/discount-groups/{$id}"));
+        return DiscountGroup::from($parser->getData());
+    }
+    /**
+     * @throws ApiError          On a generic API error
+     * @throws MalformedResponse If the API response was not parsable
+     */
     public function create(CreateDiscountGroup $createOperation): DiscountGroup
     {
         $parser = new ResponseParser($this->client->postRaw('/discount-groups', $createOperation));
         return DiscountGroup::from($parser->getData());
+    }
+    /**
+     * @throws ApiError          On a generic API error
+     * @throws MalformedResponse If the API response was not parsable
+     */
+    public function update(string $id, UpdateDiscountGroup $updateOperation): DiscountGroup
+    {
+        $parser = new ResponseParser($this->client->patchRaw("/discount-groups/{$id}", $updateOperation));
+        return DiscountGroup::from($parser->getData());
+    }
+    /**
+     * @throws ApiError          On a generic API error
+     * @throws MalformedResponse If the API response was not parsable
+     */
+    public function archive(string $id): DiscountGroup
+    {
+        return $this->update($id, new UpdateDiscountGroup(status: DiscountGroupStatus::Archived()));
     }
 }

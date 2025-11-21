@@ -5045,6 +5045,10 @@ class Create_Post extends Base_Widget {
 			array_push( $main_script->deps, ...$required_script_handles );
 		}
 
+		$icons = [
+			'info' => \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\get_svg( 'info.svg' ),
+		];
+
 		wp_print_styles( $this->get_style_depends() );
 		require locate_template( 'templates/widgets/create-post.php' );
 
@@ -5077,9 +5081,16 @@ class Create_Post extends Base_Widget {
 				'feature_types' => array_filter( (array) \Voxel\get( 'settings.maps.mapbox.autocomplete.feature_types_in_submission' ) ),
 			];
 		} else {
+			if ( \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types_in_submission' ) === 'custom' ) {
+				$feature_types = explode( ',', (string) \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types_in_submission_custom' ) );
+				$feature_types = array_filter( array_map( 'trim', $feature_types ) );
+			} else {
+				$feature_types = array_filter( (array) \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types_in_submission' ) );
+			}
+
 			return [
 				'countries' => array_filter( (array) \Voxel\get( 'settings.maps.google_maps.autocomplete.countries' ) ),
-				'feature_types' => array_filter( (array) \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types_in_submission' ) ),
+				'feature_types' => $feature_types,
 			];
 		}
 	}

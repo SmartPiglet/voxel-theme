@@ -24,7 +24,25 @@ export default {
 						</div>
 					</li>
 				</ul>
-			
+				<details v-if="limit.recents.list.length" class="order-accordion">
+					<summary>{{ data.l10n.recent_submissions }}<icon-down/></summary>
+					<div class="details-body">
+						<ul class="ts-cart-list simplify-ul">
+						<li v-for="item in limit.recents.list">
+							<div class="cart-image" v-if="item.logo">
+								<img width="150" height="150" :src="item.logo" class="ts-status-avatar" decoding="async">
+							</div>
+							<div class="cart-item-details">
+									<a :href="item.link">{{ item.title }}</a>
+									<span>{{ item.description }}</span>
+								</div>
+							</li>
+							<li v-if="limit.recents.has_more">
+								<a href="#" class="ts-btn ts-btn-1" @click.prevent="loadMorePosts(limit)">{{ data.l10n.load_more }}</a>
+							</li>
+						</ul>
+					</div>
+				</details>
 			</div>
 		</div>
 	`,

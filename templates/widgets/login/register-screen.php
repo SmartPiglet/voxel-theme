@@ -96,7 +96,10 @@ if ( ! defined('ABSPATH') ) {
 							</label>
 							<div class="ts-input-icon flexify">
 								<?= \Voxel\get_icon_markup( $this->get_settings_for_display('auth_pass_ico') ) ?: \Voxel\svg( 'lock-alt.svg' ) ?>
-								<input class="ts-filter" type="password" v-model="field.value" :placeholder="field.placeholder" autocomplete="new-password">
+								<input class="ts-filter" :type="register.showPassword ? 'text' : 'password'" v-model="field.value" :placeholder="field.placeholder" autocomplete="new-password">
+								<div class="view-password" :class="{'active': register.showPassword}" @click.prevent="register.showPassword = !register.showPassword">
+									<?= \Voxel\get_icon_markup( $this->get_settings_for_display('eye_ico') ) ?: \Voxel\svg( 'eye.svg' ) ?>
+								</div>
 							</div>
 						</div>
 					</template>

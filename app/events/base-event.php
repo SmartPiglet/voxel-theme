@@ -35,7 +35,12 @@ abstract class Base_Event {
 			$this->prepare( ...func_get_args() );
 			$this->send_notifications();
 		} catch ( \Exception $e ) {
-			\Voxel\log($e);
+			\Voxel\log( sprintf(
+				'[App Events] Failed to trigger `%s`: %s (Code: %d)',
+				$this->get_key(),
+				$e->getMessage(),
+				$e->getCode(),
+			) );
 		}
 	}
 
@@ -253,9 +258,6 @@ abstract class Base_Event {
 			// direct message events
 			'messages/user:received_message' => new \Voxel\Events\Direct_Messages\User_Received_Message_Event,
 			'messages/user:received_message_unthrottled' => new \Voxel\Events\Direct_Messages\User_Received_Message_Unthrottled_Event,
-
-			// voxpoints events
-			'voxpoints/points:changed' => new \Voxel\Events\VoxPoints\Points_Changed_Event,
 		];
 
 		if ( !! ( \Voxel\get('settings.timeline.moderation.user_timeline.posts.require_approval') ) ) {

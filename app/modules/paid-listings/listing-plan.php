@@ -47,7 +47,11 @@ class Listing_Plan {
 				'post_types' => Schema::List()
 					->validator( function( $item ) {
 						$post_type = \Voxel\Post_Type::get( $item );
-						return $post_type && $post_type->is_managed_by_voxel();
+						return (
+							$post_type
+							&& $post_type->is_managed_by_voxel()
+							&& ! in_array( $post_type->get_key(), [ 'profile', 'collection' ], true )
+						);
 					} )
 					->unique()
 					->default([]),

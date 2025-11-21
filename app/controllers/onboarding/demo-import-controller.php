@@ -789,7 +789,7 @@ class Demo_Import_Controller extends \Voxel\Controllers\Base_Controller {
 				$post_types[ $key ]['templates'][ $location ] = \Voxel\get_imported_post_id( $template_id );
 			}
 
-			foreach ( $post_type['custom_templates'] as $template_group_key => $template_group ) {
+			foreach ( ( $post_type['custom_templates'] ?? [] ) as $template_group_key => $template_group ) {
 				foreach ( $template_group as $template_index => $template_data ) {
 					$custom_template_data = [
 						'label' => $template_data['label'],

@@ -97,6 +97,19 @@ class Term_Data_Group extends \Voxel\Dynamic_Data\Data_Groups\Base_Data_Group {
 
 				return \Voxel\Dynamic_Data\Group::Term( $parent );
 			} ),
+			'taxonomy' => Tag::Object('Taxonomy')->properties( function() {
+				return [
+					'key' => Tag::String('Key')->render( function() {
+						return $this->term->taxonomy ? $this->term->taxonomy->get_key() : '';
+					} ),
+					'name' => Tag::String('Name')->render( function() {
+						return $this->term->taxonomy ? $this->term->taxonomy->get_singular_name() : '';
+					} ),
+					'plural_name' => Tag::String('Plural name')->render( function() {
+						return $this->term->taxonomy ? $this->term->taxonomy->get_plural_name() : '';
+					} ),
+				];
+			} ),
 		];
 	}
 

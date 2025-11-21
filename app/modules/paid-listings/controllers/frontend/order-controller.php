@@ -191,7 +191,7 @@ class Order_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function set_product_link( $link, $order_item ) {
-		if ( $order_item->get_product_field_key() === 'voxel:listing_plan' ) {
+		if ( in_array( $order_item->get_product_field_key(), [ 'voxel:listing_plan', 'voxel:claim_request'], true ) ) {
 			return null;
 		}
 

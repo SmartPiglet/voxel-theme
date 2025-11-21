@@ -17,16 +17,12 @@ trait Product_Type_Query_Trait {
 	 */
 	public static function get( $key ) {
 		if ( ! isset( static::$instances[ $key ] ) ) {
-			if ( $key === 'voxel:promotion' ) {
-				static::$instances[ $key ] = static::get_promotions_product_type();
-			} else {
-				$product_types = \Voxel\get( 'product_types', [] );
-				if ( ! isset( $product_types[ $key ] ) ) {
-					return null;
-				}
-
-				static::$instances[ $key ] = new static( (array) $product_types[ $key ] );
+			$product_types = \Voxel\get( 'product_types', [] );
+			if ( ! isset( $product_types[ $key ] ) ) {
+				return null;
 			}
+
+			static::$instances[ $key ] = new static( (array) $product_types[ $key ] );
 		}
 
 		return static::$instances[ $key ];
@@ -66,27 +62,5 @@ trait Product_Type_Query_Trait {
 
 	public static function from( array $config ): static {
 		return new static( $config );
-	}
-
-	public static function get_promotions_product_type() {
-		return new static( [
-			'settings' => [
-				'key' => 'voxel:promotion',
-				'label' => 'Listing Promotion',
-				'product_mode' => 'regular',
-				'payments' => [
-					'mode' => \Voxel\get( 'paid_listings.settings.promotions.payments.mode', 'payment' ) === 'offline' ? 'offline' : 'payment',
-				],
-				'supports_marketplace' => false,
-			],
-			'modules' => [
-				'base_price' => [
-					'enabled' => false,
-				],
-				'cart' => [
-					'enabled' => false,
-				],
-			],
-		] );
 	}
 }

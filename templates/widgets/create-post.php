@@ -17,6 +17,7 @@ $deferred_templates = [];
 $deferred_templates[] = locate_template( 'templates/widgets/create-post/_media-popup.php' );
 $deferred_templates[] = locate_template( 'templates/components/file-upload.php' );
 ?>
+<script type="text/json" class="vxconfig__icons"><?= wp_json_encode( $icons ) ?></script>
 <script type="text/json" class="vxconfig"><?= wp_specialchars_decode( wp_json_encode( $config ) ) ?></script>
 <div
 	class="ts-form ts-create-post create-post-form"

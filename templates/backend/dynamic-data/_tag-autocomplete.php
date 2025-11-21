@@ -8,6 +8,7 @@ if ( ! defined('ABSPATH') ) {
 			<template v-if="result.data.type === 'method'">
 				<li
 					:class="{'is-active': focusedResult === index}"
+					:data-result-index="index"
 					ref="result"
 					@click="selectItem(result)"
 					:title="result.data.meta.parentLabels.join(' / ') + ' / ' + result.data.method.label"
@@ -19,6 +20,7 @@ if ( ! defined('ABSPATH') ) {
 			<template v-else>
 				<li
 					:class="{'is-active': focusedResult === index}"
+					:data-result-index="index"
 					ref="result"
 					@click="selectItem(result)"
 					:title="result.data.meta.parentLabels.join(' / ') + ' / ' + result.data.property.label"

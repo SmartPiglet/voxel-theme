@@ -56,10 +56,14 @@ class Title_Field extends \Voxel\Post_Types\Fields\Base_Post_Field {
 
 	protected function editing_value() {
 		if ( $this->is_new_post() ) {
-			return $this->render_default_value( $this->get_prop('default') );
+			return $this->get_default_value();
 		} else {
 			return $this->get_value();
 		}
+	}
+
+	protected function get_default_value() {
+		return $this->render_default_value( $this->get_prop('default') );
 	}
 
 	protected function frontend_props() {

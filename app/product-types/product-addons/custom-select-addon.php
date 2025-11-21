@@ -93,6 +93,10 @@ class Custom_Select_Addon extends Base_Addon {
 		$addon_schema = Schema::Object( [
 			'choices' => Schema::Keyed_Object_List( $choice_props )
 				->validator( function( $item, $key ) {
+					if ( is_numeric( $key ) ) {
+						$key = (string) $key;
+					}
+
 					return is_string( $key ) && ! empty( $key );
 				} ),
 		] );

@@ -60,7 +60,7 @@ if ( ! defined('ABSPATH') ) {
 	<label>
 		<?= _x( 'Calendar', 'product field', 'voxel' ) ?>
 		<div class="vx-dialog">
-			<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+			<icon-info/>
 			<div class="vx-dialog-content min-scroll">
 				<p><?= _x( 'Availability visualization based on your settings. Click to exclude specific days', 'product field', 'voxel' ) ?></p>
 			</div>

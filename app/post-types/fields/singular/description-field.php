@@ -42,7 +42,7 @@ class Description_Field extends \Voxel\Post_Types\Fields\Texteditor_Field {
 
 	protected function editing_value() {
 		if ( $this->is_new_post() ) {
-			return $this->render_default_value( $this->get_prop('default') );
+			return $this->get_default_value();
 		} else {
 			if ( $this->get_model_value('editor-type') === 'plain-text' ) {
 				$content = $this->get_value();

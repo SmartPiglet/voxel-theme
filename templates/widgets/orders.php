@@ -219,7 +219,7 @@ require_once locate_template( 'templates/widgets/orders/single-order.php' );
 			</div>
 		</template>
 		<div v-else class="ts-no-posts">
-			<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_noresults_icon') ) ?: \Voxel\svg( 'keyword-research.svg' ) ?>
+			<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_noresults_icon') ) ?: \Voxel\svg( 'bag.svg' ) ?>
 			<p><?= _x( 'No orders found', 'orders', 'voxel' ) ?></p>
 		</div>
 	</template>

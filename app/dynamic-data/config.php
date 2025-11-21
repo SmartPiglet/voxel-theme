@@ -95,6 +95,7 @@ class Config {
 				'user:is_verified' => \Voxel\Dynamic_Data\Visibility_Rules\User_Is_Verified::class,
 				'user:is_vendor' => \Voxel\Dynamic_Data\Visibility_Rules\User_Is_Vendor::class,
 				'user:has_bought_product' => \Voxel\Dynamic_Data\Visibility_Rules\User_Has_Bought_Product::class,
+				'user:has_bought_product_type' => \Voxel\Dynamic_Data\Visibility_Rules\User_Has_Bought_Product_Type::class,
 				'user:is_customer_of_author' => \Voxel\Dynamic_Data\Visibility_Rules\User_Is_Customer_Of_Author::class,
 				'user:follows_post' => \Voxel\Dynamic_Data\Visibility_Rules\User_Follows_Post::class,
 				'user:follows_author' => \Voxel\Dynamic_Data\Visibility_Rules\User_Follows_Author::class,

@@ -30,7 +30,7 @@ if ( ! defined('ABSPATH') ) {
 				<label><?= _x( 'Enter new email address', 'auth', 'voxel' ) ?></label>
 				<div class="ts-input-icon flexify">
 					<?= \Voxel\get_icon_markup( $this->get_settings_for_display('auth_email_ico') ) ?: \Voxel\svg( 'envelope.svg' ) ?>
-					<input class="ts-filter" type="email" v-model="update.email.new" placeholder="<?= esc_attr( _x( 'Enter email address', 'auth', 'voxel' ) ) ?>" class="autofocus" :disabled="update.email.state !== 'send_code'">
+					<input class="ts-filter" type="email" v-model="update.email.new" placeholder="<?= esc_attr( _x( 'Enter email address', 'auth', 'voxel' ) ) ?>" class="autofocus" :disabled="update.email.state !== 'send_code'" @keyup.enter="submitUpdateEmail">
 				</div>
 			</div>
 			<template v-if="update.email.state === 'verify_code'">
@@ -41,7 +41,7 @@ if ( ! defined('ABSPATH') ) {
 				<div class="ts-form-group">
 					<div class="ts-input-icon flexify">
 						<?= \Voxel\get_icon_markup( $this->get_settings_for_display('auth_email_ico') ) ?: \Voxel\svg( 'envelope.svg' ) ?>
-						<input class="ts-filter" type="text" v-model="update.email.code" placeholder="<?= esc_attr( _x( 'Confirmation code', 'auth', 'voxel' ) ) ?>" class="autofocus">
+						<input class="ts-filter" type="text" v-model="update.email.code" placeholder="<?= esc_attr( _x( 'Confirmation code', 'auth', 'voxel' ) ) ?>" class="autofocus" @keyup.enter="submitUpdateEmail">
 					</div>
 				</div>
 			</template>

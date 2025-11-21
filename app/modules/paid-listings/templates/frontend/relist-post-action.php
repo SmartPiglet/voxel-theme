@@ -8,7 +8,7 @@ if ( ! ( $current_post && $current_post->is_editable_by_current_user() ) ) {
 	return;
 }
 
-if ( $current_post->get_status() !== 'expired' ) {
+if ( ! in_array( $current_post->get_status(), [ 'expired', 'rejected' ], true ) ) {
 	return;
 } ?>
 

@@ -11,6 +11,7 @@ class Paddle_Frontend_Controller extends \Voxel\Controllers\Base_Controller {
 	protected function hooks() {
 		$this->on( 'template_redirect', '@handle_checkout_redirect', 0 );
 		$this->filter( 'voxel/orders/view_order/components', '@register_order_components', 10, 2 );
+		$this->filter( 'voxel/paid_members/subscriptions/status_message', '@set_customer_status_message', 10, 2 );
 	}
 
 	protected function handle_checkout_redirect() {
@@ -65,6 +66,20 @@ class Paddle_Frontend_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		return $components;
+	}
+
+	protected function set_customer_status_message( $message, $membership ) {
+		$payment_method = $membership->get_payment_method();
+		if ( ! ( $payment_method && $payment_method->get_type() === 'paddle_subscription' ) ) {
+			return $message;
+		}
+
+		$state = $payment_method->get_state();
+		if ( empty( $state['message'] ) ) {
+			return $message;
+		}
+
+		return $state['message'];
 	}
 
 }

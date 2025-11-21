@@ -166,6 +166,16 @@ class Submission_Controller extends \Voxel\Controllers\Base_Controller {
 				] );
 			}
 
+			// allow custom validations after built-in checks have passed
+			do_action( 'voxel/frontend/after_post_validation', [
+				'post_type' => $post_type,
+				'post' => $post,
+				'fields' => $fields,
+				'values' => $sanitized,
+				'is_editing' => $is_editing,
+				'save_as_draft' => $save_as_draft,
+			] );
+
 			// determine post status
 			if ( $is_editing ) {
 				$post_author_id = $post->get_author_id();
@@ -397,6 +407,15 @@ class Submission_Controller extends \Voxel\Controllers\Base_Controller {
 					'errors' => $errors,
 				] );
 			}
+
+			// allow custom validations after built-in checks have passed in admin mode
+			do_action( 'voxel/admin/after_post_validation', [
+				'post_type' => $post_type,
+				'post' => $post,
+				'fields' => $fields,
+				'values' => $sanitized,
+				'is_admin_mode' => true,
+			] );
 
 			foreach ( $fields as $field ) {
 				// title, description, and featured image fields are already present in the wp-admin edit post ui

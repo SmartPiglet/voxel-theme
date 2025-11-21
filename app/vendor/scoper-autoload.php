@@ -30,15 +30,33 @@ if (!function_exists('humbug_phpscoper_expose_class')) {
     }
 }
 humbug_phpscoper_expose_class('Stringable', 'Voxel\Vendor\Stringable');
-humbug_phpscoper_expose_class('ComposerAutoloaderInit4a7d1dc82c372a9a623d0b3d6159fb17', 'Voxel\Vendor\ComposerAutoloaderInit4a7d1dc82c372a9a623d0b3d6159fb17');
+humbug_phpscoper_expose_class('ComposerAutoloaderInit1bf1414108da7c32f30597b546422cc9', 'Voxel\Vendor\ComposerAutoloaderInit1bf1414108da7c32f30597b546422cc9');
 humbug_phpscoper_expose_class('PhpToken', 'Voxel\Vendor\PhpToken');
 humbug_phpscoper_expose_class('ValueError', 'Voxel\Vendor\ValueError');
 humbug_phpscoper_expose_class('Attribute', 'Voxel\Vendor\Attribute');
 humbug_phpscoper_expose_class('UnhandledMatchError', 'Voxel\Vendor\UnhandledMatchError');
 humbug_phpscoper_expose_class('Normalizer', 'Voxel\Vendor\Normalizer');
+humbug_phpscoper_expose_class('SQLite3Exception', 'Voxel\Vendor\SQLite3Exception');
+humbug_phpscoper_expose_class('DateError', 'Voxel\Vendor\DateError');
+humbug_phpscoper_expose_class('Override', 'Voxel\Vendor\Override');
+humbug_phpscoper_expose_class('DateException', 'Voxel\Vendor\DateException');
+humbug_phpscoper_expose_class('DateInvalidOperationException', 'Voxel\Vendor\DateInvalidOperationException');
+humbug_phpscoper_expose_class('DateObjectError', 'Voxel\Vendor\DateObjectError');
+humbug_phpscoper_expose_class('DateMalformedPeriodStringException', 'Voxel\Vendor\DateMalformedPeriodStringException');
+humbug_phpscoper_expose_class('DateMalformedStringException', 'Voxel\Vendor\DateMalformedStringException');
+humbug_phpscoper_expose_class('DateRangeError', 'Voxel\Vendor\DateRangeError');
+humbug_phpscoper_expose_class('DateInvalidTimeZoneException', 'Voxel\Vendor\DateInvalidTimeZoneException');
+humbug_phpscoper_expose_class('DateMalformedIntervalStringException', 'Voxel\Vendor\DateMalformedIntervalStringException');
+humbug_phpscoper_expose_class('ReflectionConstant', 'Voxel\Vendor\ReflectionConstant');
+humbug_phpscoper_expose_class('Deprecated', 'Voxel\Vendor\Deprecated');
 
 // Function aliases. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/docs/further-reading.md#function-aliases
+if (!function_exists('array_all')) { function array_all() { return \Voxel\Vendor\array_all(...func_get_args()); } }
+if (!function_exists('array_any')) { function array_any() { return \Voxel\Vendor\array_any(...func_get_args()); } }
+if (!function_exists('array_find')) { function array_find() { return \Voxel\Vendor\array_find(...func_get_args()); } }
+if (!function_exists('array_find_key')) { function array_find_key() { return \Voxel\Vendor\array_find_key(...func_get_args()); } }
+if (!function_exists('bcdivmod')) { function bcdivmod() { return \Voxel\Vendor\bcdivmod(...func_get_args()); } }
 if (!function_exists('ctype_alnum')) { function ctype_alnum() { return \Voxel\Vendor\ctype_alnum(...func_get_args()); } }
 if (!function_exists('ctype_alpha')) { function ctype_alpha() { return \Voxel\Vendor\ctype_alpha(...func_get_args()); } }
 if (!function_exists('ctype_cntrl')) { function ctype_cntrl() { return \Voxel\Vendor\ctype_cntrl(...func_get_args()); } }
@@ -51,9 +69,11 @@ if (!function_exists('ctype_space')) { function ctype_space() { return \Voxel\Ve
 if (!function_exists('ctype_upper')) { function ctype_upper() { return \Voxel\Vendor\ctype_upper(...func_get_args()); } }
 if (!function_exists('ctype_xdigit')) { function ctype_xdigit() { return \Voxel\Vendor\ctype_xdigit(...func_get_args()); } }
 if (!function_exists('fdiv')) { function fdiv() { return \Voxel\Vendor\fdiv(...func_get_args()); } }
+if (!function_exists('fpow')) { function fpow() { return \Voxel\Vendor\fpow(...func_get_args()); } }
 if (!function_exists('get_debug_type')) { function get_debug_type() { return \Voxel\Vendor\get_debug_type(...func_get_args()); } }
 if (!function_exists('get_resource_id')) { function get_resource_id() { return \Voxel\Vendor\get_resource_id(...func_get_args()); } }
 if (!function_exists('grapheme_extract')) { function grapheme_extract() { return \Voxel\Vendor\grapheme_extract(...func_get_args()); } }
+if (!function_exists('grapheme_str_split')) { function grapheme_str_split() { return \Voxel\Vendor\grapheme_str_split(...func_get_args()); } }
 if (!function_exists('grapheme_stripos')) { function grapheme_stripos() { return \Voxel\Vendor\grapheme_stripos(...func_get_args()); } }
 if (!function_exists('grapheme_stristr')) { function grapheme_stristr() { return \Voxel\Vendor\grapheme_stristr(...func_get_args()); } }
 if (!function_exists('grapheme_strlen')) { function grapheme_strlen() { return \Voxel\Vendor\grapheme_strlen(...func_get_args()); } }
@@ -62,6 +82,9 @@ if (!function_exists('grapheme_strripos')) { function grapheme_strripos() { retu
 if (!function_exists('grapheme_strrpos')) { function grapheme_strrpos() { return \Voxel\Vendor\grapheme_strrpos(...func_get_args()); } }
 if (!function_exists('grapheme_strstr')) { function grapheme_strstr() { return \Voxel\Vendor\grapheme_strstr(...func_get_args()); } }
 if (!function_exists('grapheme_substr')) { function grapheme_substr() { return \Voxel\Vendor\grapheme_substr(...func_get_args()); } }
+if (!function_exists('json_validate')) { function json_validate() { return \Voxel\Vendor\json_validate(...func_get_args()); } }
+if (!function_exists('ldap_connect_wallet')) { function ldap_connect_wallet() { return \Voxel\Vendor\ldap_connect_wallet(...func_get_args()); } }
+if (!function_exists('ldap_exop_sync')) { function ldap_exop_sync() { return \Voxel\Vendor\ldap_exop_sync(...func_get_args()); } }
 if (!function_exists('mb_check_encoding')) { function mb_check_encoding() { return \Voxel\Vendor\mb_check_encoding(...func_get_args()); } }
 if (!function_exists('mb_chr')) { function mb_chr() { return \Voxel\Vendor\mb_chr(...func_get_args()); } }
 if (!function_exists('mb_convert_case')) { function mb_convert_case() { return \Voxel\Vendor\mb_convert_case(...func_get_args()); } }
@@ -110,8 +133,11 @@ if (!function_exists('normalizer_is_normalized')) { function normalizer_is_norma
 if (!function_exists('normalizer_normalize')) { function normalizer_normalize() { return \Voxel\Vendor\normalizer_normalize(...func_get_args()); } }
 if (!function_exists('preg_last_error_msg')) { function preg_last_error_msg() { return \Voxel\Vendor\preg_last_error_msg(...func_get_args()); } }
 if (!function_exists('str_contains')) { function str_contains() { return \Voxel\Vendor\str_contains(...func_get_args()); } }
+if (!function_exists('str_decrement')) { function str_decrement() { return \Voxel\Vendor\str_decrement(...func_get_args()); } }
 if (!function_exists('str_ends_with')) { function str_ends_with() { return \Voxel\Vendor\str_ends_with(...func_get_args()); } }
+if (!function_exists('str_increment')) { function str_increment() { return \Voxel\Vendor\str_increment(...func_get_args()); } }
 if (!function_exists('str_starts_with')) { function str_starts_with() { return \Voxel\Vendor\str_starts_with(...func_get_args()); } }
+if (!function_exists('stream_context_set_options')) { function stream_context_set_options() { return \Voxel\Vendor\stream_context_set_options(...func_get_args()); } }
 if (!function_exists('trigger_deprecation')) { function trigger_deprecation() { return \Voxel\Vendor\trigger_deprecation(...func_get_args()); } }
 if (!function_exists('uuid_compare')) { function uuid_compare() { return \Voxel\Vendor\uuid_compare(...func_get_args()); } }
 if (!function_exists('uuid_create')) { function uuid_create() { return \Voxel\Vendor\uuid_create(...func_get_args()); } }

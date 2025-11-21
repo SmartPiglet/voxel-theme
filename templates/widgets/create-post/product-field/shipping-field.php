@@ -11,7 +11,15 @@ if ( ! defined('ABSPATH') ) {
 					<label class="onoffswitch-label" @click.prevent="value.enabled = !value.enabled"></label>
 				</div>
 			</div>
-			<?= _x( 'Enable shipping', 'product field shipping', 'voxel' ) ?>
+			{{ field.label || <?= wp_json_encode( _x( 'Enable shipping', 'product field shipping', 'voxel' ) ) ?> }}
+			<template v-if="field.description">
+				<div class="vx-dialog">
+					<icon-info/>
+					<div class="vx-dialog-content min-scroll">
+						<p v-html="field.description"></p>
+					</div>
+				</div>
+			</template>
 		</label>
 
 		<template v-if="value.enabled || field.props.required">

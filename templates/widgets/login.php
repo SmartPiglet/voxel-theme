@@ -45,6 +45,21 @@ if ( ! defined('ABSPATH') ) {
 	<div v-else-if="screen === 'security_delete_account_confirm'" class="ts-form ts-login">
 		<?php require locate_template( 'templates/widgets/login/security/delete-account-confirm-screen.php' ) ?>
 	</div>
+	<div v-else-if="screen === 'security_2fa_setup'" class="ts-form ts-login">
+		<?php require locate_template( 'templates/widgets/login/security/2fa-setup-screen.php' ) ?>
+	</div>
+	<div v-else-if="screen === 'security_2fa_backup_codes'" class="ts-form ts-login">
+		<?php require locate_template( 'templates/widgets/login/security/2fa-backup-codes-screen.php' ) ?>
+	</div>
+	<div v-else-if="screen === 'security_2fa_manage'" class="ts-form ts-login">
+		<?php require locate_template( 'templates/widgets/login/security/2fa-manage-screen.php' ) ?>
+	</div>
+	<div v-else-if="screen === 'security_2fa_disable'" class="ts-form ts-login">
+		<?php require locate_template( 'templates/widgets/login/security/2fa-disable-screen.php' ) ?>
+	</div>
+	<div v-else-if="screen === 'login_2fa_verify'" class="ts-form ts-login">
+		<?php require locate_template( 'templates/widgets/login/login-2fa-verify-screen.php' ) ?>
+	</div>
 	<div v-else-if="screen === 'welcome'" class="ts-form ts-login ts-welcome">
 		<?php require locate_template( 'templates/widgets/login/welcome-screen.php' ) ?>
 	</div>

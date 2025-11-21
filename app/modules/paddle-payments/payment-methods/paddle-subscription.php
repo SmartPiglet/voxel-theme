@@ -36,6 +36,11 @@ use Voxel\Vendor\Paddle\SDK\Entities\Subscription\SubscriptionProrationBillingMo
 use \Voxel\Product_Types\Cart_Items\Cart_Item;
 use \Voxel\Modules\Paddle_Payments as Module;
 use \Voxel\Utils\Config_Schema\Schema;
+use \Voxel\Vendor\Paddle\SDK\Resources\Transactions\Operations\ListTransactions;
+use \Voxel\Vendor\Paddle\SDK\Entities\Shared\TransactionStatus;
+use \Voxel\Vendor\Paddle\SDK\Resources\Shared\Operations\List\Pager;
+use \Voxel\Vendor\Paddle\SDK\Resources\Shared\Operations\List\OrderBy;
+use \Voxel\Vendor\Paddle\SDK\Resources\Transactions\Operations\List\Origin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -56,6 +61,9 @@ class Paddle_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 			$paddle = Module\Paddle_Client::get_client();
 			$customer = $this->order->get_customer();
 			$paddle_customer = $customer->get_or_create_paddle_customer();
+
+			$address = \Voxel\Modules\Paddle_Payments\Paddle_Client::get_latest_active_address( $paddle_customer->id );
+			$business = \Voxel\Modules\Paddle_Payments\Paddle_Client::get_latest_active_business( $paddle_customer->id );
 
 			$items = array_map( function( $li ) {
 				$order_item = $li['order_item'];
@@ -100,6 +108,8 @@ class Paddle_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 					'voxel:payment_for' => 'order',
 					'voxel:order_id' => (string) $this->order->get_id(),
 				] ),
+				addressId: $address->id ?? null,
+				businessId: $business->id ?? null,
 			);
 
 			$transaction = $paddle->transactions->create( $operation );
@@ -138,6 +148,8 @@ class Paddle_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 	}
 
 	public function subscription_updated( Subscription $subscription ) {
+		$paddle = Module\Paddle_Client::get_client();
+
 		$this->order->set_transaction_id( $subscription->id );
 		$this->order->set_status( sprintf( 'sub_%s', $subscription->status->getValue() ) );
 
@@ -175,38 +187,75 @@ class Paddle_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 				],
 			];
 
-			// save total
 			$currency = $totals->currencyCode->getValue();
-
 			$total_amount = (int) $totals->total;
-			if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $currency ) ) {
-				$total_amount /= 100;
-			}
-
-			$this->order->set_details( 'pricing.total', $total_amount );
-
-			// save subtotal
 			$subtotal_amount = (int) $totals->subtotal;
-			if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $currency ) ) {
-				$subtotal_amount /= 100;
-			}
-
-			$this->order->set_details( 'pricing.subtotal', $subtotal_amount );
-
-			// save tax amount
 			$tax_amount = (int) $totals->tax;
-			if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $currency ) ) {
-				$tax_amount /= 100;
-			}
-
-			$this->order->set_details( 'pricing.tax', $tax_amount );
-
-			// save discount amount
 			$discount_amount = (int) $totals->discount;
 			if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $currency ) ) {
+				$total_amount /= 100;
+				$subtotal_amount /= 100;
+				$tax_amount /= 100;
 				$discount_amount /= 100;
 			}
 
+			$this->order->set_details( 'pricing.total', $total_amount );
+			$this->order->set_details( 'pricing.subtotal', $subtotal_amount );
+			$this->order->set_details( 'pricing.tax', $tax_amount );
+			$this->order->set_details( 'pricing.discount', $discount_amount );
+		}
+
+		if ( $next_transaction = $subscription->nextTransaction ) {
+			$totals = $next_transaction->details->totals;
+			$details['next_transaction'] = [
+				'totals' => [
+					'subtotal' => $totals->subtotal,
+					'discount' => $totals->discount,
+					'tax' => $totals->tax,
+					'total' => $totals->total,
+					'currency_code' => $totals->currencyCode->getValue(),
+				],
+			];
+		}
+
+		$last_transactions = $paddle->transactions->list( new ListTransactions(
+			customerIds: [ $this->order->get_details('transaction.customerId') ],
+			statuses: [ TransactionStatus::from('completed') ],
+			subscriptionIds: [ $subscription->id ],
+			pager: new Pager(
+				perPage: 2,
+				orderBy: OrderBy::idDescending(),
+			),
+		) );
+
+		$last_transaction = $last_transactions->valid() ? $last_transactions->current() : null;
+		if ( $last_transaction ) {
+			$totals = $last_transaction->details->totals;
+			$details['last_transaction'] = [
+				'totals' => [
+					'subtotal' => $totals->subtotal,
+					'discount' => $totals->discount,
+					'tax' => $totals->tax,
+					'total' => $totals->total,
+					'currency_code' => $totals->currencyCode->getValue(),
+				],
+			];
+
+			$currency = $totals->currencyCode->getValue();
+			$total_amount = (int) $totals->total;
+			$subtotal_amount = (int) $totals->subtotal;
+			$tax_amount = (int) $totals->tax;
+			$discount_amount = (int) $totals->discount;
+			if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $currency ) ) {
+				$total_amount /= 100;
+				$subtotal_amount /= 100;
+				$tax_amount /= 100;
+				$discount_amount /= 100;
+			}
+
+			$this->order->set_details( 'pricing.total', $total_amount );
+			$this->order->set_details( 'pricing.subtotal', $subtotal_amount );
+			$this->order->set_details( 'pricing.tax', $tax_amount );
 			$this->order->set_details( 'pricing.discount', $discount_amount );
 		}
 
@@ -675,15 +724,42 @@ class Paddle_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 						],
 					];
 				} else {
+					$message = sprintf(
+						_x( 'Next renewal on %s', 'subscriptions', 'voxel' ),
+						\Voxel\datetime_format( strtotime( $subscription['next_billed_at'] ) )
+					);
+
+					$last_transaction = $this->order->get_details('subscription.last_transaction.totals');
+					$next_transaction = $this->order->get_details('subscription.next_transaction.totals');
+					if (
+						isset( $last_transaction['total'] )
+						&& isset( $next_transaction['total'] )
+						&& $last_transaction['total'] !== $next_transaction['total']
+					) {
+						$upcoming_total = (int) $next_transaction['total'];
+						if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $this->order->get_currency() ) ) {
+							$upcoming_total /= 100;
+						}
+
+						$message = \Voxel\replace_vars(
+							_x( 'Next renewal on @date at @updated_amount', 'subscriptions', 'voxel' ),
+							[
+								'@date' => \Voxel\datetime_format( strtotime( $subscription['next_billed_at'] ) ),
+								'@updated_amount' => \Voxel\currency_format(
+									$upcoming_total,
+									$this->order->get_currency(),
+									false
+								),
+							],
+						);
+					}
+
 					return [
 						'status' => 'active',
 						'label' => _x( 'Active', 'order status', 'voxel' ),
 						'long_label' => _x( 'Subscription is active', 'order status', 'voxel' ),
 						'class' => 'vx-green',
-						'message' => sprintf(
-							_x( 'Next renewal on %s', 'subscriptions', 'voxel' ),
-							\Voxel\datetime_format( strtotime( $subscription['next_billed_at'] ) )
-						),
+						'message' => $message,
 						'actions' => [
 							// 'payments/paddle_subscription/customers/update_payment_method',
 							'payments/paddle_subscription/customers/active.pause',
@@ -714,6 +790,7 @@ class Paddle_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 					'long_label' => _x( 'Subscription is past due', 'order status', 'voxel' ),
 					'class' => 'vx-orange',
 					'message' => _x( 'Payment failed — update your card', 'subscriptions', 'voxel' ),
+					'admin_message' => _x( 'Payment failed', 'subscriptions', 'voxel' ),
 					'actions' => [
 						'payments/paddle_subscription/customers/update_payment_method',
 					],

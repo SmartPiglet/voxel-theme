@@ -13,6 +13,7 @@ class Auth_Controller extends \Voxel\Controllers\Base_Controller {
 		$this->on( 'voxel_ajax_nopriv_auth.recover', '@recover' );
 		$this->on( 'voxel_ajax_nopriv_auth.recover_confirm', '@recover_confirm' );
 		$this->on( 'voxel_ajax_nopriv_auth.recover_set_password', '@recover_set_password' );
+		$this->on( 'voxel_ajax_nopriv_auth.verify_2fa', '@verify_2fa_login' );
 		$this->on( 'voxel_ajax_auth.logout', '@logout' );
 
 		// logged-in only
@@ -20,6 +21,16 @@ class Auth_Controller extends \Voxel\Controllers\Base_Controller {
 		$this->on( 'voxel_ajax_auth.update_email', '@update_email' );
 		$this->on( 'voxel_ajax_auth.request_personal_data', '@request_personal_data' );
 		$this->on( 'voxel_ajax_auth.delete_account_permanently', '@delete_account_permanently' );
+
+		// 2FA endpoints
+		$this->on( 'voxel_ajax_auth.2fa_setup', '@setup_2fa' );
+		$this->on( 'voxel_ajax_auth.2fa_enable', '@enable_2fa' );
+		$this->on( 'voxel_ajax_auth.2fa_disable', '@disable_2fa' );
+		$this->on( 'voxel_ajax_auth.2fa_regenerate_backups', '@regenerate_backup_codes' );
+		$this->on( 'voxel_ajax_auth.2fa_remove_trusted_devices', '@remove_all_trusted_devices' );
+
+		// Intercept WordPress core login for 2FA
+		$this->filter( 'authenticate', '@check_2fa_on_wp_login', 30, 3 );
 
 		$this->filter( 'wp_safe_redirect_fallback', '@wp_safe_redirect_fallback' );
 	}
@@ -45,6 +56,55 @@ class Auth_Controller extends \Voxel\Controllers\Base_Controller {
 
 			$user = \Voxel\User::get( $wp_user );
 
+			// Check if user has 2FA enabled
+			if ( $user->is_2fa_enabled() ) {
+				// Check if this device is trusted
+				$device_id = $_COOKIE['voxel_2fa_device_id'] ?? '';
+				$device_token = $_COOKIE['voxel_2fa_device_token'] ?? '';
+
+				if ( $device_id && $device_token && $user->is_trusted_device( $device_id, $device_token ) ) {
+					// Trusted device - skip 2FA
+					$wp_user = wp_signon( $credentials, is_ssl() );
+					if ( is_wp_error( $wp_user ) ) {
+						throw new \Exception( wp_strip_all_tags( $wp_user->get_error_message() ) );
+					}
+
+					delete_user_meta( $wp_user->ID, 'voxel:recovery' );
+					delete_user_meta( $wp_user->ID, 'voxel:email_update' );
+
+					wp_set_current_user( $wp_user->ID );
+
+					$redirect_to = home_url('/');
+					if ( ! empty( $_REQUEST['redirect_to'] ) && wp_validate_redirect( $_REQUEST['redirect_to'] ) ) {
+						$redirect_to = wp_validate_redirect( $_REQUEST['redirect_to'] );
+					}
+
+					$redirect_to = apply_filters(
+						'voxel/login/redirect_to',
+						$redirect_to,
+						$user,
+						$_REQUEST['redirect_to'] ?? null // raw redirect url
+					);
+
+					return wp_send_json( [
+						'success' => true,
+						'confirmed' => true,
+						'redirect_to' => $redirect_to,
+					] );
+				}
+
+				// Not trusted - require 2FA
+				// Create temporary session for 2FA verification
+				$session_token = $user->create_2fa_login_session();
+
+				return wp_send_json( [
+					'success' => true,
+					'requires_2fa' => true,
+					'user_id' => $user->get_id(),
+					'session_token' => $session_token,
+				] );
+			}
+
 			$wp_user = wp_signon( $credentials, is_ssl() );
 			if ( is_wp_error( $wp_user ) ) {
 				throw new \Exception( wp_strip_all_tags( $wp_user->get_error_message() ) );
@@ -54,9 +114,24 @@ class Auth_Controller extends \Voxel\Controllers\Base_Controller {
 			delete_user_meta( $wp_user->ID, 'voxel:recovery' );
 			delete_user_meta( $wp_user->ID, 'voxel:email_update' );
 
+			wp_set_current_user( $wp_user->ID );
+
+			$redirect_to = home_url('/');
+			if ( ! empty( $_REQUEST['redirect_to'] ) && wp_validate_redirect( $_REQUEST['redirect_to'] ) ) {
+				$redirect_to = wp_validate_redirect( $_REQUEST['redirect_to'] );
+			}
+
+			$redirect_to = apply_filters(
+				'voxel/login/redirect_to',
+				$redirect_to,
+				$user,
+				$_REQUEST['redirect_to'] ?? null // raw redirect url
+			);
+
 			return wp_send_json( [
 				'success' => true,
 				'confirmed' => true,
+				'redirect_to' => $redirect_to,
 			] );
 		} catch ( \Exception $e ) {
 			return wp_send_json( [
@@ -168,6 +243,24 @@ class Auth_Controller extends \Voxel\Controllers\Base_Controller {
 	protected function logout() {
 		try {
 			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth_logout' );
+			
+			/*// Clear trusted device cookies
+			setcookie( 'voxel_2fa_device_id', '', [
+				'expires' => time() - 3600,
+				'path' => '/',
+				'secure' => is_ssl(),
+				'httponly' => true,
+				'samesite' => 'Lax',
+			] );
+			
+			setcookie( 'voxel_2fa_device_token', '', [
+				'expires' => time() - 3600,
+				'path' => '/',
+				'secure' => is_ssl(),
+				'httponly' => true,
+				'samesite' => 'Lax',
+			] );*/
+			
 			wp_logout();
 		} catch ( \Exception $e ) {}
 
@@ -370,5 +463,303 @@ class Auth_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function wp_safe_redirect_fallback() {
 		return home_url('/');
+	}
+
+	/* WordPress Core Login 2FA Integration */
+
+	protected function check_2fa_on_wp_login( $user, $username, $password ) {
+		// Skip for AJAX requests (handled separately in the login method)
+		if ( wp_doing_ajax() ) {
+			return $user;
+		}
+
+		// Skip if already an error
+		if ( is_wp_error( $user ) ) {
+			return $user;
+		}
+
+		// Skip if not a valid user
+		if ( ! $user instanceof \WP_User ) {
+			return $user;
+		}
+
+		// Get Voxel user wrapper
+		$voxel_user = \Voxel\User::get( $user );
+		if ( ! $voxel_user ) {
+			return $user;
+		}
+
+		// Check if 2FA is enabled for this user
+		if ( ! $voxel_user->is_2fa_enabled() ) {
+			return $user; // No 2FA, proceed normally
+		}
+
+		// Get the frontend login URL
+		$login_url = get_permalink( \Voxel\get( 'templates.auth' ) ) ?: home_url('/');
+
+		// Return error directing user to frontend login
+		return new \WP_Error(
+			'2fa_required',
+			sprintf(
+				__( '<strong>Two-Factor Authentication Required</strong><br>Please use the front-end login form to authenticate with your 2FA code.', 'voxel' ),
+				esc_url( $login_url )
+			)
+		);
+	}
+
+	/* Two-Factor Authentication Methods */
+
+	protected function setup_2fa() {
+		try {
+			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth' );
+
+			$user = \Voxel\current_user();
+			if ( ! $user ) {
+				throw new \Exception( _x( 'Something went wrong.', 'auth', 'voxel' ) );
+			}
+
+			if ( $user->is_2fa_enabled() ) {
+				throw new \Exception( _x( 'Two-factor authentication is already enabled.', 'auth', 'voxel' ) );
+			}
+
+		$secret = $user->generate_2fa_secret();
+		$qr_code = $user->get_2fa_qr_code( $secret );
+
+		return wp_send_json( [
+			'success' => true,
+			'qr_code' => $qr_code,
+		] );
+		} catch ( \Exception $e ) {
+			return wp_send_json( [
+				'success' => false,
+				'message' => $e->getMessage(),
+			] );
+		}
+	}
+
+	protected function enable_2fa() {
+		try {
+			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth' );
+
+			$user = \Voxel\current_user();
+			if ( ! $user ) {
+				throw new \Exception( _x( 'Something went wrong.', 'auth', 'voxel' ) );
+			}
+
+			$code = sanitize_text_field( $_POST['code'] ?? '' );
+			if ( empty( $code ) ) {
+				throw new \Exception( _x( 'Please enter the authentication code.', 'auth', 'voxel' ) );
+			}
+
+			$result = $user->enable_2fa( $code );
+
+			return wp_send_json( [
+				'success' => true,
+				'backup_codes' => $result['backup_codes'],
+			] );
+		} catch ( \Exception $e ) {
+			return wp_send_json( [
+				'success' => false,
+				'message' => $e->getMessage(),
+			] );
+		}
+	}
+
+	protected function disable_2fa() {
+		try {
+			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth' );
+
+			$user = \Voxel\current_user();
+			if ( ! $user ) {
+				throw new \Exception( _x( 'Something went wrong.', 'auth', 'voxel' ) );
+			}
+
+			if ( ! $user->is_2fa_enabled() ) {
+				throw new \Exception( _x( 'Two-factor authentication is not enabled.', 'auth', 'voxel' ) );
+			}
+
+			$password = (string) ( $_POST['password'] ?? '' );
+			if ( empty( $password ) ) {
+				throw new \Exception( _x( 'Please enter your password.', 'auth', 'voxel' ) );
+			}
+
+			$user->disable_2fa( $password );
+
+			return wp_send_json( [
+				'success' => true,
+			] );
+		} catch ( \Exception $e ) {
+			return wp_send_json( [
+				'success' => false,
+				'message' => $e->getMessage(),
+			] );
+		}
+	}
+
+	protected function regenerate_backup_codes() {
+		try {
+			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth' );
+
+			$user = \Voxel\current_user();
+			if ( ! $user ) {
+				throw new \Exception( _x( 'Something went wrong.', 'auth', 'voxel' ) );
+			}
+
+			if ( ! $user->is_2fa_enabled() ) {
+				throw new \Exception( _x( 'Two-factor authentication is not enabled.', 'auth', 'voxel' ) );
+			}
+
+			$backup_codes = $user->generate_backup_codes();
+
+			return wp_send_json( [
+				'success' => true,
+				'backup_codes' => $backup_codes,
+			] );
+		} catch ( \Exception $e ) {
+			return wp_send_json( [
+				'success' => false,
+				'message' => $e->getMessage(),
+			] );
+		}
+	}
+
+	protected function verify_2fa_login() {
+		try {
+			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth' );
+
+			$user_id = absint( $_POST['user_id'] ?? 0 );
+			$session_token = sanitize_text_field( $_POST['session_token'] ?? '' );
+			$code = sanitize_text_field( $_POST['code'] ?? '' );
+			$use_backup = ( $_POST['use_backup'] ?? '' ) === 'yes';
+			$trust_device = ( $_POST['trust_device'] ?? '' ) === 'yes';
+
+			$user = \Voxel\User::get( $user_id );
+			if ( ! $user ) {
+				throw new \Exception( _x( 'Invalid request.', 'auth', 'voxel' ) );
+			}
+
+			// Verify session token (don't delete yet - allow retries)
+			$user->verify_2fa_login_session( $session_token );
+
+			// Verify 2FA code or backup code
+			if ( $use_backup ) {
+				$user->verify_backup_code( $code );
+			} else {
+				$user->verify_2fa_code( $code );
+			}
+
+			// 2FA verification successful - now clear the session
+			$user->clear_2fa_login_session();
+
+			// Complete login
+			$credentials = [
+				'user_login' => $user->get_username(),
+				'user_password' => '', // Not needed, we already verified
+				'remember' => ( $_POST['remember'] ?? null ) === 'no' ? false : true,
+			];
+
+			wp_clear_auth_cookie();
+			wp_set_auth_cookie( $user->get_id(), $credentials['remember'] );
+			wp_set_current_user( $user->get_id() );
+
+			// If user wants to trust this device, create a device token
+			$device_data = null;
+			if ( $trust_device ) {
+				$device_data = $user->create_trusted_device_token();
+				
+				// Set secure cookies server-side with proper flags
+				$expires = time() + ( 30 * DAY_IN_SECONDS );
+				$secure = is_ssl();
+				$httponly = true;
+				$samesite = 'Lax';
+				
+				setcookie( 'voxel_2fa_device_id', $device_data['device_id'], [
+					'expires' => $expires,
+					'path' => '/',
+					'secure' => $secure,
+					'httponly' => $httponly,
+					'samesite' => $samesite,
+				] );
+				
+				setcookie( 'voxel_2fa_device_token', $device_data['device_token'], [
+					'expires' => $expires,
+					'path' => '/',
+					'secure' => $secure,
+					'httponly' => $httponly,
+					'samesite' => $samesite,
+				] );
+			}
+
+			// cleanup recovery sessions if they exist
+			delete_user_meta( $user->get_id(), 'voxel:recovery' );
+			delete_user_meta( $user->get_id(), 'voxel:email_update' );
+
+			$redirect_to = home_url('/');
+			if ( ! empty( $_REQUEST['redirect_to'] ) && wp_validate_redirect( $_REQUEST['redirect_to'] ) ) {
+				$redirect_to = wp_validate_redirect( $_REQUEST['redirect_to'] );
+			}
+
+			$redirect_to = apply_filters(
+				'voxel/login/redirect_to',
+				$redirect_to,
+				$user,
+				$_REQUEST['redirect_to'] ?? null // raw redirect url
+			);
+
+			return wp_send_json( [
+				'success' => true,
+				'confirmed' => true,
+				'trusted_device' => $device_data,
+				'redirect_to' => $redirect_to,
+			] );
+		} catch ( \Exception $e ) {
+			return wp_send_json( [
+				'success' => false,
+				'message' => $e->getMessage(),
+			] );
+		}
+	}
+
+	protected function remove_all_trusted_devices() {
+		try {
+			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_auth' );
+
+			$user = \Voxel\current_user();
+			if ( ! $user ) {
+				throw new \Exception( _x( 'Something went wrong.', 'auth', 'voxel' ) );
+			}
+
+			if ( ! $user->is_2fa_enabled() ) {
+				throw new \Exception( _x( 'Two-factor authentication is not enabled.', 'auth', 'voxel' ) );
+			}
+
+			$user->remove_all_trusted_devices();
+			
+			// Clear trusted device cookies
+			setcookie( 'voxel_2fa_device_id', '', [
+				'expires' => time() - 3600,
+				'path' => '/',
+				'secure' => is_ssl(),
+				'httponly' => true,
+				'samesite' => 'Lax',
+			] );
+			
+			setcookie( 'voxel_2fa_device_token', '', [
+				'expires' => time() - 3600,
+				'path' => '/',
+				'secure' => is_ssl(),
+				'httponly' => true,
+				'samesite' => 'Lax',
+			] );
+
+			return wp_send_json( [
+				'success' => true,
+			] );
+		} catch ( \Exception $e ) {
+			return wp_send_json( [
+				'success' => false,
+				'message' => $e->getMessage(),
+			] );
+		}
 	}
 }

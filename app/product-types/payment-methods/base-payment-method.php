@@ -174,5 +174,4 @@ abstract class Base_Payment_Method {
 	public function cancel_subscription_immediately() {
 		throw new \Exception( _x( 'Subscription update failed. Please try later.', 'order actions', 'voxel' ) );
 	}
-
 }

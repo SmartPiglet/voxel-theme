@@ -4280,9 +4280,16 @@ class Search_Form extends Base_Widget {
 				'feature_types' => array_filter( (array) \Voxel\get( 'settings.maps.mapbox.autocomplete.feature_types' ) ),
 			];
 		} else {
+			if ( \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types' ) === 'custom' ) {
+				$feature_types = explode( ',', (string) \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types_custom' ) );
+				$feature_types = array_filter( array_map( 'trim', $feature_types ) );
+			} else {
+				$feature_types = array_filter( (array) \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types' ) );
+			}
+
 			return [
 				'countries' => array_filter( (array) \Voxel\get( 'settings.maps.google_maps.autocomplete.countries' ) ),
-				'feature_types' => array_filter( (array) \Voxel\get( 'settings.maps.google_maps.autocomplete.feature_types' ) ),
+				'feature_types' => $feature_types,
 			];
 		}
 	}

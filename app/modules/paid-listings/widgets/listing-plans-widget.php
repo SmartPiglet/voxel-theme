@@ -30,7 +30,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 			$options[ $plan->get_key() ] = $plan->get_label();
 		}
 
-	
+
 
 	$this->start_controls_section( 'ts_prices_section', [
 		'label' => __( 'Price groups', 'voxel-elementor' ),
@@ -161,7 +161,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 					]
 				);
 
-				
+
 
 				$this->add_control(
 					'plan_body',
@@ -172,7 +172,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 					]
 				);
 
-				
+
 
 				$this->add_responsive_control(
 					'pplans_spacing',
@@ -1387,7 +1387,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 					'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 				]
 			);
-	
+
 				$this->add_control(
 					'ts_dialog_color',
 					[
@@ -1398,7 +1398,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 						],
 					]
 				);
-	
+
 				$this->add_group_control(
 					\Elementor\Group_Control_Typography::get_type(),
 					[
@@ -1417,7 +1417,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 						],
 					]
 				);
-	
+
 				$this->add_responsive_control(
 					'ts_dialog_radius',
 					[
@@ -1440,7 +1440,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 						],
 					]
 				);
-	
+
 				$this->add_group_control(
 					\Elementor\Group_Control_Box_Shadow::get_type(),
 					[
@@ -1449,7 +1449,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 						'selector' => '{{WRAPPER}} .vx-dialog-content',
 					]
 				);
-	
+
 				$this->add_group_control(
 					\Elementor\Group_Control_Border::get_type(),
 					[
@@ -1458,9 +1458,9 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 						'selector' => '{{WRAPPER}} .vx-dialog-content',
 					]
 				);
-	
-	
-	
+
+
+
 			$this->end_controls_section();
 
 			$this->start_controls_section(
@@ -1526,7 +1526,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 				'label_on' => __( 'Yes', 'voxel-elementor' ),
 				'label_off' => __( 'No', 'voxel-elementor' ),
 				'return_value' => 'yes',
-				
+
 			] );
 
 			$this->add_control( $key.'__featured_text', [
@@ -1536,32 +1536,62 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 				'placeholder' => __( 'e.g. Featured', 'voxel-elementor' ),
 				'condition' => [ $key.'__featured' => 'yes' ],
 			] );
-			
+
 
 			$this->end_controls_section();
 		}
 
 		$this->start_controls_section( 'ts_general_section', [
-			'label' => __( 'Fallback redirect', 'voxel-elementor' ),
+			'label' => __( 'Redirect options', 'voxel-elementor' ),
 			'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 		] );
-	
-		$this->add_control( 'ts_fallback_redirect', [
-			'label' => __( 'Fallback redirect URL', 'voxel-elementor' ),
-			'description' => __( 'Where to redirect users after buying a plan (when widget is not used in the create post flow)', 'voxel-elementor' ),
+
+		$this->add_control( 'ts_direct_purchase_flow', [
+			'label' => __( 'Direct purchase redirect', 'voxel-elementor' ),
+			'label_block' => true,
+			'description' => __( 'Specify where users should be redirected after purchasing a plan when the page is accessed directly (not as part of a specific flow such as creating a post, claiming a listing, or switching plans).', 'voxel-elementor' ),
+			'type' => \Elementor\Controls_Manager::SELECT,
+			'options' => [
+				'order' => __( 'Go to Order page', 'voxel-elementor' ),
+				'new_post' => __( 'Go to post submission form', 'voxel-elementor' ),
+				'custom' => __( 'Custom redirect', 'voxel-elementor' ),
+			],
+			'default' => 'order',
+		] );
+
+		$submittable_post_types = [];
+		foreach ( \Voxel\Post_Type::get_voxel_types() as $post_type ) {
+			if ( Module\has_plans_for_post_type( $post_type ) ) {
+				$submittable_post_types[ $post_type->get_key() ] = $post_type->get_label();
+			}
+		}
+
+		$this->add_control( 'ts_direct_purchase_flow_post_type', [
+			'label' => __( 'Post type', 'voxel-elementor' ),
+			'type' => \Elementor\Controls_Manager::SELECT,
+			'options' => $submittable_post_types,
+			'condition' => [ 'ts_direct_purchase_flow' => 'new_post' ],
+		] );
+
+		$this->add_control( 'ts_direct_purchase_flow_custom_redirect', [
+			'label' => __( 'Custom redirect URL', 'voxel-elementor' ),
 			'type' => \Elementor\Controls_Manager::URL,
 			'placeholder' => home_url('/'),
 			'show_external' => false,
+			'condition' => [ 'ts_direct_purchase_flow' => 'custom' ],
 		] );
-	
+
 		$this->end_controls_section();
 	}
 
 	protected function render( $instance = [] ) {
+		$fallback_redirect_url = null;
 		$process = \Voxel\from_list( $_GET['process'] ?? null, [ 'new', 'relist', 'claim', 'switch' ], null );
+		$submit_to = null;
 		if ( $process === 'new' ) {
 			$post_type = \Voxel\Post_Type::get( $_GET['item_type'] ?? null );
 			$post = null;
+			$submit_to = $_GET['submit_to'] ?? null;
 
 			if ( ! ( $post_type && $post_type->is_managed_by_voxel() ) ) {
 				return null;
@@ -1572,7 +1602,7 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 				$post
 				&& $post->post_type
 				&& $post->is_editable_by_current_user()
-				&& $post->get_status() === 'expired'
+				&& in_array( $post->get_status(), [ 'expired', 'rejected' ], true )
 			) ) {
 				return null;
 			}
@@ -1601,34 +1631,50 @@ class Listing_Plans_Widget extends \Voxel\Widgets\Base_Widget {
 		} else {
 			$post = null;
 			$post_type = null;
+
+			$direct_purchase_flow = $this->get_settings_for_display( 'ts_direct_purchase_flow' );
+			if ( $direct_purchase_flow === 'new_post' ) {
+				$process = 'new';
+
+				$post_type = \Voxel\Post_Type::get( $this->get_settings_for_display( 'ts_direct_purchase_flow_post_type' ) );
+				$post = null;
+				if ( ! ( $post_type && $post_type->is_managed_by_voxel() ) ) {
+					return null;
+				}
+			} elseif ( $direct_purchase_flow === 'custom' ) {
+				$post = null;
+				$post_type = null;
+
+				$direct_purchase_flow_custom_redirect = $this->get_settings_for_display( 'ts_direct_purchase_flow_custom_redirect' );
+				$fallback_redirect_url = ! empty( $direct_purchase_flow_custom_redirect['url'] ) ? $direct_purchase_flow_custom_redirect['url'] : null;
+			} else {
+				$post = null;
+				$post_type = null;
+			}
 		}
 
-	$groups = $this->get_settings_for_display( 'ts_price_groups' );
-	$plans = [];
-	
-	// Get fallback redirect URL from widget settings
-	$fallback_redirect_settings = $this->get_settings_for_display( 'ts_fallback_redirect' );
-	$fallback_redirect_url = ! empty( $fallback_redirect_settings['url'] ) ? $fallback_redirect_settings['url'] : null;
-	
-	// Use redirect_to from GET param, or fallback to widget setting
-	$redirect_to = $_GET['redirect_to'] ?? $fallback_redirect_url;
-	
-	foreach ( $groups as $group ) {
-		if ( ! is_array( $group['prices'] ) || empty( $group['prices'] ) ) {
-			continue;
-		}
+		$groups = $this->get_settings_for_display( 'ts_price_groups' );
+		$plans = [];
 
-		foreach ( $group['prices'] as $plan_key ) {
-			try {
-				$link = add_query_arg( [
-					'action' => 'paid_listings.choose_plan',
-					'plan' => $plan_key,
-					'redirect_to' => $redirect_to,
-					'process' => $process,
-					'item_type' => $post_type?->get_key(),
-					'post_id' => $post?->get_id(),
-					'_wpnonce' => wp_create_nonce( 'vx_choose_plan' ),
-				], home_url('/?vx=1') );
+		$redirect_to = $_GET['redirect_to'] ?? $fallback_redirect_url;
+
+		foreach ( $groups as $group ) {
+			if ( ! is_array( $group['prices'] ) || empty( $group['prices'] ) ) {
+				continue;
+			}
+
+			foreach ( $group['prices'] as $plan_key ) {
+				try {
+					$link = add_query_arg( [
+						'action' => 'paid_listings.choose_plan',
+						'plan' => $plan_key,
+						'redirect_to' => $redirect_to,
+						'process' => $process,
+						'item_type' => $post_type?->get_key(),
+						'post_id' => $post?->get_id(),
+						'submit_to' => $submit_to,
+						'_wpnonce' => wp_create_nonce( 'vx_choose_plan' ),
+					], home_url('/?vx=1') );
 
 					$plan = Module\Listing_Plan::get( $plan_key );
 					if ( $plan === null ) {

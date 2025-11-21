@@ -100,6 +100,31 @@ trait Customer_Trait {
 		return is_numeric( $result );
 	}
 
+	protected $_has_bought_product_of_type_cache = [];
+	public function has_bought_product_of_type( string $product_type ): bool {
+		if ( isset( $this->_has_bought_product_of_type_cache[ $product_type ] ) ) {
+			return $this->_has_bought_product_of_type_cache[ $product_type ];
+		}
+
+		global $wpdb;
+
+		$sql = $wpdb->prepare( <<<SQL
+			SELECT orders.id AS order_id FROM {$wpdb->prefix}vx_orders AS orders
+			LEFT JOIN {$wpdb->prefix}vx_order_items AS order_items ON (
+				orders.id = order_items.order_id
+			)
+			WHERE orders.customer_id = %d
+				AND orders.status IN ('completed','sub_active')
+				AND order_items.product_type = %s
+			LIMIT 1
+		SQL, $this->get_id(), $product_type );
+
+		$result = $wpdb->get_var( $sql );
+
+		$this->_has_bought_product_of_type_cache[ $product_type ] = is_numeric( $result );
+		return is_numeric( $result );
+	}
+
 	public function has_bought_product_from_vendor( int $vendor_id ): bool {
 		global $wpdb;
 

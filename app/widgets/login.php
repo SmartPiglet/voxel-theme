@@ -292,6 +292,42 @@ class Login extends Base_Widget {
 				]
 			);
 
+			$this->add_control(
+				'ts_copy',
+				[
+					'label' => __( 'Copy icon', 'text-domain' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+
+				]
+			);
+
+			$this->add_control(
+				'ts_cloud',
+				[
+					'label' => __( 'Cloud icon', 'text-domain' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+
+				]
+			);
+
+			$this->add_control(
+				'ts_device',
+				[
+					'label' => __( 'Device icon', 'text-domain' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+
+				]
+			);
+
+			$this->add_control(
+				'shield_ico',
+				[
+					'label' => __( 'Shield icon', 'text-domain' ),
+					'type' => \Elementor\Controls_Manager::ICONS,
+
+				]
+			);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section( 'auth_style', [
@@ -2639,6 +2675,40 @@ class Login extends Base_Widget {
 		);
 
 
+			$this->add_control(
+				'ts_dialog_icon_c',
+				[
+					'label' => __( 'Icon color', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+						'{{WRAPPER}} .vx-dialog > svg' => 'fill: {{VALUE}}',
+					],
+
+				]
+			);
+
+			$this->add_responsive_control(
+				'ts_dialog_icon_size',
+				[
+					'label' => __( 'Icon size', 'voxel-elementor' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => [ 'px', '%' ],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 100,
+							'step' => 1,
+						],
+						'%' => [
+							'min' => 0,
+							'max' => 100,
+						],
+					],
+					'selectors' => [
+						'{{WRAPPER}} .vx-dialog > svg' => 'width: {{SIZE}}{{UNIT}};height: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
 
 			$this->add_control(
 				'ts_dialog_color',
@@ -2731,10 +2801,35 @@ class Login extends Base_Widget {
 					'message' => _x( 'You must register first in order to use Google Sign-In', 'auth', 'voxel' ),
 				],
 			],
+			'l10n' => [
+				'twofa_enabled' => _x( '2FA has been enabled successfully!', 'auth', 'voxel' ),
+				'twofa_disabled' => _x( '2FA has been disabled.', 'auth', 'voxel' ),
+				'twofa_disable_confirm' => _x( 'Are you sure you want to disable two-factor authentication?', 'auth', 'voxel' ),
+				'twofa_regenerate_backups_confirm' => _x( 'This will invalidate your existing backup codes. Continue?', 'auth', 'voxel' ),
+				'twofa_backups_generated' => _x( 'New backup codes generated!', 'auth', 'voxel' ),
+				'twofa_remove_trusted_devices_confirm' => _x( 'This will log you out on all trusted devices. You will need to enter your 2FA code next time you log in. Continue?', 'auth', 'voxel' ),
+				'twofa_trusted_devices_removed' => _x( 'All trusted devices have been removed!', 'auth', 'voxel' ),
+			],
 		];
 
 		if ( \Voxel\get('settings.recaptcha.enabled') ) {
 			wp_enqueue_script( 'google-recaptcha' );
+		}
+
+		// Add 2FA config for logged-in users
+		if ( is_user_logged_in() ) {
+			$user = \Voxel\current_user();
+			$config['twofa'] = [
+				'enabled' => $user ? $user->is_2fa_enabled() : false,
+				'backup_codes_count' => $user ? $user->get_backup_codes_count() : 0,
+				'trusted_devices_count' => $user ? $user->get_trusted_devices_count() : 0,
+			];
+		} else {
+			$config['twofa'] = [
+				'enabled' => false,
+				'backup_codes_count' => 0,
+				'trusted_devices_count' => 0,
+			];
 		}
 
 		// set default screen

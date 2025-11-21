@@ -4,7 +4,17 @@ if ( ! defined('ABSPATH') ) {
 } ?>
 <script type="text/html" id="product-subscription-interval">
 	<div class="ts-form-group">
-		<label><?= _x( 'Subscription interval', 'product field subscriptions', 'voxel' ) ?></label>
+		<label>
+			{{ field.label || <?= wp_json_encode( _x( 'Subscription interval', 'product field subscriptions', 'voxel' ) ) ?> }}
+			<template v-if="field.description">
+				<div class="vx-dialog">
+					<icon-info/>
+					<div class="vx-dialog-content min-scroll">
+						<p v-html="field.description"></p>
+					</div>
+				</div>
+			</template>
+		</label>
 		<div class="form-field-grid">
 			<div class="ts-form-group vx-1-2">
 				<input v-model="value.frequency" type="number" class="ts-filter" min="1" :max="maxFrequency">

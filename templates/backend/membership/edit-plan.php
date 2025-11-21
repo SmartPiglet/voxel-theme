@@ -153,7 +153,7 @@ if ( ! defined('ABSPATH') ) {
 							</div>
 							<div class="x-row">
 								<div v-if="plan.prices.length" class="x-col-12">
-									<draggable v-model="plan.prices" group="prices" item-key="key" class="field-container">
+									<draggable v-model="plan.prices" group="prices" item-key="key" class="field-container" handle=".field-head">
 										<template #item="{element: price, index: index}">
 											<div class="single-field wide" :class="{open: price === activePrice}">
 												<div class="field-head" @click.prevent="activePrice = price === activePrice ? null : price">

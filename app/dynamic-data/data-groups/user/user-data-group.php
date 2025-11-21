@@ -71,6 +71,21 @@ class User_Data_Group extends \Voxel\Dynamic_Data\Data_Groups\Base_Data_Group {
 			'profile_url' => Tag::URL('Profile URL')->render( function() {
 				return get_author_posts_url( $this->user->get_id() );
 			} ),
+			'is_verified' => Tag::Bool('Is verified?')->render( function() {
+				return $this->user->is_verified() ? '1' : '';
+			} ),
+			'role' => Tag::Object_List('Role')->items( function() {
+				return $this->user->get_roles();
+			} )->properties( function( $index, $role ) {
+				return [
+					'label' => Tag::String('Label')->render( function() use ( $role ) {
+						return $role ? $role->get_label() : '';
+					} ),
+					'key' => Tag::String('Key')->render( function() use ( $role ) {
+						return $role ? $role->get_key() : '';
+					} ),
+				];
+			} ),
 			'post_types' => $this->get_post_type_data(),
 			'plan' => $this->get_membership_plan_data(),
 			'followers' => $this->get_followers_data(),

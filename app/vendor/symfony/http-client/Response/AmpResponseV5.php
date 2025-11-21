@@ -81,7 +81,8 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
             $onProgress((int) $info['size_download'], ((int) (1 + $info['download_content_length']) ?: 1) - 1, (array) $info);
         };
         $pause = 0.0;
-        $this->id = $id = self::$nextId++;
+        $this->id = $id = self::$nextId;
+        self::$nextId = str_increment(self::$nextId);
         $info['pause_handler'] = static function (float $duration) use (&$pause) {
             $pause = $duration;
         };
@@ -101,11 +102,11 @@ final class AmpResponseV5 implements ResponseInterface, StreamableInterface
     {
         return null !== $type ? $this->info[$type] ?? null : $this->info;
     }
-    public function __sleep(): array
+    public function __serialize(): array
     {
         throw new \BadMethodCallException('Cannot serialize ' . __CLASS__);
     }
-    public function __wakeup(): void
+    public function __unserialize(array $data): void
     {
         throw new \BadMethodCallException('Cannot unserialize ' . __CLASS__);
     }

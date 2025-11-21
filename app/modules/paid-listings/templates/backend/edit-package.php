@@ -10,12 +10,17 @@ if ( ! defined('ABSPATH') ) {
 			</div>
 			<div class="vx-card-content">
 				<div class="vx-group">
-					<span>
-						<?= $customer->get_avatar_markup() ?>
-					</span>
-					<a href="<?= esc_url( $customer->get_edit_link() ) ?>">
-						<?= esc_html( $customer->get_display_name() ) ?>
-					</a>
+					<?php if ( $customer ): ?>
+						<span>
+							<?= $customer->get_avatar_markup() ?>
+						</span>
+						<a href="<?= esc_url( $customer->get_edit_link() ) ?>">
+							<?= esc_html( $customer->get_display_name() ) ?>
+						</a>
+					<?php else: ?>
+						<?= get_avatar( 0, 40, '', '' ) ?>
+						<b>User #<?= $package->order->get_customer_id() ?></b>
+					<?php endif ?>
 				</div>
 			</div>
 		</div>
@@ -24,9 +29,13 @@ if ( ! defined('ABSPATH') ) {
 				<p>Customer ID</p>
 			</div>
 			<div class="vx-card-content">
-				<a href="<?= esc_url( $customer->get_edit_link() ) ?>">
-					#<?= esc_html( $customer->get_id() ) ?>
-				</a>
+				<?php if ( $customer ): ?>
+					<a href="<?= esc_url( $customer->get_edit_link() ) ?>">
+						#<?= esc_html( $customer->get_id() ) ?>
+					</a>
+				<?php else: ?>
+					#<?= $package->order->get_customer_id() ?>
+				<?php endif ?>
 			</div>
 		</div>
 		<div class="vx-card no-wp-style">

@@ -8,7 +8,7 @@ if ( ! defined('ABSPATH') ) {
 
 trait Get_Minimum_Price {
 
-	public function get_minimum_price( array $args = null ) {
+	public function get_minimum_price( ?array $args = null ) {
 		$WITH_DISCOUNTS = $args['with_discounts'] ?? true;
 		$CUSTOM_PRICE = $args['custom_price'] ?? null;
 		$RANGE_LENGTH = $args['range_length'] ?? 1;
@@ -313,7 +313,7 @@ trait Get_Minimum_Price {
 		}
 	}
 
-	public function get_minimum_price_for_date( \DateTimeInterface $date, array $args = null ) {
+	public function get_minimum_price_for_date( \DateTimeInterface $date, ?array $args = null ) {
 		return $this->get_minimum_price( [
 			'with_discounts' => $args['with_discounts'] ?? true,
 			'range_length' => $args['range_length'] ?? 1,

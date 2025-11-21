@@ -8,7 +8,7 @@ if ( ! defined('ABSPATH') ) {
 		<span class="vx-step-title"><?php echo $this->get_settings_for_display( 'confirm_title' ); ?></span>
 	</div>
 	<div class="login-section">
-		
+
 		<div class="ts-form-group">
 			<label>
 				<?= _x( 'Confirmation code', 'auth', 'voxel' ) ?>
@@ -22,7 +22,7 @@ if ( ! defined('ABSPATH') ) {
 			</label>
 			<div class="ts-input-icon flexify">
 				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('auth_email_ico') ) ?: \Voxel\svg( 'envelope.svg' ) ?>
-				<input class="ts-filter" type="text" v-model="confirmation_code" placeholder="<?= esc_attr( _x( 'Enter code', 'auth', 'voxel' ) ) ?>" class="autofocus">
+				<input class="ts-filter" type="text" maxlength="5" v-model="confirmation_code" placeholder="<?= esc_attr( _x( 'Enter code', 'auth', 'voxel' ) ) ?>" class="autofocus">
 			</div>
 		</div>
 

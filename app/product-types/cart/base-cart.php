@@ -137,7 +137,7 @@ abstract class Base_Cart {
 	}
 
 	public function get_customer_id(): ?int {
-		return \Voxel\current_user()->get_id() ?? null;
+		return \Voxel\get_current_user()->get_id() ?? null;
 	}
 
 	public function get_vendor_id(): ?int {

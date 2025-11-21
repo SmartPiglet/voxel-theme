@@ -243,7 +243,7 @@ class Stripe_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 
 	public function subscription_updated(
 		\Voxel\Vendor\Stripe\Subscription $subscription,
-		\Voxel\Vendor\Stripe\Checkout\Session $session = null
+		?\Voxel\Vendor\Stripe\Checkout\Session $session = null
 	) {
 		$stripe = Module\Stripe_Client::getClient();
 
@@ -288,29 +288,6 @@ class Stripe_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 			'latest_invoice' => null,
 		] );
 
-		if ( $subscription->latest_invoice !== null ) {
-			if ( $subscription->latest_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
-				$latest_invoice = $subscription->latest_invoice;
-			} else {
-				$latest_invoice = $stripe->invoices->retrieve( $subscription->latest_invoice, [] );
-			}
-		}
-
-		if ( $latest_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
-			$this->order->set_details( 'subscription.latest_invoice', [
-				'id' => $latest_invoice->id,
-				'currency' => $latest_invoice->currency,
-				'status' => $latest_invoice->status,
-				'total' => $latest_invoice->total,
-				'billing_reason' => $latest_invoice->billing_reason,
-				'application_fee_amount' => $latest_invoice->application_fee_amount ?? null,
-				'transfer_data' => [
-					'destination' => $latest_invoice->transfer_data->destination ?? null,
-				],
-				'_discount' => array_sum( array_column( $latest_invoice->total_discount_amounts, 'amount' ) ),
-			] );
-		}
-
 		$subscription_item = $subscription->items->data[0] ?? null;
 		if ( $subscription_item ) {
 			$price = $subscription_item->price;
@@ -341,6 +318,83 @@ class Stripe_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 					'phone' => $session->customer_details->phone ?? null,
 				],
 			] );
+		}
+
+		if ( $subscription->latest_invoice !== null ) {
+			if ( $subscription->latest_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
+				$latest_invoice = $subscription->latest_invoice;
+			} else {
+				$latest_invoice = $stripe->invoices->retrieve( $subscription->latest_invoice, [] );
+			}
+		}
+
+		if ( $latest_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
+			$discount_amount = array_sum( array_column( (array) $latest_invoice->total_discount_amounts, 'amount' ) );
+			$tax_amount = array_sum( array_column( (array) $latest_invoice->total_taxes, 'amount' ) );
+
+			$this->order->set_details( 'subscription.latest_invoice', [
+				'id' => $latest_invoice->id,
+				'currency' => $latest_invoice->currency,
+				'status' => $latest_invoice->status,
+				'total' => $latest_invoice->total,
+				'subtotal' => $latest_invoice->subtotal,
+				'billing_reason' => $latest_invoice->billing_reason,
+				'application_fee_amount' => $latest_invoice->application_fee_amount ?? null,
+				'transfer_data' => [
+					'destination' => $latest_invoice->transfer_data->destination ?? null,
+				],
+				'_discount' => $discount_amount,
+				'_tax' => $tax_amount,
+			] );
+
+			$total = $latest_invoice->total;
+			$subtotal = $latest_invoice->subtotal;
+			$discount = $discount_amount;
+			$tax = $tax_amount;
+			if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $latest_invoice->currency ) ) {
+				$total /= 100;
+				$subtotal /= 100;
+				$discount /= 100;
+				$tax /= 100;
+			}
+
+			$this->order->set_details( 'pricing.currency', mb_strtoupper( $latest_invoice->currency ) );
+			$this->order->set_details( 'pricing.total', $total );
+			$this->order->set_details( 'pricing.subtotal', $subtotal );
+			$this->order->set_details( 'pricing.discount', $discount );
+			// $this->order->set_details( 'pricing.tax', $tax );
+		}
+
+		// Retrieve and store upcoming invoice
+		try {
+			$upcoming_invoice = $stripe->invoices->createPreview( [
+				'customer' => $subscription->customer,
+				'subscription' => $subscription->id,
+			] );
+
+			if ( $upcoming_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
+				$upcoming_discount_amount = array_sum( array_column( (array) $upcoming_invoice->total_discount_amounts, 'amount' ) );
+				$upcoming_tax_amount = array_sum( array_column( (array) $upcoming_invoice->total_taxes, 'amount' ) );
+
+				$this->order->set_details( 'subscription.upcoming_invoice', [
+					'id' => $upcoming_invoice->id,
+					'currency' => $upcoming_invoice->currency,
+					'status' => $upcoming_invoice->status,
+					'total' => $upcoming_invoice->total,
+					'subtotal' => $upcoming_invoice->subtotal,
+					'amount_due' => $upcoming_invoice->amount_due,
+					'billing_reason' => $upcoming_invoice->billing_reason,
+					'application_fee_amount' => $upcoming_invoice->application_fee_amount ?? null,
+					'transfer_data' => [
+						'destination' => $upcoming_invoice->transfer_data->destination ?? null,
+					],
+					'_discount' => $upcoming_discount_amount,
+					'_tax' => $upcoming_tax_amount,
+				] );
+			}
+		} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException $e ) {
+			// Upcoming invoice might not be available for all subscription states
+			// Silently continue without storing upcoming invoice
 		}
 
 		$this->order->save();
@@ -572,15 +626,45 @@ class Stripe_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 						],
 					];
 				} else {
+					$message = sprintf(
+						_x( 'Next renewal on %s', 'subscriptions', 'voxel' ),
+						\Voxel\datetime_format( $current_period_end )
+					);
+
+					$latest_invoice = $this->order->get_details('subscription.latest_invoice');
+					$upcoming_invoice = $this->order->get_details('subscription.upcoming_invoice');
+					if (
+						! empty( $latest_invoice['id'] )
+						&& ! empty( $upcoming_invoice['id'] )
+						&& isset( $latest_invoice['total'] )
+						&& isset( $upcoming_invoice['total'] )
+						&& $latest_invoice['id'] !== $upcoming_invoice['id']
+						&& $latest_invoice['total'] !== $upcoming_invoice['total']
+					) {
+						$upcoming_total = $upcoming_invoice['total'];
+						if ( ! \Voxel\Utils\Currency_List::is_zero_decimal( $this->order->get_currency() ) ) {
+							$upcoming_total /= 100;
+						}
+
+						$message = \Voxel\replace_vars(
+							_x( 'Next renewal on @date at @updated_amount', 'subscriptions', 'voxel' ),
+							[
+								'@date' => \Voxel\datetime_format( $current_period_end ),
+								'@updated_amount' => \Voxel\currency_format(
+									$upcoming_total,
+									$this->order->get_currency(),
+									false
+								),
+							],
+						);
+					}
+
 					return [
 						'status'  => 'active',
 						'label' => _x( 'Active', 'order status', 'voxel' ),
 						'long_label' => _x( 'Subscription is active', 'order status', 'voxel' ),
 						'class' => 'vx-green',
-						'message' => sprintf(
-							_x( 'Next renewal on %s', 'subscriptions', 'voxel' ),
-							\Voxel\datetime_format( $current_period_end )
-						),
+						'message' => $message,
 						'actions' => [
 							// 'payments/stripe_subscription/customers/access_portal',
 							'payments/stripe_subscription/customers/active.cancel',
@@ -594,6 +678,7 @@ class Stripe_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 					'long_label' => _x( 'Subscription is past due', 'order status', 'voxel' ),
 					'class' => 'vx-orange',
 					'message' => _x( 'Payment failed — update your card', 'subscriptions', 'voxel' ),
+					'admin_message' => _x( 'Payment failed', 'subscriptions', 'voxel' ),
 					'actions' => [
 						'payments/stripe_subscription/customers/incomplete.pay_now',
 						'payments/stripe_subscription/customers/incomplete.cancel',
@@ -619,6 +704,7 @@ class Stripe_Subscription extends \Voxel\Product_Types\Payment_Methods\Base_Paym
 					'label' => _x( 'Canceled', 'order status', 'voxel' ),
 					'long_label' => _x( 'Subscription canceled', 'order status', 'voxel' ),
 					'message' => $this->order->get_status_last_updated_for_display(),
+					'admin_message' => _x( 'Subscription canceled', 'order status', 'voxel' ),
 					'class' => 'vx-red',
 					'actions' => null,
 				];

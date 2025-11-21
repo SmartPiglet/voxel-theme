@@ -304,7 +304,6 @@ class Assets_Controller extends Base_Controller {
 				'streetViewControl' => !! \Voxel\get( 'settings.maps.google_maps.street_view_control', false ),
 				'handle' => 'vx:google-maps.js-js',
 				'logo_url' => trailingslashit( get_template_directory_uri() ) . 'app/modules/google-maps/assets/google-maps-logo.svg',
-				'legacy_places_api' => apply_filters( 'voxel/google_maps/use_legacy_places_api', false ),
 			];
 		}
 

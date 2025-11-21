@@ -13,10 +13,6 @@ if ( ! defined('ABSPATH') ) {
 </div>
 
 <style type="text/css">
-	.column-id {
-		width: 60px;
-	}
-
 	.column-title img {
 		margin-right: 10px;
 		border-radius: 50px;
@@ -24,6 +20,28 @@ if ( ! defined('ABSPATH') ) {
 		vertical-align: top;
 		width: 32px;
 		height: 32px;
+	}
+
+	.column-id {
+		width: 60px;
+		/*width: 10%;*/
+	}
+
+	.column-title {
+		min-width: 25%;
+	}
+
+	.column-plan {
+		width: 15%;
+	}
+
+	.column-amount {
+		width: 35%;
+	}
+
+	.column-status {
+		/*width: 140px;*/
+		width: 15%;
 	}
 
 	.item-title {

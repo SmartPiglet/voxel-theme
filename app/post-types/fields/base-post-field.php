@@ -244,7 +244,28 @@ abstract class Base_Post_Field extends \Voxel\Utils\Object_Fields\Base_Field {
 	}
 
 	protected function editing_value() {
-		return $this->post ? $this->get_value() : null;
+		if ( $this->post ) {
+			// For new posts (including blank drafts from Paid Listings), use default values if available
+			if ( $this->is_new_post() ) {
+				$default_value = $this->get_default_value();
+				if ( $default_value !== null ) {
+					return $default_value;
+				}
+			}
+			return $this->get_value();
+		}
+
+		return null;
+	}
+
+	/**
+	 * Get the default value for this field when creating a new post.
+	 * Override this method in child classes to provide field-specific default values.
+	 *
+	 * @since 1.7.1
+	 */
+	protected function get_default_value() {
+		return null;
 	}
 
 	public function get_post() {
@@ -410,6 +431,11 @@ abstract class Base_Post_Field extends \Voxel\Utils\Object_Fields\Base_Field {
 		}
 
 		if ( $this->post->get_status() === 'auto-draft' && ! wp_is_post_revision( $this->post->get_id() ) ) {
+			return true;
+		}
+
+		// Consider posts with _is_blank_draft meta as new posts (used by Paid Listings)
+		if ( $this->post->get_status() === 'draft' && ! empty( get_post_meta( $this->post->get_id(), '_is_blank_draft', true ) ) ) {
 			return true;
 		}
 

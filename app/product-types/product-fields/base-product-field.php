@@ -98,6 +98,8 @@ abstract class Base_Product_Field {
 		return [
 			'key' => $this->get_key(),
 			'component_key' => $this->get_component_key(),
+			'label' => $this->props['label'] ?? '',
+			'description' => $this->props['description'] ?? '',
 			'props' => $this->frontend_props(),
 			'validation' => [
 				'errors' => [],

@@ -230,6 +230,16 @@ class Listing_Package {
 				$post_type = \Voxel\Post_Type::get( $p['type'] ?? null );
 				$title = $post ? $post->get_display_name() : _x( '(deleted)', 'listing plan details', 'voxel' );
 				$link = $post ? $post->get_link() : null;
+				$logo_url = null;
+				if ( $post ) {
+					$logo_id = $post->get_logo_id();
+					if ( $logo_id ) {
+						$logo_url = wp_get_attachment_image_url( $logo_id, 'thumbnail' );
+					} else {
+						$thumb_id = get_post_thumbnail_id( $post->get_id() );
+						$logo_url = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'thumbnail' ) : null;
+					}
+				}
 
 				$description = [];
 				if ( $post_type ) {
@@ -249,6 +259,7 @@ class Listing_Package {
 					'title' => $title,
 					'description' => join( ' · ', $description ),
 					'link' => $link,
+					'logo' => $logo_url,
 				];
 			}, $recent_posts );
 		}

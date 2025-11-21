@@ -83,6 +83,21 @@ class Package_List_Table extends \WP_List_Table {
 
 	protected function column_title( $package ) {
 		$customer = $package->order->get_customer();
+
+		if ( ! $customer ) {
+			ob_start(); ?>
+			<div class="item-user">
+				<?= get_avatar( 0, 40, '', '' ) ?>
+				<div class="item-title">
+					<b>User #<?= $package->order->get_customer_id() ?></b>
+					<div class="row-actions">
+						<span>Deleted user</span>
+					</div>
+				</div>
+			</div>
+			<?php return ob_get_clean();
+		}
+
 		ob_start(); ?>
 			<div class="item-user">
 				<?= $customer->get_avatar_markup(40) ?>

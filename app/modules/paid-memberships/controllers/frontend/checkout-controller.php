@@ -396,14 +396,17 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 			}
 
 			$redirect_to = add_query_arg( [
-				'register' => $register_role,
+				'_ctx' => 'membership_plans',
 				'plan' => $_GET['plan'] ?? '',
-			], \Voxel\get_auth_url() );
+			], wp_get_referer() );
 
 			return wp_send_json( [
 				'success' => true,
 				'type' => 'redirect',
-				'redirect_to' => $redirect_to,
+				'redirect_to' => add_query_arg( [
+					'register' => $register_role,
+					'redirect_to' => urlencode( $redirect_to ),
+				], \Voxel\get_auth_url() ),
 			] );
 		} catch ( \Exception $e ) {
 			return wp_send_json( [

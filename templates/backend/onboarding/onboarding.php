@@ -1,8 +1,8 @@
-<div id="voxel-onboarding" v-cloak class="x-container ts-theme-options" data-config="<?= esc_attr(wp_json_encode([
-																							'license' => \Voxel\get_license_data(),
-																							'tab' => $_GET['tab'] ?? 'welcome',
-																							'default_page_builder' => 'elementor',
-																						])) ?>">
+<div id="voxel-onboarding" v-cloak class="x-container ts-theme-options" data-config="<?= esc_attr( wp_json_encode( [
+	'license' => \Voxel\get_license_data(),
+	'tab' => $_GET['tab'] ?? 'welcome',
+	'default_page_builder' => 'elementor',
+] ) ) ?>">
 	<div class="ts-spacer"></div>
 	<div class="ts-spacer"></div>
 	<div class="inner-tab x-row h-center">
@@ -151,10 +151,10 @@
 					<div class="ts-group">
 						<div class="x-row">
 							<div class="ts-form-group x-col-6">
-								<a href="<?= esc_url(home_url('/')) ?>" class="ts-button  full-width">Homepage</a>
+								<a href="<?= esc_url( home_url('/') ) ?>" class="ts-button  full-width">Homepage</a>
 							</div>
 							<div class="ts-form-group x-col-6">
-								<a href="<?= esc_url(admin_url('/')) ?>" class="ts-button ts-outline full-width">Dashboard</a>
+								<a href="<?= esc_url( admin_url('/') ) ?>" class="ts-button ts-outline full-width">Dashboard</a>
 							</div>
 						</div>
 					</div>
@@ -163,43 +163,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Ensure onboarding fits inside WP lightbox containers when opened as a popup -->
-<style>
-	/* When the onboarding template is opened inside WP's lightbox/overlay,
-	 size it to the lightbox CSS variables and allow scrolling if content overflows. */
-	.wp-lightbox-overlay #voxel-onboarding,
-	.wp-lightbox-overlay .x-container,
-	#voxel-onboarding {
-		box-sizing: border-box;
-		max-width: calc(var(--wp--lightbox-container-width, 900px) - 40px);
-		max-height: calc(var(--wp--lightbox-container-height, 600px) - 40px);
-		overflow: auto;
-		padding: 16px;
-	}
-
-	/* Ensure inner layout doesn't force a larger width than the lightbox */
-	.wp-lightbox-overlay #voxel-onboarding .inner-tab,
-	.wp-lightbox-overlay #voxel-onboarding .x-row {
-		max-width: 100%;
-		width: 100%;
-	}
-
-	/* Make column classes stack within the lightbox so they don't exceed width */
-	.wp-lightbox-overlay #voxel-onboarding .x-col-7,
-	.wp-lightbox-overlay #voxel-onboarding .x-col-10 {
-		width: 100%;
-		flex: 0 0 100%;
-		max-width: 100%;
-	}
-
-	/* Prevent inner grids from expanding past the container */
-	#voxel-onboarding .voxelai-grid {
-		max-width: 100%;
-	}
-
-	/* Keep important action buttons visible when scrolling */
-	#voxel-onboarding .card-content {
-		overflow: visible;
-	}
-</style>

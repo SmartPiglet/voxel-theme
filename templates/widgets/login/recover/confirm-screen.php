@@ -26,7 +26,7 @@ if ( ! defined('ABSPATH') ) {
 
 		<div class="ts-form-group">
 			<button type="submit" class="ts-btn ts-btn-2 ts-btn-large" :class="{'vx-pending': pending}">
-				<?= _x( 'Submit', 'auth', 'voxel' ) ?>
+				<?= _x( 'Confirm', 'auth', 'voxel' ) ?>
 			</button>
 		</div>
 

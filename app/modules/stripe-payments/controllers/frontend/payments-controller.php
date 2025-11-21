@@ -88,6 +88,7 @@ class Payments_Controller extends \Voxel\Controllers\Base_Controller {
 		$order = \Voxel\Product_Types\Orders\Order::find( [
 			'id' => $order_id,
 			'customer_id' => get_current_user_id(),
+			'status' => 'pending_payment',
 		] );
 
 		if ( $order && $order->get_details( 'checkout.session_id' ) === $session_id ) {

@@ -23,12 +23,12 @@ class Claim_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function hooks() {
+		$this->on( 'after_setup_theme', '@register_product_type', -100 );
 		$this->filter( 'voxel/advanced-list/actions', '@register_claim_action' );
 		$this->on( 'voxel/advanced-list/action:claim_post', '@render_claim_action', 10, 2 );
 		$this->filter( 'voxel/post/get_field/voxel:claim_request', '@register_claim_request_product_field', 10, 3 );
 		$this->filter( 'voxel/app-events/categories', '@register_app_event_categories' );
 		$this->filter( 'voxel/app-events/register', '@register_app_events' );
-		$this->register_product_type();
 	}
 
 	protected function register_claim_action( $actions ) {
@@ -45,7 +45,7 @@ class Claim_Listings_Controller extends \Voxel\Controllers\Base_Controller {
 		return \Voxel\Product_Type::register_virtual( [
 			'settings' => [
 				'key' => 'voxel:claim_request',
-				'label' => 'Claim Request',
+				'label' => _x( 'Claim Request', 'claim listings', 'voxel' ),
 				'product_mode' => 'regular',
 				'payments' => [
 					'mode' => 'offline',

@@ -11,9 +11,6 @@ namespace Voxel\Vendor;
  * file that was distributed with this source code.
  */
 use Voxel\Vendor\Symfony\Polyfill\Intl\Grapheme as p;
-if (\extension_loaded('intl')) {
-    return;
-}
 if (\PHP_VERSION_ID >= 80000) {
     return require __DIR__ . '/bootstrap80.php';
 }
@@ -78,5 +75,11 @@ if (!\function_exists('grapheme_substr') && !\function_exists('Voxel\Vendor\grap
     function grapheme_substr($string, $offset, $length = null)
     {
         return p\Grapheme::grapheme_substr($string, $offset, $length);
+    }
+}
+if (!\function_exists('grapheme_str_split') && !\function_exists('Voxel\Vendor\grapheme_str_split')) {
+    function grapheme_str_split($string, $length = 1)
+    {
+        return p\Grapheme::grapheme_str_split($string, $length);
     }
 }

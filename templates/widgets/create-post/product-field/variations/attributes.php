@@ -7,7 +7,7 @@ if ( ! defined('ABSPATH') ) {
 		<label>
 			<?= _x( 'Product attributes', 'product field attributes', 'voxel' ) ?>
 			<div class="vx-dialog">
-				<?= \Voxel\get_icon_markup( $this->get_settings_for_display('info_icon') ) ?: \Voxel\svg( 'info.svg' ) ?>
+				<icon-info/>
 				<div class="vx-dialog-content min-scroll">
 					<p><?= _x( 'Create attributes which are used to generate variations for your product e.g Color, Size etc.', 'product field attributes', 'voxel' ) ?></p>
 				</div>

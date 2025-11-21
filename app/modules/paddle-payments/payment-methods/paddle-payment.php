@@ -35,8 +35,8 @@ class Paddle_Payment extends \Voxel\Product_Types\Payment_Methods\Base_Payment_M
 			$customer = $this->order->get_customer();
 			$paddle_customer = $customer->get_or_create_paddle_customer();
 
-			// $address = \Voxel\Modules\Paddle_Payments\Paddle_Client::get_latest_active_address( $paddle_customer->id );
-			// $business = \Voxel\Modules\Paddle_Payments\Paddle_Client::get_latest_active_business( $paddle_customer->id );
+			$address = \Voxel\Modules\Paddle_Payments\Paddle_Client::get_latest_active_address( $paddle_customer->id );
+			$business = \Voxel\Modules\Paddle_Payments\Paddle_Client::get_latest_active_business( $paddle_customer->id );
 
 			$items = array_map( function( $li ) {
 				return new TransactionCreateItemWithPrice(
@@ -66,8 +66,8 @@ class Paddle_Payment extends \Voxel\Product_Types\Payment_Methods\Base_Payment_M
 					'voxel:payment_for' => 'order',
 					'voxel:order_id' => (string) $this->order->get_id(),
 				] ),
-				// addressId: $address->id ?? null,
-				// businessId: $business->id ?? null,
+				addressId: $address->id ?? null,
+				businessId: $business->id ?? null,
 			);
 
 			$transaction = $paddle->transactions->create( $operation );

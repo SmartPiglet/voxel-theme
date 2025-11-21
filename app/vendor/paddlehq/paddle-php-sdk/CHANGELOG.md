@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-php-sdk) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## [1.12.0] - 2025-10-07
+
+### Added
+
+- Non-catalog discounts on Transactions, see [changelog](https://developer.paddle.com/changelog/2025/custom-discounts?utm_source=dx&utm_medium=paddle-php-sdk)
+- Added support for new payment methods `blik`, `mb_way`, `pix` and `upi`. See [related changelog](https://developer.paddle.com/changelog/2025/blik-mbway-payment-methods?utm_source=dx&utm_medium=paddle-php-sdk).
+- Support `retained_fee` field on totals objects to show the fees retained by Paddle for the adjustment.
+- `ApiError` will now have `retryAfter` property set for [too_many_requests](https://developer.paddle.com/errors/shared/too_many_requests) errors
+
+## [1.11.0] - 2025-09-15
+
+### Added
+
+- Added support for filtering events by `event_type` in event list operation, see [related changelog](https://developer.paddle.com/changelog/2025/filter-events-by-type?utm_source=dx&utm_medium=paddle-php-sdk).
+- Added support to fetch and update discount groups see [related changelog](https://developer.paddle.com/changelog/2025/discount-groups-new-api-operations?utm_source=dx&utm_medium=paddle-php-sdk)
+- Added `exchange_rate` and `fee_rate` to `TransactionPayoutTotals`
+- Added `exchange_rate` to `TransactionPayoutTotalsAdjusted`
+- Added support for client tokens see [related changelog](https://developer.paddle.com/changelog/2025/client-side-token-api?utm_source=dx&utm_medium=paddle-php-sdk)
+
 ## [1.10.0] - 2025-06-27
 
 ### Added

@@ -217,6 +217,37 @@ function get_or_create_draft(
 }
 
 /**
+ * Prepare a post to be relisted: convert to draft and
+ * soft-assign selected plan.
+ *
+ * @since 1.7.1
+ */
+function prepare_post_for_relisting(
+	Module\Listing_Package $package,
+	\Voxel\Post $post
+): ?\Voxel\Post {
+	$listing_plan_meta = [
+		'plan' => $package->get_plan_key(),
+		'package' => $package->get_id(),
+		'use_slot_on_publish' => true,
+	];
+
+	$draft_id = wp_update_post( [
+		'ID' => $post->get_id(),
+		'post_status' => 'draft',
+		'meta_input' => [
+			'voxel:listing_plan' => wp_slash( wp_json_encode( $listing_plan_meta ) ),
+		],
+	], true );
+
+	if ( is_wp_error( $draft_id ) ) {
+		return null;
+	}
+
+	return \Voxel\Post::force_get( $post->get_id() );
+}
+
+/**
  * Check if the given user has at least one completed/active
  * order of the given plan.
  *

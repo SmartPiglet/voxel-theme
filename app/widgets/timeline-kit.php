@@ -561,11 +561,23 @@ class Timeline_Kit extends Base_Widget {
 					$this->add_control(
 						'ts_popup_button_1_c_h',
 						[
-							'label' => __( 'Button color', 'voxel-elementor' ),
+							'label' => __( 'Text color', 'voxel-elementor' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'selectors' => [
 								'.vxfeed .ts-btn-1:hover' => 'color: {{VALUE}}',
 							],
+						]
+					);
+
+					$this->add_responsive_control(
+						'ts_popup_button_1_icon_h',
+						[
+							'label' => __( 'Icon color', 'voxel-elementor' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'.vxfeed .ts-btn-1:hover' => '--ts-icon-color: {{VALUE}}',
+							],
+
 						]
 					);
 
@@ -603,11 +615,23 @@ class Timeline_Kit extends Base_Widget {
 					$this->add_control(
 						'ts_popup_button_2_c_h',
 						[
-							'label' => __( 'Button color', 'voxel-elementor' ),
+							'label' => __( 'Text color', 'voxel-elementor' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'selectors' => [
 								'.vxfeed .ts-btn-2:hover' => 'color: {{VALUE}}',
 							],
+						]
+					);
+
+					$this->add_responsive_control(
+						'ts_popup_button_2_icon_h',
+						[
+							'label' => __( 'Icon color', 'voxel-elementor' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'.vxfeed .ts-btn-2:hover' => '--ts-icon-color: {{VALUE}}',
+							],
+
 						]
 					);
 
@@ -645,11 +669,23 @@ class Timeline_Kit extends Base_Widget {
 					$this->add_control(
 						'ts_popup_tertiary_2_c_h',
 						[
-							'label' => __( 'Button color', 'voxel-elementor' ),
+							'label' => __( 'Text color', 'voxel-elementor' ),
 							'type' => \Elementor\Controls_Manager::COLOR,
 							'selectors' => [
 								'.vxfeed .ts-btn-4:hover' => 'color: {{VALUE}}',
 							],
+						]
+					);
+
+					$this->add_responsive_control(
+						'ts_popup_tertiary_icon_h',
+						[
+							'label' => __( 'Icon color', 'voxel-elementor' ),
+							'type' => \Elementor\Controls_Manager::COLOR,
+							'selectors' => [
+								'.vxfeed .ts-btn-4:hover' => '--ts-icon-color: {{VALUE}}',
+							],
+
 						]
 					);
 
@@ -661,6 +697,8 @@ class Timeline_Kit extends Base_Widget {
 			$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		
 
 	}
 
